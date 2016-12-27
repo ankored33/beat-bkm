@@ -24,8 +24,12 @@ end
 
 
 post "/naguru" do
-
-
+  naguru = params[:naguru]
+  data = {
+    "naguru" => naguru,
+  }
+  content_type :json
+  @data = data.to_json
 end
 
 #クロールしてホットエントリーページのブクマ100超のブクマデータ読み取り、うち人気コメの10件はスターも読みとる。
