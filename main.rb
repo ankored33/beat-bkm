@@ -31,6 +31,8 @@ Thread.start do
     # htmlをパース(解析)してオブジェクトを生成
     doc = Nokogiri::HTML.parse(html, nil, charset)
     
+    #トップ用の一覧作成
+
     #ホッテントリURLを切り分け
     entries = String.new
     doc.xpath('//*[@id="main"]/div[1]/div[1]//a[@class="entry-link"]').each {|anchor|
@@ -43,15 +45,18 @@ Thread.start do
     hoturi_esc = URI.escape(hoturi)
     hotio = open(hoturi_esc, opt)
     hothash = JSON.load(hotio)
-    hothash.delete_if {|key, val| val > 34 } #ブクマ100以下は削除
-    $hothash = hothash.delete_if {|key, val| val == 0 }
-    $hothash.each_key {|key| #以下ホッテントリ各URLをARI処理してブクマデータ取得　変数keyにurlが入ってる
+    hothash.delete_if {|key, val| val > 20 } #ブクマ100以下は削除
+    hothash.delete_if {|key, val| val == 0 }
+    hothash.each_pair {|key, val| #以下ホッテントリ各URLをARI処理してブクマデータ取得　変数keyにurlが入ってる
       uri = "http://b.hatena.ne.jp/entry/json/?url=#{key}" 
       uri_esc = URI.escape(uri)
       io = open(uri_esc, opt)
       hash = JSON.load(io)
       title = hash["title"]
       bkm = hash["bookmarks"]
+      bkm.each {|aaa|
+        aaa["bookmark"] = val
+      }
       # bkmの構造は右記ハッシュが入った配列 {"comment"=>"ああああ", "user"=>"aaaa", "URL"=>"http://twitter.com/memel_ko1/status/648781614068006912"},{...}
       #nokogiriで上位10コメだけ詳細データ（ユーザー名とパーマリンク）とる
       hotkey = "http://b.hatena.ne.jp/entry/#{key}"
@@ -84,6 +89,7 @@ Thread.start do
             r_star = colorstars.count("red").to_i
             b_star = colorstars.count("blue").to_i
             p_star = colorstars.count("purple").to_i
+            s_power = 0
             s_power = y_star + g_star * 5 + r_star * 20 + b_star * 50 + p_star * 100 #色ごとにスター評価値を描けてスターパワーを算出
         else
             y_star = 0 #["entries"]が空の人はとりあえず全部0
@@ -111,6 +117,7 @@ sleep(1)
         var["URL"]= URI.escape(key)
         var["title"]= title
         user = var["user"]
+        var["spower"] = 0 if var["spower"] == nil
         var["icon"] = "http://www.hatena.com/users/#{user[0,2]}/#{user}/profile.gif"
         Post.create(
           :user => var["user"],
@@ -118,6 +125,7 @@ sleep(1)
           :spower => var["spower"],
           :URL => var["URL"],
           :title => var["title"],
+          :bookmark => var["bookmark"],
           :run => 0
         )
       p "#{var["title"]}の#{var["user"]}のブコメデータをDBに保存完了。"
@@ -126,11 +134,13 @@ sleep(1)
     p "ホットエントリ一巡完了。データベースを更新します。"
     Post.destroy_all(:run => 1)
     Post.update_all(:run => 1)
+
+    #スリープ
     countdown = 600
-    sleep(600)
     10.times {
       puts "#{countdown}秒後に再開します。"
       countdown -= 60
+    sleep(60)
     }
   end #loopのend
 end #Threadのend
@@ -141,18 +151,7 @@ end #Threadのend
 
 
 get "/" do
-
-  @top = Array.new
-  $hothash.each {|k, v|
-    t = Post.where(URL: k).select("title").last
-    p t
-    list = Hash.new
-    list["u"]= k
-    list["t"]= t
-    list["b"]= v
-    @top << list
-  }
-  p @top
+  $top
   erb :index
 end
 

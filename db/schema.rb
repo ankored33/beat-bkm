@@ -15,9 +15,10 @@ ActiveRecord::Schema.define(version: 20161224013224) do
   create_table "posts", force: :cascade do |t|
     t.text     "user"
     t.text     "comment"
-    t.integer  "spower"
+    t.integer  "spower",     default: 0
     t.text     "URL"
     t.text     "title"
+    t.integer  "bookmark",   default: 0
     t.integer  "run",        default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
