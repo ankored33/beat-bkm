@@ -3,9 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>test</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+  <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>    
+
+  <h1>test</h1>
+  <a href="http://b.hatena.ne.jp/entry/s/myapp-barbieri0303.c9users.io/" class="hatena-bookmark-button" data-hatena-bookmark-title="てすと" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><span>←これを殴る</span></span>
+  
+
 </head>
 <body>
+  <div id="container">
   <% $top.each do |link| %>
-    <li><%= link %></li>
+    <li>
+      <a href="javascript:void(0)" onclick="document.defaultLink.submit(); return false;">リンク名</a>
+      <form name="defaultLink" method="post" action="http://example.com/[POST先URLなど]">
+      <input type="hidden" name="[POSTしたい値のキー1]" value="[POSTしたい値1]">
+      </form>
+      <div><%= link.title %></div><div><%= link.bookmark %></div>
+    </li>
   <% end %>
+  </div>
 </body>

@@ -15,6 +15,19 @@ ActiveRecord::Base.establish_connection(
 class Post < ActiveRecord::Base 
 end
 
+$top = Post.select("URL", "title", "bookmark").where("run" => 1 ).uniq.limit(10)
+
+get "/" do
+  $top
+  erb :index
+end
+
+
+post "/naguru" do
+
+
+end
+
 #クロールしてホットエントリーページのブクマ100超のブクマデータ読み取り、うち人気コメの10件はスターも読みとる。
 Thread.start do
   loop do
@@ -31,8 +44,6 @@ Thread.start do
     # htmlをパース(解析)してオブジェクトを生成
     doc = Nokogiri::HTML.parse(html, nil, charset)
     
-    #トップ用の一覧作成
-
     #ホッテントリURLを切り分け
     entries = String.new
     doc.xpath('//*[@id="main"]/div[1]/div[1]//a[@class="entry-link"]').each {|anchor|
@@ -45,7 +56,7 @@ Thread.start do
     hoturi_esc = URI.escape(hoturi)
     hotio = open(hoturi_esc, opt)
     hothash = JSON.load(hotio)
-    hothash.delete_if {|key, val| val > 20 } #ブクマ100以下は削除
+    hothash.delete_if {|key, val| val > 30 }
     hothash.delete_if {|key, val| val == 0 }
     hothash.each_pair {|key, val| #以下ホッテントリ各URLをARI処理してブクマデータ取得　変数keyにurlが入ってる
       uri = "http://b.hatena.ne.jp/entry/json/?url=#{key}" 
@@ -132,9 +143,9 @@ sleep(1)
       }
     } #hothash.each_keyの括弧閉じ
     p "ホットエントリ一巡完了。データベースを更新します。"
-    Post.destroy_all(:run => 1)
-    Post.update_all(:run => 1)
-
+    Post.where("run" => 1).update_all(:run => 3)
+    Post.where("run" => 0).update_all(:run => 1)
+    Post.destroy_all(:run => 3)
     #スリープ
     countdown = 600
     10.times {
@@ -150,10 +161,7 @@ end #Threadのend
 
 
 
-get "/" do
-  $top
-  erb :index
-end
+
 
 
 
