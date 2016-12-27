@@ -44,8 +44,8 @@ Thread.start do
     hotio = open(hoturi_esc, opt)
     hothash = JSON.load(hotio)
     hothash.delete_if {|key, val| val > 34 } #ブクマ100以下は削除
-    hothash.delete_if {|key, val| val == 0 }
-    hothash.each_key {|key| #以下ホッテントリ各URLをARI処理してブクマデータ取得　変数keyにurlが入ってる
+    $hothash = hothash.delete_if {|key, val| val == 0 }
+    $hothash.each_key {|key| #以下ホッテントリ各URLをARI処理してブクマデータ取得　変数keyにurlが入ってる
       uri = "http://b.hatena.ne.jp/entry/json/?url=#{key}" 
       uri_esc = URI.escape(uri)
       io = open(uri_esc, opt)
@@ -108,7 +108,7 @@ sleep(1)
       bkm.each {|var|
         var.delete("tags")
         var.delete("timestamp")
-        var["URL"]= key
+        var["URL"]= URI.escape(key)
         var["title"]= title
         user = var["user"]
         var["icon"] = "http://www.hatena.com/users/#{user[0,2]}/#{user}/profile.gif"
@@ -127,10 +127,10 @@ sleep(1)
     Post.destroy_all(:run => 1)
     Post.update_all(:run => 1)
     countdown = 600
+    sleep(600)
     10.times {
       puts "#{countdown}秒後に再開します。"
       countdown -= 60
-      sleep(60)
     }
   end #loopのend
 end #Threadのend
@@ -141,28 +141,20 @@ end #Threadのend
 
 
 get "/" do
-  @Post = Post.find(:run => 1).all
+
+  @top = Array.new
+  $hothash.each {|k, v|
+    t = Post.where(URL: k).select("title").last
+    p t
+    list = Hash.new
+    list["u"]= k
+    list["t"]= t
+    list["b"]= v
+    @top << list
+  }
+  p @top
   erb :index
 end
 
-post "/new" do
-  Comment.create({:body => params[:body]})
-  redirect "/"
-end
 
-post "/delete" do
-  Comment.find(params[:id]).destroy
-end
-
-post '/post' do
-  #ここで入力データを処理する
-  foo = params[:foo]
-  bar = params[:bar]
-  data = {
-    "foo" => foo,
-    "bar" => bar
-  }
-  content_type :json
-  @data = data.to_json  
-end
 
