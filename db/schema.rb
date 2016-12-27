@@ -18,7 +18,8 @@ ActiveRecord::Schema.define(version: 20161224013224) do
     t.integer  "spower",     default: 0
     t.text     "URL"
     t.text     "title"
-    t.integer  "bookmark",   default: 0
+    t.integer  "bkmcount",   default: 0
+    t.text     "eid"
     t.integer  "run",        default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false

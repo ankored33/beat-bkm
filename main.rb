@@ -15,10 +15,10 @@ ActiveRecord::Base.establish_connection(
 class Post < ActiveRecord::Base 
 end
 
-$top = Post.select("URL", "title", "bookmark").where("run" => 1 ).uniq.limit(10)
+
 
 get "/" do
-  $top
+  $top = Post.select("URL", "title", "bkmcount", "eid").where("run" => 1 ).uniq.limit(10)
   erb :index
 end
 
@@ -68,9 +68,13 @@ Thread.start do
       io = open(uri_esc, opt)
       hash = JSON.load(io)
       title = hash["title"]
+      p hash
+      eid = hash["eid"].to_s
       bkm = hash["bookmarks"]
+      next if bkm == nil #ブコメ０のときAPIが:bookmarksキーを返さないので対策
       bkm.each {|aaa|
-        aaa["bookmark"] = val
+        aaa["bkmcount"] = val
+        aaa["eid"] = eid
       }
       # bkmの構造は右記ハッシュが入った配列 {"comment"=>"ああああ", "user"=>"aaaa", "URL"=>"http://twitter.com/memel_ko1/status/648781614068006912"},{...}
       #nokogiriで上位10コメだけ詳細データ（ユーザー名とパーマリンク）とる
@@ -121,11 +125,11 @@ Thread.start do
             bar["spower"] = 0
           end
         }
-p "#{key}の#{name}のスター数を取得しました。 => #{s_power}"
+        p "#{key}の#{name}のスター数を取得しました。 => #{s_power}"
         sleep(1)
       }  #doc.xpath('//*[@id="scored-bookmarks"]/ul/li/a[@class="username"]').each のカッコ閉じ
-p "計算終了。データベースに保存します。"
-sleep(1)
+      p "計算終了。データベースに保存します。"
+      sleep(1)
       bkm.each {|var|
         var.delete("tags")
         var.delete("timestamp")
@@ -140,7 +144,8 @@ sleep(1)
           :spower => var["spower"],
           :URL => var["URL"],
           :title => var["title"],
-          :bookmark => var["bookmark"],
+          :bkmcount => var["bkmcount"],
+          :eid => var["eid"],
           :run => 0
         )
       p "#{var["title"]}の#{var["user"]}のブコメデータをDBに保存完了。"
@@ -159,13 +164,4 @@ sleep(1)
     }
   end #loopのend
 end #Threadのend
-
-
-
-
-
-
-
-
-
 
