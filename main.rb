@@ -1,0 +1,168 @@
+require 'sinatra'
+require 'sinatra/reloader'
+require 'json'
+require 'open-uri'
+require 'nokogiri'
+require "active_record"
+require "sinatra/activerecord"
+
+
+ActiveRecord::Base.establish_connection(
+    "adapter" => "sqlite3",
+    "database" => "./db/model.db"
+    )
+    
+class Post < ActiveRecord::Base 
+end
+
+#クロールしてホットエントリーページのブクマ100超のブクマデータ読み取り、うち人気コメの10件はスターも読みとる。
+Thread.start do
+  loop do
+    p "データ取得を開始します。"
+    hatena = 'http://b.hatena.ne.jp/hotentry'
+    opt = {}
+    opt['User-Agent'] = 'Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 ' #User-Agent偽装
+    charset = nil
+    html = open(hatena,opt) do |f|
+      charset = f.charset # 文字種別を取得
+      f.read # htmlを読み込んで変数htmlに渡す
+    end
+    
+    # htmlをパース(解析)してオブジェクトを生成
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+    
+    #ホッテントリURLを切り分け
+    entries = String.new
+    doc.xpath('//*[@id="main"]/div[1]/div[1]//a[@class="entry-link"]').each {|anchor|
+      entries << "&url=" + anchor[:href]
+    }
+    doc.xpath('//*[@id="main"]/div[1]/div[3]//a[@class="entry-link"]').each {|anchor|
+      entries << "&url=" + anchor[:href]
+    }
+    hoturi = "http://api.b.st-hatena.com/entry.counts?url=#{entries}" #ブクマ件数API（複数URL対応、JSON戻し）
+    hoturi_esc = URI.escape(hoturi)
+    hotio = open(hoturi_esc, opt)
+    hothash = JSON.load(hotio)
+    hothash.delete_if {|key, val| val > 34 } #ブクマ100以下は削除
+    hothash.delete_if {|key, val| val == 0 }
+    hothash.each_key {|key| #以下ホッテントリ各URLをARI処理してブクマデータ取得　変数keyにurlが入ってる
+      uri = "http://b.hatena.ne.jp/entry/json/?url=#{key}" 
+      uri_esc = URI.escape(uri)
+      io = open(uri_esc, opt)
+      hash = JSON.load(io)
+      title = hash["title"]
+      bkm = hash["bookmarks"]
+      # bkmの構造は右記ハッシュが入った配列 {"comment"=>"ああああ", "user"=>"aaaa", "URL"=>"http://twitter.com/memel_ko1/status/648781614068006912"},{...}
+      #nokogiriで上位10コメだけ詳細データ（ユーザー名とパーマリンク）とる
+      hotkey = "http://b.hatena.ne.jp/entry/#{key}"
+      charset = nil
+      html = open(hotkey,opt) do |f|
+        charset = f.charset 
+        f.read
+      end
+      doc = Nokogiri::HTML.parse(html, nil, charset)
+      doc.xpath('//*[@id="scored-bookmarks"]/ul/li/a[@class="username"]').each {|node|
+        name = node.text
+        parma = node[:href]
+        starurl = "http://s.hatena.com/entry.json?uri=http://b.hatena.ne.jp#{parma}"
+        starurl_esc = URI.escape(starurl) 
+        io_s = open(starurl_esc, opt)
+        hash_s =JSON.load(io_s)
+        #["colored_stars"]を探索して色ごとに配列に突っ込む
+        colorstars = Array.new
+        if hash_s["entries"].empty? == false #["entries"]が空の人用のif文
+          x = hash_s["entries"][0]["colored_stars"]
+          if x != nil
+            x.each {|var_s|
+              cs = var_s["color"]
+              colorstars << cs
+            }
+          else
+          end
+            y_star = hash_s["entries"][0]["stars"].length #黄色スターの数
+            g_star = colorstars.count("green").to_i
+            r_star = colorstars.count("red").to_i
+            b_star = colorstars.count("blue").to_i
+            p_star = colorstars.count("purple").to_i
+            s_power = y_star + g_star * 5 + r_star * 20 + b_star * 50 + p_star * 100 #色ごとにスター評価値を描けてスターパワーを算出
+        else
+            y_star = 0 #["entries"]が空の人はとりあえず全部0
+            g_star = 0
+            r_star = 0
+            b_star = 0
+            p_star = 0
+            s_power = 0
+        end
+        bkm.each {|bar|
+          if bar.has_value?(name) == true
+            bar["spower"] = s_power.to_i
+          else
+            bar["spower"] = 0
+          end
+        }
+p "#{key}の#{name}のスター数を取得しました。 => #{s_power}"
+        sleep(1)
+      }  #doc.xpath('//*[@id="scored-bookmarks"]/ul/li/a[@class="username"]').each のカッコ閉じ
+p "計算終了。データベースに保存します。"
+sleep(1)
+      bkm.each {|var|
+        var.delete("tags")
+        var.delete("timestamp")
+        var["URL"]= key
+        var["title"]= title
+        user = var["user"]
+        var["icon"] = "http://www.hatena.com/users/#{user[0,2]}/#{user}/profile.gif"
+        Post.create(
+          :user => var["user"],
+          :comment => var["comment"],
+          :spower => var["spower"],
+          :URL => var["URL"],
+          :title => var["title"],
+          :run => 0
+        )
+      p "#{var["title"]}の#{var["user"]}のブコメデータをDBに保存完了。"
+      }
+    } #hothash.each_keyの括弧閉じ
+    p "ホットエントリ一巡完了。データベースを更新します。"
+    Post.destroy_all(:run => 1)
+    Post.update_all(:run => 1)
+    countdown = 600
+    10.times {
+      puts "#{countdown}秒後に再開します。"
+      countdown -= 60
+      sleep(60)
+    }
+  end #loopのend
+end #Threadのend
+
+
+
+
+
+
+get "/" do
+  @Post = Post.find(:run => 1).all
+  erb :index
+end
+
+post "/new" do
+  Comment.create({:body => params[:body]})
+  redirect "/"
+end
+
+post "/delete" do
+  Comment.find(params[:id]).destroy
+end
+
+post '/post' do
+  #ここで入力データを処理する
+  foo = params[:foo]
+  bar = params[:bar]
+  data = {
+    "foo" => foo,
+    "bar" => bar
+  }
+  content_type :json
+  @data = data.to_json  
+end
+
