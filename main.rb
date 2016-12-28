@@ -19,17 +19,15 @@ end
 
 get "/" do
   $top = Post.select("URL", "title", "bkmcount", "eid").where("run" => 1 ).uniq.limit(10)
+  $to_beat = Post.all
   erb :index
 end
 
 
 post "/naguru" do
-  naguru = params[:naguru]
-  data = {
-    "naguru" => naguru,
-  }
-  content_type :json
-  @data = data.to_json
+  eid = params[:eid]
+  $to_beat = Post.where("eid" => eid).where("run" => 1).select("user","comment","spower","icon")
+  $to_beat.to_json
 end
 
 #クロールしてホットエントリーページのブクマ100超のブクマデータ読み取り、うち人気コメの10件はスターも読みとる。
@@ -60,7 +58,6 @@ Thread.start do
     hoturi_esc = URI.escape(hoturi)
     hotio = open(hoturi_esc, opt)
     hothash = JSON.load(hotio)
-    hothash.delete_if {|key, val| val > 30 }
     hothash.delete_if {|key, val| val == 0 }
     hothash.each_pair {|key, val| #以下ホッテントリ各URLをARI処理してブクマデータ取得　変数keyにurlが入ってる
       uri = "http://b.hatena.ne.jp/entry/json/?url=#{key}" 
@@ -137,7 +134,7 @@ Thread.start do
         var["title"]= title
         user = var["user"]
         var["spower"] = 0 if var["spower"] == nil
-        var["icon"] = "http://www.hatena.com/users/#{user[0,2]}/#{user}/profile.gif"
+        var["icon"] = "http://www.hatena.com/users/#{user[0,2]}/#{user}/profile_l.gif"
         Post.create(
           :user => var["user"],
           :comment => var["comment"],
@@ -146,6 +143,7 @@ Thread.start do
           :title => var["title"],
           :bkmcount => var["bkmcount"],
           :eid => var["eid"],
+          :icon => var["icon"],
           :run => 0
         )
       p "#{var["title"]}の#{var["user"]}のブコメデータをDBに保存完了。"

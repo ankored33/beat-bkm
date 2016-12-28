@@ -2,20 +2,25 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>test</title>
+  <title>test</title>  
+  <link href="css.css" rel="stylesheet" type="text/css">
+
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
   <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>    
-  <script type="text/javascript" src="main.js"></script>
-  <h1>test</h1>
-  <a href="http://b.hatena.ne.jp/entry/s/myapp-barbieri0303.c9users.io/" class="hatena-bookmark-button" data-hatena-bookmark-title="てすと" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><span>←これを殴る</span></span>
+
+  <h1><a href="/">test</a></h1>
+  <a href="http://b.hatena.ne.jp/entry/s/myapp-barbieri0303.c9users.io/" class="hatena-bookmark-button" data-hatena-bookmark-title="てすと" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><span>←これ</span></span>
 </head>
 
 <body>
+  無双モード
+  ライバルモード
   <div id="container">
     <% $top.each do |link| %>
-      <li data-id="<%= link.URL %>">
+      <li class="hotentry" data-id="<%= link.eid %>">
         <div class="posturl"><%= link.title %></div>
-        <div><%= link.bkmcount %></div><div><%= link.URL %></div>
+        <div class="bkmcount"><%= link.bkmcount %></div>
+        <div><%= link.URL %></div>
       </li>
     <% end %>
   </div>
@@ -23,25 +28,32 @@
 <script>
     $(function(){
       $(".posturl").click(function(){
-        var naguru = $(this).parent();
-        console.log(naguru);
+        var el = $(this).parent();
         $.ajax({
           type: "POST",
           url: "/naguru",
           dataType: "text", //dataTypeをちゃんと指定する
           data: {
-            naguru: naguru.data("id")
-          },
-        //以下、コールバック関数で戻り値を受け取り、id="result"に表示
-        success: function(json) {
-        dataType: "json",  //dataTypeをちゃんと指定する
-        $('#result').text(json);
-        },
-        error: function() {
-        $('#result').text("error");
-        }
+            eid: el.data("id")
+          }
         });
+        $('#container').html(''
+          <% $to_beat.each do |bm| %>
+            + '<li class="bkmbox">'
+            + '<div><img src="<%= bm.icon %>" width="32px" height="32px"></div>'
+            + '<div class="username"><%= bm.user %></div>'
+            + '<div><%= bm.comment %></div>'
+            + '<div>star= <%= bm.spower %></div>' 
+            + '</li>'
+          <% end %>
+          );
       });
     });
+    $(function(){
+      $("#container").on('click',".bkmbox", function(){
+        $(this).hide();
+      });
+    });
+    
 </script>
 </body>

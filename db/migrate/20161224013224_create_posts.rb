@@ -8,6 +8,7 @@ class CreatePosts < ActiveRecord::Migration[5.0]
       t.text :title
       t.integer :bkmcount, :default => 0
       t.text :eid
+      t.text :icon
       t.integer :run, :default => 0
       t.timestamps  #=> この一行でcreated_atとupdated_atのカラムが定義される
     end

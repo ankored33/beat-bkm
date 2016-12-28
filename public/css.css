@@ -1,0 +1,22 @@
+li {
+  list-style: none
+}
+
+body {
+    color: #333333;
+    background-color: #FFFFFF;
+    font: 16px/1.5 Helvetica, Arial, 'ヒラギノ角ゴ Pro W3', Hiragino Kaku Gothic Pro, sans-serif;
+}
+.bkmbox {
+    padding: 8px 10px 8px 40px;
+    border-bottom: 1px solid #DFDFDF;
+    position: relative;
+    background-color: #FFFFFF;
+    width: 582px;
+    line-height: 18px;
+}
+.username {
+    color: #008FDE;
+    text-decoration: none;
+    font-size: 13px;
+}
