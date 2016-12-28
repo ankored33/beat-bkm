@@ -1,8 +1,7 @@
-require 'sinatra'
-require 'sinatra/reloader'
-require 'json'
-require 'open-uri'
-require 'nokogiri'
+require "sinatra"
+require "json"
+require "open-uri"
+require "nokogiri"
 require "active_record"
 require "sinatra/activerecord"
 
@@ -19,13 +18,14 @@ end
 
 get "/" do
   $top = Post.select("URL", "title", "bkmcount", "eid").where("run" => 1 ).uniq.limit(10)
-  $to_beat = Post.all
+  $to_beat = Post.where("run" => 1)
   erb :index
 end
 
 
 post "/naguru" do
   eid = params[:eid]
+  $to_beat = Post.all
   $to_beat = Post.where("eid" => eid).where("run" => 1).select("user","comment","spower","icon")
   $to_beat.to_json
 end
@@ -34,9 +34,9 @@ end
 Thread.start do
   loop do
     p "データ取得を開始します。"
-    hatena = 'http://b.hatena.ne.jp/hotentry'
+    hatena = "http://b.hatena.ne.jp/hotentry"
     opt = {}
-    opt['User-Agent'] = 'Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 ' #User-Agent偽装
+    opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
     charset = nil
     html = open(hatena,opt) do |f|
       charset = f.charset # 文字種別を取得
@@ -58,6 +58,7 @@ Thread.start do
     hoturi_esc = URI.escape(hoturi)
     hotio = open(hoturi_esc, opt)
     hothash = JSON.load(hotio)
+    hothash.delete_if {|key, val| val > 30 }
     hothash.delete_if {|key, val| val == 0 }
     hothash.each_pair {|key, val| #以下ホッテントリ各URLをARI処理してブクマデータ取得　変数keyにurlが入ってる
       uri = "http://b.hatena.ne.jp/entry/json/?url=#{key}" 

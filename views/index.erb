@@ -13,6 +13,9 @@
 </head>
 
 <body>
+<audio id="btnsound" preload="auto">
+  <source src="slap1.mp3" type="audio/mp3">
+</audio>
   無双モード
   ライバルモード
   <div id="container">
@@ -27,31 +30,43 @@
   <div id="result"></div>
 <script>
     $(function(){
-      $(".posturl").click(function(){
+      $('.posturl').click(function(){
         var el = $(this).parent();
         $.ajax({
-          type: "POST",
-          url: "/naguru",
-          dataType: "text", //dataTypeをちゃんと指定する
+          type: 'POST',
+          url: '/naguru',
+          dataType: 'text', //dataTypeをちゃんと指定する
           data: {
-            eid: el.data("id")
+            eid: el.data('id')
           }
         });
         $('#container').html(''
           <% $to_beat.each do |bm| %>
-            + '<li class="bkmbox">'
+            + '<div class="bkmbox">'
             + '<div><img src="<%= bm.icon %>" width="32px" height="32px"></div>'
             + '<div class="username"><%= bm.user %></div>'
             + '<div><%= bm.comment %></div>'
             + '<div>star= <%= bm.spower %></div>' 
-            + '</li>'
+            + '</div>'
           <% end %>
           );
       });
     });
+    
+
+    var se = $('#btnsound');
+    
     $(function(){
-      $("#container").on('click',".bkmbox", function(){
-        $(this).hide();
+      $('#container').on('click', '.bkmbox', function(){
+        $(this).css('z-index','100');
+        $(function(){
+          se[0].currentTime = 0;
+          se[0].play();
+        });
+        $.when(
+          $(this).animate({ 'top':'600px','left':'200px' },150)
+        ).done(function() {$(this).hide();
+        });
       });
     });
     
