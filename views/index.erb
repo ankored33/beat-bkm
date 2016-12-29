@@ -1,74 +1,16 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>test</title>  
-  <link href="css.css" rel="stylesheet" type="text/css">
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
-  <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>    
-
-  <h1><a href="/">test</a></h1>
-  <a href="http://b.hatena.ne.jp/entry/s/myapp-barbieri0303.c9users.io/" class="hatena-bookmark-button" data-hatena-bookmark-title="てすと" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><span>←これ</span></span>
-</head>
-
-<body>
-<audio id="btnsound" preload="auto">
-  <source src="slap1.mp3" type="audio/mp3">
-</audio>
-  無双モード
-  ライバルモード
-  <div id="container">
+<div id="container">
+  <div id="column-left">
+    <div id="hot-head">ホットエントリ</div>
+    <ul>
     <% $top.each do |link| %>
-      <li class="hotentry" data-id="<%= link.eid %>">
-        <div class="posturl"><%= link.title %></div>
-        <div class="bkmcount"><%= link.bkmcount %></div>
-        <div><%= link.URL %></div>
+      <li class="entries" data-id="<%= link.eid %>">
+        <div class="url"><a href="<%= link.URL %>"><%= link.title %></a></div>
+        <div class="bkmcount"><a href="/<%= link.eid %>"><%= link.bkmcount %>users</a></div>
       </li>
     <% end %>
+    </ul>
   </div>
-  <div id="result"></div>
-<script>
-    $(function(){
-      $('.posturl').click(function(){
-        var el = $(this).parent();
-        $.ajax({
-          type: 'POST',
-          url: '/naguru',
-          dataType: 'text', //dataTypeをちゃんと指定する
-          data: {
-            eid: el.data('id')
-          }
-        });
-        $('#container').html(''
-          <% $to_beat.each do |bm| %>
-            + '<div class="bkmbox">'
-            + '<div><img src="<%= bm.icon %>" width="32px" height="32px"></div>'
-            + '<div class="username"><%= bm.user %></div>'
-            + '<div><%= bm.comment %></div>'
-            + '<div>star= <%= bm.spower %></div>' 
-            + '</div>'
-          <% end %>
-          );
-      });
-    });
-    
+</div>
 
-    var se = $('#btnsound');
-    
-    $(function(){
-      $('#container').on('click', '.bkmbox', function(){
-        $(this).css('z-index','100');
-        $(function(){
-          se[0].currentTime = 0;
-          se[0].play();
-        });
-        $.when(
-          $(this).animate({ 'top':'600px','left':'200px' },150)
-        ).done(function() {$(this).hide();
-        });
-      });
-    });
-    
-</script>
-</body>
+

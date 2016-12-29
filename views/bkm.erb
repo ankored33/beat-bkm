@@ -1,0 +1,21 @@
+<audio id="btnsound" preload="auto">
+  <source src="/sound/slap1.mp3" type="audio/mp3">
+</audio>
+<div class="switch">
+  <input id="switch" checked type="checkbox">
+  <label for="switch"></label>
+</div>
+<div id="container">
+  <% $to_beat.each do |bm| %>
+  <div class="bkmbox">
+    <div><img src="<%= bm.icon %>" width="32px" height="32px"></div>
+    <div class="username"><%= bm.user %></div>
+    <div><%= bm.comment %></div>
+      <% if bm.spower != 0 %>
+        <div class="star">★<span class="figure"><%= bm.spower %></span></div>
+      <% else %>
+        <div class="star"><span class="figure"></span></div>
+      <% end %>
+  </div>
+  <% end %>
+</div>

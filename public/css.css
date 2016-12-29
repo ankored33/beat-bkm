@@ -1,3 +1,16 @@
+#header {
+    background-color: #3CB371;  
+    color: #fff;  
+    margin-bottom: 30px;
+}
+#footer {
+    margin-top:50px;
+    background-color: #3CB371;
+}
+#column-left {
+    width: 600px;
+    margin: auto;
+}
 li {
   list-style: none
 }
@@ -6,6 +19,10 @@ body {
     color: #333333;
     background-color: #FFFFFF;
     font: 16px/1.5 Helvetica, Arial, 'ヒラギノ角ゴ Pro W3', Hiragino Kaku Gothic Pro, sans-serif;
+}
+#hot-head{
+    font-weight: bold;
+    background: #008FDE;
 }
 .bkmbox {
     padding: 8px 10px 8px 40px;
@@ -19,4 +36,58 @@ body {
     color: #008FDE;
     text-decoration: none;
     font-size: 13px;
+}
+#hotentry{
+    border-bottom: 1px solid #000000;
+}
+.star {
+    color: #FFD700;
+    font-size: 14px;
+    font-weight: bold;
+}
+.entries {
+    margin: 20px 0px;
+}
+
+
+.switch input {
+    display: none;
+}
+.switch label {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.switch label:before {
+    padding: 6px 10px;
+    content: 'O N';
+    border-radius: 6px 0 0 6px;
+    background: linear-gradient(to bottom, #F0F0F0 0%, #DDD 100%);
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.1) inset;
+    color: #333;
+}
+.switch label:after {
+    padding: 6px 10px;
+    content: 'OFF';
+    border-radius: 0 6px 6px 0;
+    background: #C30;
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.1) inset;
+    color: #FFF;
+}
+.switch input + label:hover:before {
+    opacity: 0.5;
+}
+.switch input:checked + label:before {
+    background: #9C0;
+    color: #FFF;
+    opacity: 1;
+}
+.switch input:checked + label:after {
+    background: linear-gradient(to bottom, #F0F0F0 0%, #DDD 100%);
+    color: #333;
+}
+.switch input:checked + label:hover:after {
+    opacity: 0.5;
 }

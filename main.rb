@@ -17,17 +17,15 @@ end
 
 
 get "/" do
-  $top = Post.select("URL", "title", "bkmcount", "eid").where("run" => 1 ).uniq.limit(10)
-  $to_beat = Post.where("run" => 1)
+  $top = Post.select("URL", "title", "bkmcount", "eid").where("run" => 1 ).uniq.order("bkmcount DESC")
   erb :index
 end
 
 
-post "/naguru" do
+get "/:eid" do
   eid = params[:eid]
-  $to_beat = Post.all
-  $to_beat = Post.where("eid" => eid).where("run" => 1).select("user","comment","spower","icon")
-  $to_beat.to_json
+  $to_beat = Post.where("eid" => eid).where("run" => 1).select("user","comment","spower","icon").uniq
+  erb :bkm
 end
 
 #クロールしてホットエントリーページのブクマ100超のブクマデータ読み取り、うち人気コメの10件はスターも読みとる。
@@ -58,7 +56,7 @@ Thread.start do
     hoturi_esc = URI.escape(hoturi)
     hotio = open(hoturi_esc, opt)
     hothash = JSON.load(hotio)
-    hothash.delete_if {|key, val| val > 30 }
+    hothash.delete_if {|key, val| val > 100 }
     hothash.delete_if {|key, val| val == 0 }
     hothash.each_pair {|key, val| #以下ホッテントリ各URLをARI処理してブクマデータ取得　変数keyにurlが入ってる
       uri = "http://b.hatena.ne.jp/entry/json/?url=#{key}" 
