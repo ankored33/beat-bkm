@@ -23,7 +23,7 @@
           console.log(i);
           $(this).css('z-index','100');
           $.when(
-            $(this).animate({ 'top':'600px','left':'200px' },150)
+            $(this).animate({ 'top':'600px','left':'100px' },150)
           ).done(function() {$(this).hide();
           });
         } else if (Number(i) > 0) {

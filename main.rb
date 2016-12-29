@@ -117,11 +117,10 @@ Thread.start do
         bkm.each {|bar|
           if bar.has_value?(name) == true
             bar["spower"] = s_power.to_i
+            p "#{name}さんに#{s_power}いれた"
           else
-            bar["spower"] = 0
           end
         }
-        p "#{key}の#{name}のスター数を取得しました。 => #{s_power}"
         sleep(1)
       }  #doc.xpath('//*[@id="scored-bookmarks"]/ul/li/a[@class="username"]').each のカッコ閉じ
       p "計算終了。データベースに保存します。"
