@@ -1,11 +1,8 @@
 <div id="left">
   <div id="entry-preview">
-    <div>
-      <%= $ur %>
-      <%= $ti %>
-    </div>
-    
-    
+    <% $head.each do |head| %>
+      <a href="<%= head.URL %>" target="_blank"><%= head.title %></a><span>のブックマーク</span>
+    <% end %>
   </div>
   
   <% $to_beat.each do |bm| %>
@@ -26,8 +23,8 @@
     <input id="switch" checked type="checkbox">
     <label for="switch"></label>
   </div>
-  <div id="btn_vol"> 音声</div>
-  <div id="btn_expl">雑魚には用はない</div> 
+  <div id="btn_vol">通常モード／無双モード *音が出ます</div>
+  <div id="btn_expl">一掃する</div> 
 </div>
 
 
@@ -58,4 +55,37 @@
   </audio>
   <audio class="btnsound07" preload="auto">
     <source src="/sound/kick-low1.mp3" type="audio/mp3">
+  </audio>
+  
+  <audio class="rival-safe-00-00" preload="auto">
+    <source src="/sound/rival/safe-00-00.wav" type="audio/wav">
+  </audio>
+  <audio class="rival-safe-00-01" preload="auto">
+    <source src="/sound/rival/safe-00-01.wav" type="audio/wav">
+  </audio>
+  <audio class="rival-safe-00-02" preload="auto">
+    <source src="/sound/rival/safe-00-02.wav" type="audio/wav">
+  </audio>
+  <audio class="rival-safe-00-03" preload="auto">
+    <source src="/sound/rival/safe-00-03.wav" type="audio/wav">
+  </audio>
+  
+  <audio class="rival-safe-01-00" preload="auto">
+    <source src="/sound/rival/safe-01-00.wav" type="audio/wav">
+  </audio>
+  <audio class="rival-safe-01-01" preload="auto">
+    <source src="/sound/rival/safe-01-01.wav" type="audio/wav">
+  </audio>
+  <audio class="rival-safe-01-02" preload="auto">
+    <source src="/sound/rival/safe-01-02.wav" type="audio/wav">
+  </audio>
+  <audio class="rival-safe-01-03" preload="auto">
+    <source src="/sound/rival/safe-01-03.wav" type="audio/wav">
+  </audio>
+  
+  <audio class="rival-die-00" preload="auto">
+    <source src="/sound/rival/die-00.wav" type="audio/wav">
+  </audio>
+  <audio class="rival-die-01" preload="auto">
+    <source src="/sound/rival/die-01.wav" type="audio/wav">
   </audio>

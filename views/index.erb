@@ -2,8 +2,7 @@
       <div id="hot-head">ただいまのはてなホットエントリ</div>
       <% $top.each do |link| %>
         <div class="entries" data-id="<%= link.eid %>">
-          <div class="catch-img"><img src="/img/test.png" width="81" height="54"></div>
-          <div class="entry-title"><a class="entry-link" href="<%= link.URL %>"><%= link.title %></a></div>
+          <div class="entry-title"><a href="<%= link.URL %>" target="_blank"><%= link.title %></a></div>
           <div class="bkmcount"><a class="bkmlink" href="/<%= link.eid %>"><%= link.bkmcount %>users</a></div>
           <% $top_three = Post.where("eid" => link.eid).where("run" => 1).select("user","comment","spower","icon").uniq.order("spower DESC").limit(3) %>
           <div class="top-three-bkm"><a href= "/<%= link.eid %>">
