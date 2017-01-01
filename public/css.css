@@ -5,6 +5,10 @@
 #3E4149　濃い黒
 */
 
+body {
+    font: 16px/1.5 Helvetica, Arial, 'ヒラギノ角ゴ Pro W3', Hiragino Kaku Gothic Pro, sans-serif;
+    margin:0px;
+}
 
 #container {
     height: 100%;
@@ -28,6 +32,14 @@
     text-decoration: none;
     color:#FFFFFF;
 }
+
+#left {
+    background-color: #F5F5F5;
+    float: left;
+    width: 600px;
+    height: 100%;
+}
+
 #hot-head{
     font-weight: bold;
     background: #FFFFFF;
@@ -35,23 +47,30 @@
     color: #FF9999;
 }
 
-
 .entries {
-    clear: both;
     padding: 8px 10px 8px 12px;
-    border: 1px solid #9370DB;
+    border-bottom: 3px solid #FFC8C8;
+    border-left: 2px solid #FFC8C8;
+    border-right: 2px solid #FFC8C8;
     background-color: #FFFFFF;
-
 }
+
 .catch-img {
     float:left;
     margin-right: 10px;
     margin-top: 4px;
 }
+
 .entry-title {
     float:left;
     width:400px;
 }
+
+.entry-link {
+    color: #444F5A;
+    font-weight: border;
+}
+
 .bkmcount {
     float:right;
 }    
@@ -60,22 +79,42 @@ a.bkmlink {
     font-size: 20px;
     color: #FF9999;
 }
-.entry-link {
-    color: #444F5A;
-    font-weight: border;
+
+.top-three-bkm {
+    clear: both;
 }
-body {
-    font: 16px/1.5 Helvetica, Arial, 'ヒラギノ角ゴ Pro W3', Hiragino Kaku Gothic Pro, sans-serif;
-    margin:0px;
+
+.top-three-bkm :hover {
+    background-color: #FAFAFA;
+}
+
+.top-three-bkm a {
+    text-decoration: none;
+    color: #3E4149;
+}
+
+.bkm-preview {
+    font-size: 12px;
+    height: 20px;
+    margin-left:3px;
+}
+
+.top-user-img {
+    vertical-align: middle;
+}
+.top-user-name {
+    color: #008FDE;
+}
+.top-user-star {
+    color: #FFD700;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.topuser{
 }
 
 
-#left {
-    background-color: #F5F5F5;
-    float: left;
-    width: 600px;
-    height: 100%;
-}
 #right {
     background-color: #FAF0E6;
     width: 200px;
@@ -95,7 +134,7 @@ body {
     margin-top:10px;
 }
 
-.bkmbox {
+.bkm-box {
     padding: 8px 10px 8px 12px;
     border-bottom: 1px solid #DFDFDF;
     position: relative;
@@ -104,16 +143,13 @@ body {
     line-height: 18px;
 }
 
-
-.username {
+.bkm-user {
     color: #008FDE;
     text-decoration: none;
     font-size: 13px;
 }
-#hotentry{
-    border-bottom: 1px solid #000000;
-}
-.star {
+
+.bkm-star {
     color: #FFD700;
     font-size: 14px;
     font-weight: bold;

@@ -22,7 +22,7 @@ end
 
 
 get "/" do
-  $top = Post.select("URL", "title", "bkmcount", "eid").where("run" => 1 ).uniq.order("bkmcount DESC")
+  $top = Post.select("URL", "title", "bkmcount", "eid").where("run" => 1 ).uniq.order("bkmcount DESC").limit(20)
   erb :index
 end
 
@@ -30,6 +30,8 @@ end
 get "/:eid" do
   eid = params[:eid]
   $to_beat = Post.where("eid" => eid).where("run" => 1).select("user","comment","spower","icon").uniq
+  $ur = Post.where("eid" => eid).where("run" => 1).select("URL").uniq
+  $ti = Post.where("eid" => eid).where("run" => 1).select("title").uniq
   erb :bkm
 end
 
@@ -61,7 +63,7 @@ Thread.start do
     hoturi_esc = URI.escape(hoturi)
     hotio = open(hoturi_esc, opt)
     hothash = JSON.load(hotio)
-    hothash.delete_if {|key, val| val > 100 }
+    hothash.delete_if {|key, val| val < 150 }
     hothash.delete_if {|key, val| val == 0 }
     hothash.each_pair {|key, val| #以下ホッテントリ各URLをARI処理してブクマデータ取得　変数keyにurlが入ってる
       uri = "http://b.hatena.ne.jp/entry/json/?url=#{key}" 

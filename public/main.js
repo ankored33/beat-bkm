@@ -1,7 +1,7 @@
     var se = $('.btnsound');
 
     $(function(){
-      $('#left').on('click', '.bkmbox', function(){
+      $('#left').on('click', '.bkm-box', function(){
         var i = $(this).find('.figure').text();
         var rand = Math.floor( Math.random() * 8 );
         console.log(i);

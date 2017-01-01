@@ -1,13 +1,22 @@
 <div id="left">
+  <div id="entry-preview">
+    <div>
+      <%= $ur %>
+      <%= $ti %>
+    </div>
+    
+    
+  </div>
+  
   <% $to_beat.each do |bm| %>
-  <div class="bkmbox">
-    <div><img src="<%= bm.icon %>" width="32px" height="32px"></div>
-    <div class="username"><%= bm.user %></div>
-    <div><%= bm.comment %></div>
+  <div class="bkm-box">
+    <div class="bkm-icon"><img src="<%= bm.icon %>" width="32px" height="32px"></div>
+    <div class="bkm-user"><%= bm.user %></div>
+    <div class="bkm-comment"><%= bm.comment %></div>
       <% if bm.spower != 0 %>
-        <div class="star">★<span class="figure"><%= bm.spower %></span></div>
+        <div class="bkm-star">★<span class="figure"><%= bm.spower %></span></div>
       <% else %>
-        <div class="star"><span class="figure"></span></div>
+        <div class="bkm-star"><span class="figure"></span></div>
       <% end %>
   </div>
   <% end %>
