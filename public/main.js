@@ -1,30 +1,19 @@
-    var se = $('#btnsound');
-/*    
-    $(function(){
-      $('#container').on('click', '.bkmbox', function(){
-        $(this).css('z-index','100');
-        $(function(){
-          se[0].currentTime = 0;
-          se[0].play();
-        });
-        $.when(
-          $(this).animate({ 'top':'600px','left':'200px' },150)
-        ).done(function() {$(this).hide();
-        });
-      });
-    });
-*/
-
+    var se = $('.btnsound');
 
     $(function(){
-      $('#container').on('click', '.bkmbox', function(){
-        i = $(this).find('.figure').text();
+      $('#left').on('click', '.bkmbox', function(){
+        var i = $(this).find('.figure').text();
+        var rand = Math.floor( Math.random() * 8 );
+        console.log(i);
+        console.log(rand);
         if (i == "") {
-          console.log(i);
           $(this).css('z-index','100');
+          $('.btnsound0'+rand).get(0).currentTime = 0;
+          $('.btnsound0'+rand).get(0).play();
           $.when(
             $(this).animate({ 'top':'600px','left':'100px' },150)
-          ).done(function() {$(this).hide();
+          ).done(function() {
+            $(this).hide();
           });
         } else if (Number(i) > 0) {
           $.when(

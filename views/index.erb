@@ -1,16 +1,15 @@
-
-<div id="container">
-  <div id="column-left">
-    <div id="hot-head">ホットエントリ</div>
-    <ul>
-    <% $top.each do |link| %>
-      <li class="entries" data-id="<%= link.eid %>">
-        <div class="url"><a href="<%= link.URL %>"><%= link.title %></a></div>
-        <div class="bkmcount"><a href="/<%= link.eid %>"><%= link.bkmcount %>users</a></div>
-      </li>
-    <% end %>
-    </ul>
-  </div>
-</div>
+    <div id="left">
+      <div id="hot-head">ただいまのはてなホットエントリ</div>
+      <% $top.each do |link| %>
+        <div class="entries" data-id="<%= link.eid %>">
+          <div class="catch-img"><img src="/img/test.png" width="81" height="54"></div>
+          <div class="entry-title"><a class="entry-link" href="<%= link.URL %>"><%= link.title %></a></div>
+          <div class="bkmcount"><a class="bkmlink" href="/<%= link.eid %>"><%= link.bkmcount %>users</a></div>
+        </div>
+      <% end %>
+    </div>
+    <div id="right">
+      <div id="htbicon"><a href="http://b.hatena.ne.jp/entry/s/myapp-barbieri0303.c9users.io/" class="hatena-bookmark-button" data-hatena-bookmark-title="てすと" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><span>←これ</span></div>
+    </div>
 
 

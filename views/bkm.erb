@@ -1,11 +1,4 @@
-<audio id="btnsound" preload="auto">
-  <source src="/sound/slap1.mp3" type="audio/mp3">
-</audio>
-<div class="switch">
-  <input id="switch" checked type="checkbox">
-  <label for="switch"></label>
-</div>
-<div id="container">
+<div id="left">
   <% $to_beat.each do |bm| %>
   <div class="bkmbox">
     <div><img src="<%= bm.icon %>" width="32px" height="32px"></div>
@@ -19,3 +12,41 @@
   </div>
   <% end %>
 </div>
+<div id="right">
+  <div class="switch">
+    <input id="switch" checked type="checkbox">
+    <label for="switch"></label>
+  </div>
+  <div id="btn_vol"> 音声</div>
+  <div id="btn_expl">雑魚には用はない</div> 
+</div>
+
+
+
+
+
+
+  <audio class="btnsound00" preload="auto">
+    <source src="/sound/punch-middle2.mp3" type="audio/mp3">
+  </audio>
+  <audio class="btnsound01" preload="auto">
+    <source src="/sound/slap1.mp3" type="audio/mp3">
+  </audio>
+    <audio class="btnsound02" preload="auto">
+    <source src="/sound/game-healer-damage2.mp3" type="audio/mp3">
+  </audio>
+  <audio class="btnsound03" preload="auto">
+    <source src="/sound/game-princess-damage1.mp3" type="audio/mp3">
+  </audio>
+  <audio class="btnsound04" preload="auto">
+    <source src="/sound/game-swordman-damage2.mp3" type="audio/mp3">
+  </audio>
+    <audio class="btnsound05" preload="auto">
+    <source src="/sound/game-swordwoman-damage2.mp3" type="audio/mp3">
+  </audio>
+  <audio class="btnsound06" preload="auto">
+    <source src="/sound/game-thief-boy-damage1.mp3" type="audio/mp3">
+  </audio>
+  <audio class="btnsound07" preload="auto">
+    <source src="/sound/kick-low1.mp3" type="audio/mp3">
+  </audio>

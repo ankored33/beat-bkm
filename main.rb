@@ -15,6 +15,11 @@ class Post < ActiveRecord::Base
 end
 
 
+helpers do
+    include Rack::Utils
+    alias_method :h, :escape_html
+end
+
 
 get "/" do
   $top = Post.select("URL", "title", "bkmcount", "eid").where("run" => 1 ).uniq.order("bkmcount DESC")
