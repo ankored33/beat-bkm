@@ -138,7 +138,7 @@ Thread.start do
         var["title"]= title
         user = var["user"]
         var["spower"] = 0 if var["spower"] == nil
-        var["icon"] = "http://www.hatena.com/users/#{user[0,2]}/#{user}/profile_l.gif"
+        var["icon"] = "http://www.hatena.com/users/#{user[0,2]}/#{user}/profile.gif"
         Post.create(
           :user => var["user"],
           :comment => var["comment"],

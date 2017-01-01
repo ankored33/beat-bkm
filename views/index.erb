@@ -1,16 +1,16 @@
-    <div id="left">
-      <div id="hot-head">ただいまのはてなホットエントリ</div>
+    <div id="hot-head">ただいまのはてなホットエントリ</div>
+    <div id="contents">
       <% $top.each do |link| %>
         <div class="entries" data-id="<%= link.eid %>">
           <div class="entry-title"><a href="<%= link.URL %>" target="_blank"><%= link.title %></a></div>
-          <div class="bkmcount"><a class="bkmlink" href="/<%= link.eid %>"><%= link.bkmcount %>users</a></div>
+          <div class="bkmcount"><a href="/<%= link.eid %>"><%= link.bkmcount %>users</a></div>
           <% $top_three = Post.where("eid" => link.eid).where("run" => 1).select("user","comment","spower","icon").uniq.order("spower DESC").limit(3) %>
           <div class="top-three-bkm"><a href= "/<%= link.eid %>">
           <% $top_three.each do |three| %>
             <div class="bkm-preview">
               <img class="top-user-img" src="<%= three.icon %>" height="14px" width="14px">
-              <span class="top-user-name"><%= three.user[0..10] %></span>
-              <span class="top-user-comment"><%= three.comment[0..37] %>…</span>
+              <span class="top-user-name"><%= three.user[0..8] %></span>
+              <span class="top-user-comment"><%= three.comment[0..22] %>…</span>
               <span class="top-user-star">★<%= three.spower %></span>
             </div>
           <% end %>
@@ -18,8 +18,10 @@
         </div>
       <% end %>
     </div>
+    
+<!--
     <div id="right">
       <div id="htbicon"><a href="http://b.hatena.ne.jp/entry/s/myapp-barbieri0303.c9users.io/" class="hatena-bookmark-button" data-hatena-bookmark-title="てすと" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><span>←これ</span></div>
     </div>
-
+-->
 

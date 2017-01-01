@@ -1,7 +1,7 @@
     var se = $('.btnsound');
 
     $(function(){
-      $('#left').on('click', '.bkm-box', function(){
+      $('#bkm-contents').on('click', '.bkm-box', function(){
         var i = $(this).find('.figure').text();
         var voiceRand = Math.floor( Math.random() * 8 );
         var leftRand = Math.floor( Math.random() * 1200 );
@@ -42,3 +42,8 @@
         }  
       });
     });
+    
+    
+    
+
+

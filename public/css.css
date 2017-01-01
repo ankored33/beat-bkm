@@ -6,14 +6,14 @@
 */
 
 body {
-    font: 16px/1.5 Helvetica, Arial, 'ヒラギノ角ゴ Pro W3', Hiragino Kaku Gothic Pro, sans-serif;
+    font: 14px/1.5 Helvetica, Arial, 'ヒラギノ角ゴ Pro W3', Hiragino Kaku Gothic Pro, sans-serif;
     margin:0px;
 }
 
 #container {
     height: 100%;
     margin: auto;
-    max-width:1210px;
+    max-width:1275px;
 }
 
 #header {
@@ -32,12 +32,6 @@ body {
     color:#FFFFFF;
 }
 
-#left {
-    float: left;
-    width: 800px;
-    height: 100%;
-}
-
 #hot-head{
     font-weight: bold;
     background: #FFFFFF;
@@ -45,18 +39,25 @@ body {
     color: #FF9999;
 }
 
+#contents {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .entries {
-    padding: 8px 10px 8px 12px;
-    border-bottom: 3px solid #FFC8C8;
-    border-left: 2px solid #FFC8C8;
-    border-right: 2px solid #FFC8C8;
+    padding: 8px 8px 8px 8px;
+    border: 3px solid #FFC8C8;
     background-color: #FFFFFF;
+    width:400px;
+    margin:2px;
 }
 
 .entry-title {
     float:left;
-    width:450px;
     font-weight: bold;
+    width:80%;
+    
 }
 
 .entry-title a {
@@ -66,15 +67,18 @@ body {
 
 .bkmcount {
     float:right;
+    width:20%;
+    margin:auto;
 }    
     
-a.bkmlink {
-    font-size: 20px;
+.bkmcount a {
+    font-size: 18px;
     color: #FF9999;
 }
 
 .top-three-bkm {
     clear: both;
+    margin-top: 5px;
 }
 
 .top-three-bkm :hover {
@@ -118,33 +122,40 @@ a.bkmlink {
     color: #444F5A;
 }
 
+#bkm-contents {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .bkm-box {
     padding: 8px 10px 8px 12px;
-    border-bottom: 1px solid #DFDFDF;
     position: relative;
-    background-color: #FFFFFF;
-    width: 578px;
-    line-height: 18px;
+    min-width: 52px;
 }
 
 .bkm-icon {
-    float:left;
     margin-right:6px;
+    margin:auto;
+    width:50px;
+    float:left;
 }
 
 
 .bkm-user {
     color: #008FDE;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 12px;
 }
 
+
 .bkm-comment {
-    font-size:13px;
+    font-size:10px;
+    max-width:243px;
+    float:right;
 }
 
 .bkm-star {
-    clear:both;
     color: #FFD700;
     font-size: 14px;
     font-weight: bold;

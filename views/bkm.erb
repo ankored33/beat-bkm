@@ -1,24 +1,42 @@
-<div id="left">
-  <div id="entry-preview">
+<div id="entry-preview">
     <% $head.each do |head| %>
       <a href="<%= head.URL %>" target="_blank"><%= head.title %></a><span>のブックマーク</span>
     <% end %>
-  </div>
-  
+</div>
+<div id="bkm-contents">
   <% $to_beat.each do |bm| %>
-  <div class="bkm-box">
-    <div class="bkm-icon"><img src="<%= bm.icon %>" width="32px" height="32px"></div>
-    <div class="bkm-user"><%= bm.user %></div>
-    <div class="bkm-comment"><%= bm.comment %></div>
+  <% rd = rand(6) + 1 %>
+    <% if rd == 1 %>
+      <% cl = "#FAFAFA" %>
+    <% elsif rd == 2 %>
+      <% cl = "#F8E0F7" %>
+    <% elsif rd == 3 %>
+      <% cl = "#E0E6F8" %>
+    <% elsif rd == 4 %>
+      <% cl = "#E0F8E6" %>
+    <% elsif rd == 5 %>
+      <% cl = "#F7F8E0" %>
+    <% elsif rd == 6 %>
+      <% cl = "#F8E0E0" %>
+    <% end %>
+  <div class="bkm-box"  style="background-color : <%= cl %>">
+    <div class="bkm-user"><%= bm.user %>
       <% if bm.spower != 0 %>
-        <div class="bkm-star">★<span class="figure"><%= bm.spower %></span></div>
+        <span class="bkm-star">★<span class="figure"><%= bm.spower %></span></span>
       <% else %>
-        <div class="bkm-star"><span class="figure"></span></div>
+        <span class="bkm-star"><span class="figure"></span></span>
       <% end %>
+    </div>
+    <div class="bkm-icon"><img src="<%= bm.icon %>" width="48px" height="48px"></div>
+    <div class="bkm-comment"><%= bm.comment %></div>  
+
+
   </div>
   <% end %>
 </div>
-<div id="right">
+
+
+<div>
   <div class="switch">
     <input id="switch" checked type="checkbox">
     <label for="switch"></label>
@@ -39,7 +57,7 @@
     <source src="/sound/slap1.mp3" type="audio/mp3">
   </audio>
     <audio class="btnsound02" preload="auto">
-    <source src="/sound/game-healer-damage2.mp3" type="audio/mp3">
+    <source src="/sound/game-healer-damage1.mp3" type="audio/mp3">
   </audio>
   <audio class="btnsound03" preload="auto">
     <source src="/sound/game-princess-damage1.mp3" type="audio/mp3">
