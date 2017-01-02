@@ -3,7 +3,7 @@
     
     $(function(){
       $('#bkm-contents').on('click', '.bkm-box', function(){
-        var size = Number($('#bkm-size').text());
+        var size = Number($('#bkm-remaining').text());
         var i = $(this).find('.figure').text();
         var voiceRand = Math.floor( Math.random() * 8 );
         var leftRand = Math.floor( Math.random() * 1200 );
@@ -27,7 +27,8 @@
             $(this).animate({ 'bottom':'300px','right': leftRand },150)
           ).done(function() {
             $(this).hide();
-            $('#bkm-size').text(size - 1);
+            $('#bkm-remaining').text(size - 1);
+            $(this).attr('class', "bkm-box-dead");
           });
         } else if (Number(i) > 0) {
           $('.rival-safe-'+ rival + '-0' + safeRand).get(0).currentTime = 0;
@@ -43,7 +44,8 @@
           $('.rival-die-'+ rival).get(0).currentTime = 0;
           $('.rival-die-'+ rival).get(0).play();
           $(this).fadeOut(1500);
-          $('#bkm-size').text(size - 1);
+          $(this).attr('class', "bkm-box-dead");
+          $('#bkm-remaining').text(size - 1);
         }  
       });
     });

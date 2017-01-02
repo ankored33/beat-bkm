@@ -1,10 +1,14 @@
-<div id="entry-preview">
+<div id="bkm-header">
+  <div id="entry-preview">
+  エントリー：
     <% $head.each do |head| %>
-      <a href="<%= head.URL %>" target="_blank"><%= head.title %></a><span>のブックマーク</span>
+      <a href="<%= head.URL %>" target="_blank"><%= head.title %></a><span></span>
     <% end %>
-      <div id="bkm-size"><%= $to_beat.size %></div>
-  
+  </div>
+  <div id="bkm-remaining"><%= $to_beat.size %></div>
 </div>
+
+
 <div id="bkm-contents">
   <% $to_beat.each do |bm| %>
   <% rd = rand(6) + 1 %>
@@ -31,21 +35,11 @@
     </div>
     <div class="bkm-icon"><img src="<%= bm.icon %>" width="48px" height="48px"></div>
     <div class="bkm-comment"><%= bm.comment %></div>  
-
-
   </div>
   <% end %>
 </div>
 
 
-<div>
-  <div class="switch">
-    <input id="switch" checked type="checkbox">
-    <label for="switch"></label>
-  </div>
-  <div id="btn_vol">通常モード／無双モード *音が出ます</div>
-  <div id="btn_expl">一掃する</div> 
-</div>
 
 
 

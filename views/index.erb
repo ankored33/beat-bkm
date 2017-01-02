@@ -1,16 +1,30 @@
     <div id="hot-head">ただいまのはてなホットエントリ</div>
     <div id="contents">
       <% $top.each do |link| %>
-        <div class="entries" data-id="<%= link.eid %>">
+        <% rd = rand(6) + 1 %>
+        <% if rd == 1 %>
+          <% cl = "#FAFAFA" %>
+        <% elsif rd == 2 %>
+          <% cl = "#F8E0F7" %>
+        <% elsif rd == 3 %>
+          <% cl = "#E0E6F8" %>
+        <% elsif rd == 4 %>
+          <% cl = "#E0F8E6" %>
+        <% elsif rd == 5 %>
+          <% cl = "#F7F8E0" %>
+        <% elsif rd == 6 %>
+          <% cl = "#F8E0E0" %>
+        <% end %>
+        <div class="entries" data-id="<%= link.eid %>" style="background-color : <%= cl %>">
           <div class="entry-title"><a href="<%= link.URL %>" target="_blank"><%= link.title %></a></div>
-          <div class="bkmcount"><a href="/<%= link.eid %>"><%= link.bkmcount %>users</a></div>
+          <div class="bkmcount"><a href="/<%= link.eid %>"><%= link.bkmcount %></a><br/>users</div>
           <% $top_three = Post.where("eid" => link.eid).where("run" => 1).select("user","comment","spower","icon").uniq.order("spower DESC").limit(3) %>
           <div class="top-three-bkm"><a href= "/<%= link.eid %>">
           <% $top_three.each do |three| %>
             <div class="bkm-preview">
               <img class="top-user-img" src="<%= three.icon %>" height="14px" width="14px">
-              <span class="top-user-name"><%= three.user[0..8] %></span>
-              <span class="top-user-comment"><%= three.comment[0..22] %>…</span>
+              <span class="top-user-name"><%= three.user[0..7] %></span>
+              <span class="top-user-comment"><%= three.comment[0..20] %>…</span>
               <span class="top-user-star">★<%= three.spower %></span>
             </div>
           <% end %>
