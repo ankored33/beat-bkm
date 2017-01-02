@@ -21,6 +21,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
+    align-items:flex-end;
 
 }
 
@@ -117,7 +118,7 @@ body {
     font-weight: bold;
 }
 
-#bkm-header {
+#bkm-head {
     background-color: #FFC8C8;
     border-bottom: 1px solid #FF9999;    
     z-index:1;

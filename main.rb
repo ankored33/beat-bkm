@@ -22,10 +22,17 @@ end
 
 
 get "/" do
-  $top = Post.select("URL", "title", "bkmcount", "eid").where("run" => 1 ).uniq.order("bkmcount DESC").limit(20)
+  $top = Post.select("URL", "title", "bkmcount", "eid").where("run" => 1 ).uniq.order("bkmcount DESC")
   erb :index
 end
 
+get "/inquiry" do
+  erb :inquiry
+end
+
+get "/material" do
+  erb :material
+end
 
 get "/:eid" do
   eid = params[:eid]
@@ -33,6 +40,9 @@ get "/:eid" do
   $head = Post.where("eid" => eid).where("run" => 1).select("URL", "title").uniq
   erb :bkm
 end
+
+
+
 
 #クロールしてホットエントリーページのブクマ100超のブクマデータ読み取り、うち人気コメの10件はスターも読みとる。
 Thread.start do
