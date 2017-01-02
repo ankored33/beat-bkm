@@ -2,6 +2,8 @@
     <% $head.each do |head| %>
       <a href="<%= head.URL %>" target="_blank"><%= head.title %></a><span>のブックマーク</span>
     <% end %>
+      <div id="bkm-size"><%= $to_beat.size %></div>
+  
 </div>
 <div id="bkm-contents">
   <% $to_beat.each do |bm| %>

@@ -1,7 +1,9 @@
     var se = $('.btnsound');
 
+    
     $(function(){
       $('#bkm-contents').on('click', '.bkm-box', function(){
+        var size = Number($('#bkm-size').text());
         var i = $(this).find('.figure').text();
         var voiceRand = Math.floor( Math.random() * 8 );
         var leftRand = Math.floor( Math.random() * 1200 );
@@ -25,13 +27,15 @@
             $(this).animate({ 'bottom':'300px','right': leftRand },150)
           ).done(function() {
             $(this).hide();
+            $('#bkm-size').text(size - 1);
           });
         } else if (Number(i) > 0) {
           $('.rival-safe-'+ rival + '-0' + safeRand).get(0).currentTime = 0;
           $('.rival-safe-'+ rival + '-0' + safeRand).get(0).play();
           $.when(
             $(this).animate({ 'left' : '15px' },50)
-          ).done(function() {$(this).animate({ 'left':'0px' },50);
+          ).done(function() {
+            $(this).animate({ 'left':'0px' },50);
           });
           i = i - 1;
           $(this).find('.figure').text(i);
@@ -39,11 +43,10 @@
           $('.rival-die-'+ rival).get(0).currentTime = 0;
           $('.rival-die-'+ rival).get(0).play();
           $(this).fadeOut(1500);
+          $('#bkm-size').text(size - 1);
         }  
       });
     });
     
     
-    
-
 

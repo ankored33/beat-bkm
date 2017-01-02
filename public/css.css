@@ -7,7 +7,7 @@
 
 body {
     font: 14px/1.5 Helvetica, Arial, 'ヒラギノ角ゴ Pro W3', Hiragino Kaku Gothic Pro, sans-serif;
-    margin:0px;
+    margin:0;
 }
 
 #container {
@@ -18,13 +18,17 @@ body {
 
 #header {
     background-color: #FF9999;
-    margin-bottom: 12px;
+    height:50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
 }
 
 #title {
     font-family: "游ゴシック", Arial, sans-serif;
     font-size:32px;
     font-weight: bold;
+    margin:0;
 }
 
 #title a {
@@ -114,6 +118,7 @@ body {
     font-size:14px;
     font-weight: bold;
     color: #ffffff;
+    z-index:1;
 }
 
 #entry-preview a {
@@ -125,13 +130,23 @@ body {
 #bkm-contents {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
 }
 
 .bkm-box {
-    padding: 8px 10px 8px 12px;
+    padding: 5px 5px 5px 5px;
     position: relative;
     min-width: 52px;
+    border: 1px solid #FFFFFF;
+    cursor: pointer;
+}
+
+.bkm-user {
+    color: #008FDE;
+    text-decoration: none;
+    font-size: 12px;
+    margin:auto;
+    font-weight:bold;
 }
 
 .bkm-icon {
@@ -139,13 +154,7 @@ body {
     margin:auto;
     width:50px;
     float:left;
-}
-
-
-.bkm-user {
-    color: #008FDE;
-    text-decoration: none;
-    font-size: 12px;
+    text-align:center;
 }
 
 
@@ -153,10 +162,13 @@ body {
     font-size:10px;
     max-width:243px;
     float:right;
+    margin-left:4px;
+    word-break: break-all;
+    
 }
 
 .bkm-star {
-    color: #FFD700;
+    color:#FFA500;
     font-size: 14px;
     font-weight: bold;
 }
