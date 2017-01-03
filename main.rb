@@ -22,7 +22,7 @@ end
 
 
 get "/" do
-  $top = Post.select("URL", "title", "bkmcount", "eid").where("run" => 1 ).uniq.order("bkmcount DESC")
+  $top = Post.select("URL", "title", "bkmcount", "eid").where("run" => 1 ).distinct.order("bkmcount DESC")
   erb :index
 end
 
@@ -36,8 +36,8 @@ end
 
 get "/:eid" do
   eid = params[:eid]
-  $to_beat = Post.where("eid" => eid).where("run" => 1).select("user","comment","spower","icon").uniq
-  $head = Post.where("eid" => eid).where("run" => 1).select("URL", "title").uniq
+  $to_beat = Post.where("eid" => eid).where("run" => 1).select("user","comment","spower","icon").distinct
+  $head = Post.where("eid" => eid).where("run" => 1).select("URL", "title").distinct
   erb :bkm
 end
 

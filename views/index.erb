@@ -19,7 +19,7 @@
         <div class="entries" data-id="<%= link.eid %>" style="background-color : <%= cl %>">
           <div class="entry-title"><a href="<%= link.URL %>" target="_blank"><%= link.title %></a></div>
           <div class="bkmcount"><a href="/<%= link.eid %>"><%= link.bkmcount %></a><br/>users</div>
-          <% $top_three = Post.where("eid" => link.eid).where("run" => 1).select("user","comment","spower","icon").uniq.order("spower DESC").limit(3) %>
+          <% $top_three = Post.where("eid" => link.eid).where("run" => 1).select("user","comment","spower","icon").distinct.order("spower DESC").limit(3) %>
           <div class="top-three-bkm"><a href= "/<%= link.eid %>">
           <% $top_three.each do |three| %>
             <div class="bkm-preview">
