@@ -1,9 +1,25 @@
     var se = $('.btnsound');
+    var beat = true;
 
     
-    $(function(){
-      $('#bkm-contents').on('click', '.bkm-box', function(){
-        var size = Number($('#bkm-remaining').text());
+$(function() {
+  $('#float-right').on('change', '#check', function(){
+  	if ($(this).is(':checked')) {
+  	  beat = false;
+  	  console.log('beat is false');
+  	  $('.bkm-box').css('cursor', 'auto');
+  	} else {
+      beat = true;
+      console.log('beat is true');
+  	  $('.bkm-box').css('cursor', 'pointer');
+  	}
+  });
+});
+
+  $(function(){
+    $('#bkm-contents').on('click', '.bkm-box', function(){
+      if (beat == true) {
+        var size = Number($('#bkm-remaining-figure').text());
         var i = $(this).find('.figure').text();
         var voiceRand = Math.floor( Math.random() * 8 );
         var leftRand = Math.floor( Math.random() * 1200 );
@@ -27,7 +43,7 @@
             $(this).animate({ 'bottom':'300px','right': leftRand },150)
           ).done(function() {
             $(this).hide();
-            $('#bkm-remaining').text(size - 1);
+            $('#bkm-remaining-figure').text(size - 1);
             $(this).attr('class', "bkm-box-dead");
           });
         } else if (Number(i) > 0) {
@@ -44,11 +60,12 @@
           $('.rival-die-'+ rival).get(0).currentTime = 0;
           $('.rival-die-'+ rival).get(0).play();
           $(this).fadeOut(1500);
-          $(this).attr('class', "bkm-box-dead");
-          $('#bkm-remaining').text(size - 1);
-        }  
-      });
+          $(this).attr('class', 'bkm-box-dead');
+          $('#bkm-remaining-figure').text(size - 1);
+        }
+      } else {
+        console.log('noevent');
+      }
     });
+  });
     
-    
-

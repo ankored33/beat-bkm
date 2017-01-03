@@ -26,12 +26,8 @@ get "/" do
   erb :index
 end
 
-get "/inquiry" do
-  erb :inquiry
-end
-
-get "/material" do
-  erb :material
+get "/about" do
+  erb :about
 end
 
 get "/:eid" do

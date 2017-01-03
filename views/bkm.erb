@@ -5,7 +5,17 @@
       <a href="<%= head.URL %>" target="_blank"><%= head.title %></a><span></span>
     <% end %>
   </div>
-  <div id="bkm-remaining"><%= $to_beat.size %></div>
+
+  <div id="float-right">
+    <div>
+      <label for="check">
+        殴らない<input type="checkbox" id="check" />
+      </label>
+    </div>
+    <div id="bkm-remaining">
+      公開ブクマ <span id="bkm-remaining-figure"><%= $to_beat.size %></span>users
+    </div>
+  </div>
 </div>
 
 
