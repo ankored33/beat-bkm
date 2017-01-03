@@ -1,4 +1,5 @@
-    <div id="hot-head">ただいまのはてなホットエントリ</div>
+    <div>はてなのホットエントリーについたブクマを殴ってあそぶサイトです。普通のはてブ閲覧サイトとしても（一応）使えます。｜<a href="/material">素材元</a>｜<a href="/inquiry">お問い合わせ</a>｜<a href="http://b.hatena.ne.jp/entry/s/myapp-barbieri0303.c9users.io/" class="hatena-bookmark-button" data-hatena-bookmark-title="てすと" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>　←このサイトのブクマを<s>殴る</s>見る</div>
+    <div id="entries-header">ただいまのはてなホットエントリー</div>
     <div id="contents">
       <% $top.each do |link| %>
         <% rd = rand(6) + 1 %>
@@ -23,8 +24,8 @@
           <% $top_three.each do |three| %>
             <div class="bkm-preview">
               <img class="top-user-img" src="<%= three.icon %>" height="14px" width="14px">
-              <span class="top-user-name"><%= three.user[0..7] %></span>
-              <span class="top-user-comment"><%= three.comment[0..20] %>…</span>
+              <span class="top-user-name"><%= three.user[0..9] %></span>
+              <span class="top-user-comment"><%= three.comment[0..23] %>…</span>
               <span class="top-user-star">★<%= three.spower %></span>
             </div>
           <% end %>
