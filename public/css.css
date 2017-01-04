@@ -13,7 +13,7 @@ body {
 #container {
     height: 100%;
     margin: auto;
-    max-width:1274px;
+    max-width:1050px;
 }
 
 #header {
@@ -54,8 +54,8 @@ body {
 }
 
 .entries {
-    padding: 8px 8px 8px 8px;
-    width:400px;
+    padding: 8px 6px 8px 6px;
+    width:500px;
     margin:2px;
 }
 
@@ -67,9 +67,8 @@ body {
 }
 
 .entry-title a {
-    color: #444F5A;
     font-weight: bold;
-    font-size:14px;
+    font-size:13px;
 }
 
 .bkmcount {
@@ -77,14 +76,14 @@ body {
     width:20%;
     margin:auto;
     text-align:center;
-    color: #FF4500;
+    color: #FF9999;
     font-weight:bold;
     line-height: 14px;
 }    
     
 .bkmcount a {
-    font-size: 24px;
-    color: #FF4500;
+    font-size: 18px;
+    color: #FF9999;
     font-weight:bold;
     line-height: 22px;
 }
@@ -115,7 +114,7 @@ body {
     color: #008FDE;
 }
 .top-user-star {
-    color: #FFA500;
+    color: #FFD700;
     font-size: 12px;
     font-weight: bold;
 }
@@ -135,6 +134,7 @@ body {
     color: #FF9999;
     background-color: #FFFFFF;
     padding: 6px;
+    max-width:680px;
 }
 
 #entry-preview a {
@@ -162,6 +162,7 @@ body {
 
 #bkm-remaining-figure {
     font-size:24px;
+
 }    
 
 #bkm-contents {
@@ -183,7 +184,6 @@ body {
     position: relative;
     min-width: 52px;
     border: 1px solid #FFFFFF;
-    cursor: pointer;
     flex-grow: 2;
 }
 

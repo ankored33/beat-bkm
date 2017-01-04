@@ -1,16 +1,16 @@
 <div id="bkm-head">
   <div id="entry-preview">
-  エントリー：
     <% $head.each do |head| %>
-      <a href="<%= head.URL %>" target="_blank"><%= head.title %></a><span></span>
+      <a href="http://b.hatena.ne.jp/entry/<%= head.URL %>" target="_blank"><%= head.title %></a><span></span>
     <% end %>
   </div>
 
   <div id="float-right">
     <div>
       <label for="check">
-        殴らない<input type="checkbox" id="check" />
+      ｜殴る<input type="checkbox" id="check" />
       </label>
+      ＊注意＊音が鳴ります｜
     </div>
     <div id="bkm-remaining">
       公開ブクマ <span id="bkm-remaining-figure"><%= $to_beat.size %></span>users
@@ -21,20 +21,22 @@
 
 <div id="bkm-contents">
   <% $to_beat.each do |bm| %>
-  <% rd = rand(6) + 1 %>
-    <% if rd == 1 %>
-      <% cl = "#FAFAFA" %>
-    <% elsif rd == 2 %>
-      <% cl = "#F8E0F7" %>
-    <% elsif rd == 3 %>
-      <% cl = "#E0E6F8" %>
-    <% elsif rd == 4 %>
-      <% cl = "#E0F8E6" %>
-    <% elsif rd == 5 %>
-      <% cl = "#F7F8E0" %>
-    <% elsif rd == 6 %>
-      <% cl = "#F8E0E0" %>
-    <% end %>
+        <% rd = rand(7) + 1 %>
+        <% if rd == 1 %>
+          <% cl = "#ffebee" %>
+        <% elsif rd == 2 %>
+          <% cl = "#ede7f6" %>
+        <% elsif rd == 3 %>
+          <% cl = "#e1f5fe" %>
+        <% elsif rd == 4 %>
+          <% cl = "#e8f5e9" %>
+        <% elsif rd == 5 %>
+          <% cl = "#fffde7" %>
+        <% elsif rd == 6 %>
+          <% cl = "#fbe9e7" %>
+        <% else %>
+          <% cl = "#eceff1" %>
+        <% end %>
   <div class="bkm-box"  style="background-color : <%= cl %>">
     <div class="bkm-user"><%= bm.user %>
       <% if bm.spower != 0 %>
@@ -44,7 +46,7 @@
       <% end %>
     </div>
     <div class="bkm-icon"><img src="<%= bm.icon %>" width="48px" height="48px"></div>
-    <div class="bkm-comment"><%= bm.comment %></div>  
+    <div class="bkm-comment"><%= h bm.comment %></div>  
   </div>
   <% end %>
 </div>
@@ -100,14 +102,14 @@
   <audio class="rival00-safe03" preload="auto">
     <source src="/sound/rival/cool/safe03.mp3" type="audio/mp3">
   </audio>
-  <audio class="rival00-pinchi00" preload="auto">
-    <source src="/sound/rival/cool/pinchi00.mp3" type="audio/mp3">
+  <audio class="rival00-pinch00" preload="auto">
+    <source src="/sound/rival/cool/pinch00.mp3" type="audio/mp3">
   </audio>
-  <audio class="rival00-pinchi01" preload="auto">
-    <source src="/sound/rival/cool/pinchi01.mp3" type="audio/mp3">
+  <audio class="rival00-pinch01" preload="auto">
+    <source src="/sound/rival/cool/pinch01.mp3" type="audio/mp3">
   </audio>
-  <audio class="rival00-pinchi02" preload="auto">
-    <source src="/sound/rival/cool/pinchi02.mp3" type="audio/mp3">
+  <audio class="rival00-pinch02" preload="auto">
+    <source src="/sound/rival/cool/pinch02.mp3" type="audio/mp3">
   </audio>  
   <audio class="rival00-die" preload="auto">
     <source src="/sound/rival/cool/die.mp3" type="audio/mp3">
@@ -126,14 +128,14 @@
   <audio class="rival01-safe03" preload="auto">
     <source src="/sound/rival/priest/safe03.mp3" type="audio/mp3">
   </audio>
-  <audio class="rival01-pinchi00" preload="auto">
-    <source src="/sound/rival/priest/pinchi00.mp3" type="audio/mp3">
+  <audio class="rival01-pinch00" preload="auto">
+    <source src="/sound/rival/priest/pinch00.mp3" type="audio/mp3">
   </audio>
-  <audio class="rival01-pinchi01" preload="auto">
-    <source src="/sound/rival/priest/pinchi01.mp3" type="audio/mp3">
+  <audio class="rival01-pinch01" preload="auto">
+    <source src="/sound/rival/priest/pinch01.mp3" type="audio/mp3">
   </audio>
-  <audio class="rival01-pinchi02" preload="auto">
-    <source src="/sound/rival/priest/pinchi02.mp3" type="audio/mp3">
+  <audio class="rival01-pinch02" preload="auto">
+    <source src="/sound/rival/priest/pinch02.mp3" type="audio/mp3">
   </audio>  
   <audio class="rival01-die" preload="auto">
     <source src="/sound/rival/priest/die.mp3" type="audio/mp3">
@@ -152,14 +154,14 @@
   <audio class="rival02-safe03" preload="auto">
     <source src="/sound/rival/witch/safe03.mp3" type="audio/mp3">
   </audio>
-  <audio class="rival02-pinchi00" preload="auto">
-    <source src="/sound/rival/witch/pinchi00.mp3" type="audio/mp3">
+  <audio class="rival02-pinch00" preload="auto">
+    <source src="/sound/rival/witch/pinch00.mp3" type="audio/mp3">
   </audio>
-  <audio class="rival02-pinchi01" preload="auto">
-    <source src="/sound/rival/witch/pinchi01.mp3" type="audio/mp3">
+  <audio class="rival02-pinch01" preload="auto">
+    <source src="/sound/rival/witch/pinch01.mp3" type="audio/mp3">
   </audio>
-  <audio class="rival02-pinchi02" preload="auto">
-    <source src="/sound/rival/witch/pinchi02.mp3" type="audio/mp3">
+  <audio class="rival02-pinch02" preload="auto">
+    <source src="/sound/rival/witch/pinch02.mp3" type="audio/mp3">
   </audio>  
   <audio class="rival02-die" preload="auto">
     <source src="/sound/rival/witch/die.mp3" type="audio/mp3">
@@ -178,15 +180,20 @@
   <audio class="rival03-safe03" preload="auto">
     <source src="/sound/rival/hero/safe03.mp3" type="audio/mp3">
   </audio>
-  <audio class="rival03-pinchi00" preload="auto">
-    <source src="/sound/rival/hero/pinchi00.mp3" type="audio/mp3">
+  <audio class="rival03-pinch00" preload="auto">
+    <source src="/sound/rival/hero/pinch00.mp3" type="audio/mp3">
   </audio>
-  <audio class="rival03-pinchi01" preload="auto">
-    <source src="/sound/rival/hero/pinchi01.mp3" type="audio/mp3">
+  <audio class="rival03-pinch01" preload="auto">
+    <source src="/sound/rival/hero/pinch01.mp3" type="audio/mp3">
   </audio>
-  <audio class="rival03-pinchi02" preload="auto">
-    <source src="/sound/rival/hero/pinchi02.mp3" type="audio/mp3">
+  <audio class="rival03-pinch02" preload="auto">
+    <source src="/sound/rival/hero/pinch02.mp3" type="audio/mp3">
   </audio>  
   <audio class="rival03-die" preload="auto">
     <source src="/sound/rival/hero/die.mp3" type="audio/mp3">
+  </audio>  
+  
+  
+  <audio class="clear" preload="auto">
+    <source src="/sound/sound99.mp3" type="audio/mp3">
   </audio>  

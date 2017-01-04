@@ -5,12 +5,16 @@ require "nokogiri"
 require "active_record"
 require "sinatra/activerecord"
 
-
+=begin
 ActiveRecord::Base.establish_connection(
     "adapter" => "sqlite3",
     "database" => "./db/model.db"
     )
-    
+=end
+
+ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] ||"sqlite3:./db/model.db")
+#HEROKU_POSTGRESQL_GRAY_URL
+
 class Post < ActiveRecord::Base 
 end
 
@@ -68,6 +72,7 @@ Thread.start do
     hoturi_esc = URI.escape(hoturi)
     hotio = open(hoturi_esc, opt)
     hothash = JSON.load(hotio)
+    hothash.delete_if {|key, val| val == 30 }
     hothash.delete_if {|key, val| val == 0 }
     hothash.each_pair {|key, val| #以下ホッテントリ各URLをARI処理してブクマデータ取得　変数keyにurlが入ってる
       uri = "http://b.hatena.ne.jp/entry/json/?url=#{key}" 
