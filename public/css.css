@@ -204,8 +204,8 @@ body {
 }
 
 .bkm-comment {
-    font-size:10px;
-    max-width:243px;
+    font-size:12px;
+    max-width:270px;
     float:left;
     margin-left:4px;
     word-break: break-all;
