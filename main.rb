@@ -72,7 +72,7 @@ Thread.start do
     hoturi_esc = URI.escape(hoturi)
     hotio = open(hoturi_esc, opt)
     hothash = JSON.load(hotio)
-    hothash.delete_if {|key, val| val == 30 }
+    hothash.delete_if {|key, val| val > 35 }
     hothash.delete_if {|key, val| val == 0 }
     hothash.each_pair {|key, val| #以下ホッテントリ各URLをARI処理してブクマデータ取得　変数keyにurlが入ってる
       uri = "http://b.hatena.ne.jp/entry/json/?url=#{key}" 
