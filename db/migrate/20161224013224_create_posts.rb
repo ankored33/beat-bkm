@@ -1,7 +1,7 @@
 class CreatePosts < ActiveRecord::Migration
   def change
       create_table :posts do |t| #=> この引数名がテーブル名になる
-      t.text :user
+      t.name :user
       t.text :comment
       t.integer :spower, :default => 0
       t.text :URL
