@@ -1,5 +1,4 @@
-    var se = $('.btnsound');
-    var beat = false;
+var beat = false;
 
 
 $(function() {
@@ -16,7 +15,7 @@ $(function() {
   });
 });
 
-  $(function(){
+$(function(){
     $('#bkm-contents').on('click', '.bkm-box', function(){
       if (beat == true) {
         var size = Number($('#bkm-remaining-figure').text());
@@ -80,7 +79,7 @@ $(function() {
         console.log('noevent');
       }
     });
-  });
+});
 
 
 /*　クリアした時に音を鳴らしたいが要素書き換えはchangeイベントで拾えないっぽい？？
