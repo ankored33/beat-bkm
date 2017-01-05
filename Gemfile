@@ -2,7 +2,7 @@ source "https://rubygems.org"
 ruby "2.2.4"
 
 gem "sinatra"
-gem "activerecord"
+gem "activerecord" ,"4.1.0"
 gem "sinatra-activerecord", :require => "sinatra/activerecord"
 gem "rake"
 gem "nokogiri"
