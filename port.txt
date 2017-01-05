@@ -1,1 +1,8 @@
 ruby main.rb -p $PORT -o $IP
+https://myapp-barbieri0303.c9users.io/
+
+2017-01-05 05:38:54 - ActiveRecord::StatementInvalid - PG::UndefinedFunction: ERROR:  function count(name, text, integer, text) does not exist
+2017-01-05T05:38:54.155918+00:00 app[web.1]: LINE 1: SELECT DISTINCT COUNT(DISTINCT user, comment, spower, icon) ...
+2017-01-05T05:38:54.155919+00:00 app[web.1]:                         ^
+2017-01-05T05:38:54.155920+00:00 app[web.1]: HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+2017-01-05T05:38:54.155921+00:00 app[web.1]: : SELECT DISTINCT COUNT(DISTINCT user, comment, spower, icon) FROM "posts"  WHERE "posts"."eid" = 314780721 AND "posts"."run" = 1:

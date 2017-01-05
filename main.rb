@@ -37,7 +37,8 @@ end
 get "/:eid" do
   eid = params[:eid]
   eid = eid.to_i
-  $to_beat = Post.select("user","comment","spower","icon").where("run" => 1,"eid" => eid).distinct
+  p eid
+  $to_beat = Post.select("user","comment","spower","icon").where("run" => 1,"eid" => eid)
   $head = Post.select("URL", "title").where("run" => 1,"eid" => eid).distinct
   erb :bkm
 end
@@ -73,7 +74,7 @@ Thread.start do
     hoturi_esc = URI.escape(hoturi)
     hotio = open(hoturi_esc, opt)
     hothash = JSON.load(hotio)
-    hothash.delete_if {|key, val| val > 35 }
+    hothash.delete_if {|key, val| val > 50 }
     hothash.delete_if {|key, val| val == 0 }
     hothash.each_pair {|key, val| #以下ホッテントリ各URLをARI処理してブクマデータ取得　変数keyにurlが入ってる
       uri = "http://b.hatena.ne.jp/entry/json/?url=#{key}" 
@@ -134,7 +135,7 @@ Thread.start do
         bkm.each {|bar|
           if bar.has_value?(name) == true
             bar["spower"] = s_power.to_i
-            p "#{name}さんに#{s_power}いれた"
+            p "#{name} => #{s_power}"
           else
           end
         }
