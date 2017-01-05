@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20161224013224) do
     t.text     "URL"
     t.text     "title"
     t.integer  "bkmcount",   default: 0
-    t.integer  "eid"
+    t.text     "eid"
     t.text     "icon"
     t.integer  "run",        default: 0
     t.datetime "created_at"

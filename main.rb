@@ -36,7 +36,6 @@ end
 
 get "/:eid" do
   eid = params[:eid]
-  eid = eid.to_i
   p eid
   $to_beat = Post.select("user","comment","spower","icon").where("run" => 1,"eid" => eid)
   $head = Post.select("URL", "title").where("run" => 1,"eid" => eid).distinct
