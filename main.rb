@@ -37,8 +37,8 @@ end
 get "/:eid" do
   eid = params[:eid]
   eid = eid.to_i
-  $to_beat = Post.where("run" => 1,"eid" => eid).select("user","comment","spower","icon").distinct
-  $head = Post.where("run" => 1,"eid" => eid).select("URL", "title").distinct
+  $to_beat = Post.select("user","comment","spower","icon").where("run" => 1,"eid" => eid).distinct
+  $head = Post.select("URL", "title").where("run" => 1,"eid" => eid).distinct
   erb :bkm
 end
 
