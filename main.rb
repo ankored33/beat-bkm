@@ -28,7 +28,22 @@ class Index
 end
 
 
+opt = {}
+opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
 
+entry_url = "http://japanese.engadget.com/2017/01/05/razer-valerie/"
+uri = "http://b.hatena.ne.jp/entry/json/?url=#{entry_url}" 
+uri_esc = URI.escape(uri)
+io = open(uri_esc, opt)
+hash = JSON.load(io)
+title = hash["title"]
+bkm = hash["bookmarks"]
+bkm.each {|var|
+  user = var["user"]
+  var["icon"] = "http://www.hatena.com/users/#{user[0,2]}/#{user}/profile.gif"
+}
+
+p bkm
 #コメントの文字が減ってく形にする
 
 
