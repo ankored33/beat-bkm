@@ -5,6 +5,8 @@ require "nokogiri"
 require "active_record"
 require "sinatra/activerecord"
 
+class Index
+  
     rss = "http://b.hatena.ne.jp/hotentry.rss"
     opt = {}
     opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
@@ -13,11 +15,8 @@ require "sinatra/activerecord"
       charset = f.charset #文字種別を取得
       f.read #htmlを読み込んで変数htmlに渡す
     end
-    
     doc = Nokogiri::XML(xml)
     doc.remove_namespaces!
-    
-
     entries = Array.new
     doc.xpath('//item').each {|anchor|
       item = Hash.new
@@ -25,8 +24,13 @@ require "sinatra/activerecord"
       item["title"] = anchor.xpath("title").inner_text
       item["bkmcount"] = anchor.xpath("bookmarkcount").inner_text
       entries << item
-      }
-    puts entries    
+    }
+end
+
+
+
+#コメントの文字が減ってく形にする
+
 
 =begin    
     doc.xpath('//item').each {|anchor|
