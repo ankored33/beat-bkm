@@ -4,9 +4,9 @@ require "open-uri"
 require "nokogiri"
 require "active_record"
 require "sinatra/activerecord"
+require "sinatra/reloader" if development?
 
-class Index
-  
+get "/" do
     rss = "http://b.hatena.ne.jp/hotentry.rss"
     opt = {}
     opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
@@ -17,35 +17,59 @@ class Index
     end
     doc = Nokogiri::XML(xml)
     doc.remove_namespaces!
-    entries = Array.new
+    @entries = Array.new
+    i = 0
     doc.xpath('//item').each {|anchor|
+      i += 1
       item = Hash.new
       item["link"] = anchor.xpath("link").inner_text
       item["title"] = anchor.xpath("title").inner_text
-      item["bkmcount"] = anchor.xpath("bookmarkcount").inner_text
-      entries << item
+      item["bkmcount"] = anchor.xpath("bookmarkcount").inner_text.to_i
+      item["description"] = anchor.xpath("description").inner_text[0,80]
+      item["entry_id"] = i
+      @entries << item
     }
+    erb :index
 end
 
 
-opt = {}
-opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
+post "/post" do
+  @val = params[:val]
+  erb :test
+end
 
-entry_url = "http://japanese.engadget.com/2017/01/05/razer-valerie/"
-uri = "http://b.hatena.ne.jp/entry/json/?url=#{entry_url}" 
-uri_esc = URI.escape(uri)
-io = open(uri_esc, opt)
-hash = JSON.load(io)
-title = hash["title"]
-bkm = hash["bookmarks"]
-bkm.each {|var|
-  user = var["user"]
-  var["icon"] = "http://www.hatena.com/users/#{user[0,2]}/#{user}/profile.gif"
-}
+=begin
+          <% $top_three = Post.where("eid" => link.eid).where("run" => 1).select("user","comment","spower","icon").distinct.order("spower DESC").limit(3) %>
+          <div class="top-three-bkm"><a href= "/<%= link.eid %>">
+          <% $top_three.each do |three| %>
+            <div class="bkm-preview">
+              <img class="top-user-img" src="<%= three.icon %>" height="14px" width="14px">
+              <span class="top-user-name"><%= three.user[0..12] %></span>
+              <span class="top-user-comment"><%= h three.comment[0..32] %>…</span>
+              <span class="top-user-star">★<%= three.spower %></span>
+            </div>
+          <% end %>
+          </a></div>
+
+  opt = {}
+  opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
+  
+  entry_url = "http://japanese.engadget.com/2017/01/05/razer-valerie/"
+  uri = "http://b.hatena.ne.jp/entry/json/?url=#{entry_url}" 
+  uri_esc = URI.escape(uri)
+  io = open(uri_esc, opt)
+  hash = JSON.load(io)
+  title = hash["title"]
+  bkm = hash["bookmarks"]
+  bkm.each {|var|
+    user = var["user"]
+    var["icon"] = "http://www.hatena.com/users/#{user[0,2]}/#{user}/profile.gif"
+  }
+
 
 p bkm
 #コメントの文字が減ってく形にする
-
+=end
 
 =begin    
     doc.xpath('//item').each {|anchor|

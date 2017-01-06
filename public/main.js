@@ -1,5 +1,10 @@
 var beat = false;
 
+$(document).ready(function() {
+    $('.bkmcount').click(function() {
+        $('#form').submit();
+    });
+});
 
 $(function() {
   $('#float-right').on('change', '#check', function(){
