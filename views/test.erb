@@ -1,1 +1,5 @@
-<p><%= @val %></p>
+<p><%= @bkm.size %></p>
+<p><%= @bkm %></p>
+<% @bkm.each do |bm| %>
+  <%=  bm["user"] %>
+<% end %>

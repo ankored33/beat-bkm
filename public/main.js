@@ -1,10 +1,8 @@
 var beat = false;
 
-$(document).ready(function() {
-    $('.bkmcount').click(function() {
+    $('.entries').on('click' ,'.bkmcount',function() {
         $('#form').submit();
     });
-});
 
 $(function() {
   $('#float-right').on('change', '#check', function(){
@@ -24,7 +22,10 @@ $(function(){
     $('#bkm-contents').on('click', '.bkm-box', function(){
       if (beat == true) {
         var size = Number($('#bkm-remaining-figure').text());
-        var i = $(this).find('.figure').text();
+        var txt = $(this).find('.bkm-comment').text();
+        var i = txt.length;
+        console.log(txt);
+        console.log(i);
         var voiceRand = Math.floor( Math.random() * 10 );
         var leftRand = Math.floor( Math.random() * 1200 );
         var rival
@@ -40,7 +41,7 @@ $(function(){
         console.log(rival);
         var safeRand = Math.floor( Math.random() * 4 );
         var pinchRand = Math.floor( Math.random() * 3 );
-        console.log(i);
+
         if (i == "") {
           $(this).css('z-index','100');
           $('.sound0'+voiceRand).get(0).currentTime = 0;
@@ -60,9 +61,8 @@ $(function(){
           ).done(function() {
             $(this).animate({ 'left':'0px' },50);
           });
-          i = i - 1;
-          $(this).find('.figure').text(i);
-        } else if (Number(i) > 0 && Number(i) < 11 ) {
+          $(this).find('.bkm-comment').text(txt.replace(/..?...$/,"●"));
+        } else if (Number(i) > 1 && Number(i) <= 10 ) {
           $('.rival'+ rival + '-pinch0' + pinchRand).get(0).currentTime = 0;
           $('.rival'+ rival + '-pinch0' + pinchRand).get(0).play();
           $.when(
@@ -71,9 +71,10 @@ $(function(){
             $(this).animate({ 'left':'0px' },50);
           });
           i = i - 1;
-          $(this).find('.figure').text(i);
-          $(this).find('.bkm-star').css('color', 'red');
-        } else if (Number(i) === 0) {
+          $(this).find('.bkm-comment').text(txt.replace(/.$/,""));
+          $(this).find('.bkm-comment').css('color', 'red');
+          $(this).find('.bkm-user').css('color', 'red');
+        } else if (Number(i) === 1) {
           $('.rival' + rival + '-die').get(0).currentTime = 0;
           $('.rival' + rival + '-die').get(0).play();
           $(this).fadeOut(1500);

@@ -1,8 +1,6 @@
 <div id="bkm-head">
   <div id="entry-preview">
-    <% $head.each do |head| %>
-      <a href="http://b.hatena.ne.jp/entry/<%= head.URL %>" target="_blank"><%= head.title %></a><span></span>
-    <% end %>
+      <a href="http://b.hatena.ne.jp/entry/<%= @url %>" target="_blank">記事のぶくまぺーじリンク</a>
   </div>
 
   <div id="float-right">
@@ -13,14 +11,14 @@
       ＊注意＊音が鳴ります｜
     </div>
     <div id="bkm-remaining">
-      公開ブクマ <span id="bkm-remaining-figure"><%= $to_beat.size %></span>users
+      公開ブクマ <span id="bkm-remaining-figure"><%= @bkm.size %></span>users
     </div>
   </div>
 </div>
 
 
 <div id="bkm-contents">
-  <% $to_beat.each do |bm| %>
+  <% @bkm.each do |bm| %>
         <% rd = rand(7) + 1 %>
         <% if rd == 1 %>
           <% cl = "#ffebee" %>
@@ -38,15 +36,9 @@
           <% cl = "#eceff1" %>
         <% end %>
   <div class="bkm-box"  style="background-color : <%= cl %>">
-    <div class="bkm-user"><%= bm.user %>
-      <% if bm.spower != 0 %>
-        <span class="bkm-star">★<span class="figure"><%= bm.spower %></span></span>
-      <% else %>
-        <span class="bkm-star"><span class="figure"></span></span>
-      <% end %>
-    </div>
-    <div class="bkm-icon"><img src="<%= bm.icon %>" width="48px" height="48px"></div>
-    <div class="bkm-comment"><%= h bm.comment %></div>  
+    <div class="bkm-user"><%= bm["user"] %></div>
+    <div class="bkm-icon"><img src="<%= bm["icon"] %>" width="48px" height="48px"></div>
+    <div class="bkm-comment"><%= h bm["comment"] %></div>  
   </div>
   <% end %>
 </div>

@@ -22,8 +22,9 @@
           <div class="entry-title"><a href="<%= entry["link"] %>" target="_blank"><%= entry["title"] %></a></div>
           <div class="bkmcount"><%= entry["bkmcount"] %>users</div>
           <div class="description"><%= entry["description"] %></div>
-          <form id="form" action="/post" method="POST">
-            <input type="hidden" value="<%= entry["link"] %>" name="val">
+          <form id="form" action="/<%= entry["entry_id"] %>" method="POST">
+            <input type="hidden" value="<%= entry["link"] %>" name="url">
+            <input type="submit">
           </form>
         </div>
       <% end %>

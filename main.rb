@@ -6,6 +6,13 @@ require "active_record"
 require "sinatra/activerecord"
 require "sinatra/reloader" if development?
 
+
+helpers do
+    include Rack::Utils
+    alias_method :h, :escape_html
+end
+
+
 get "/" do
     rss = "http://b.hatena.ne.jp/hotentry.rss"
     opt = {}
@@ -32,10 +39,26 @@ get "/" do
     erb :index
 end
 
+get "/*" do
+  redirect to("/")
+end
 
-post "/post" do
-  @val = params[:val]
-  erb :test
+post "/*" do
+  @url = params[:url]
+  opt = {}
+  opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
+  
+  uri = "http://b.hatena.ne.jp/entry/json/?url=#{@url}" 
+  uri_esc = URI.escape(uri)
+  io = open(uri_esc, opt)
+  hash = JSON.load(io)
+  title = hash["title"]
+  @bkm = hash["bookmarks"]
+  @bkm.each {|var|
+    user = var["user"]
+    var["icon"] = "http://www.hatena.com/users/#{user[0,2]}/#{user}/profile.gif"
+  }
+  erb :bkm
 end
 
 =begin
