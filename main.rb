@@ -5,63 +5,48 @@ require "nokogiri"
 require "active_record"
 require "sinatra/activerecord"
 
-=begin
-ActiveRecord::Base.establish_connection(
-    "adapter" => "sqlite3",
-    "database" => "./db/model.db"
-    )
-=end
-
-ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] ||"sqlite3:./db/model.db")
-#HEROKU_POSTGRESQL_GRAY_URL
-
-class Post < ActiveRecord::Base 
-end
-
-
-helpers do
-    include Rack::Utils
-    alias_method :h, :escape_html
-end
-
-
-get "/" do
-  $top = Post.select("URL", "title", "bkmcount", "eid").where("run" => 1 ).distinct.order("bkmcount DESC")
-  erb :index
-end
-
-get "/about" do
-  erb :about
-end
-
-get "/:eid" do
-  eid = params[:eid]
-  p eid
-  $to_beat = Post.select("user","comment","spower","icon").where("run" => 1,"eid" => eid)
-  $head = Post.select("URL", "title").where("run" => 1,"eid" => eid).distinct
-  erb :bkm
-end
-
-
-
-
-#クロールしてホットエントリーページのブクマ100超のブクマデータ読み取り、うち人気コメの10件はスターも読みとる。
-Thread.start do
-  loop do
-    p "データ取得を開始します。"
-    hatena = "http://b.hatena.ne.jp/hotentry"
+    rss = "http://b.hatena.ne.jp/hotentry.rss"
     opt = {}
     opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
     charset = nil
-    html = open(hatena,opt) do |f|
-      charset = f.charset # 文字種別を取得
-      f.read # htmlを読み込んで変数htmlに渡す
+    xml = open(rss,opt) do |f|
+      charset = f.charset #文字種別を取得
+      f.read #htmlを読み込んで変数htmlに渡す
     end
     
-    # htmlをパース(解析)してオブジェクトを生成
-    doc = Nokogiri::HTML.parse(html, nil, charset)
+    doc = Nokogiri::XML(xml)
+    doc.remove_namespaces!
     
-    #ホッテントリURLを切り分け
+
+    entries = Array.new
+    doc.xpath('//item').each {|anchor|
+      item = Hash.new
+      item["link"] = anchor.xpath("link").inner_text
+      item["title"] = anchor.xpath("title").inner_text
+      item["bkmcount"] = anchor.xpath("bookmarkcount").inner_text
+      entries << item
+      }
+    puts entries    
+
+=begin    
+    doc.xpath('//item').each {|anchor|
+      p anchor.xpath('title').inner_text
+      #item["link"] = anchor.xpath("link").inner_text
+      #item["bkmcount"] = anchor.xpath(/hatena:bookmarkcount/).inner_text
+      }
+#url, title, bkmcount,
+
+
+
+
+    opt = {}
+    opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
+    charset = nil
+    xml = open(hatena,opt) do |f|
+      charset = f.charset #文字種別を取得
+      f.read #htmlを読み込んで変数htmlに渡す
+    end
+
     entries = String.new
     doc.xpath('//*[@id="main"]/div[1]/div[1]//a[@class="entry-link"]').each {|anchor|
       entries << "&url=" + anchor[:href]
@@ -69,6 +54,9 @@ Thread.start do
     doc.xpath('//*[@id="main"]/div[1]/div[3]//a[@class="entry-link"]').each {|anchor|
       entries << "&url=" + anchor[:href]
     }
+
+    #ホッテントリURLを切り分け
+
     hoturi = "http://api.b.st-hatena.com/entry.counts?url=#{entries}" #ブクマ件数API（複数URL対応、JSON戻し）
     hoturi_esc = URI.escape(hoturi)
     hotio = open(hoturi_esc, opt)
@@ -175,6 +163,5 @@ Thread.start do
       countdown -= 60
     sleep(60)
     }
-  end #loopのend
-end #Threadのend
+=end
 
