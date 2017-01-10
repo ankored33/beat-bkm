@@ -1,6 +1,70 @@
-var beat = false;
+
+$(function(){
+  $('.entries').on('click', '.bkmcount', function(){
+    var postUrl = $(this).parent().find('a').prop('href');
+    var title = $(this).parent().find('a').text();
+    $(this).text('...');
+    console.log(postUrl);
+    $.ajax({
+      type: "POST",
+      url: "/post",
+      dataType: "text",
+      data: {
+        post_url: postUrl,
+      },
+      success: function(json) {
+      dataType: "json",
+        $(function(){
+          var bkmSource = JSON.parse(json);
+          $('#main').html(''
+            + '<div id="bkm-head">'
+            + '  <div id="entry-preview">'
+            + '     <a href="http://b.hatena.ne.jp/entry/' + postUrl + '" target="_blank">「' + title +'」のブックマーク</a>'
+            + '  </div>'
+            + '  <div id="float-right">'
+            + '    <div>'
+            + '      <label for="check">'
+            + '      ｜殴る<input type="checkbox" id="check" />'
+            + '      </label>'
+            + '      ＊注意＊音が鳴ります｜'
+            + '    </div>'
+            + '    <div id="bkm-remaining">'
+            + '      公開ブクマ <span id="bkm-remaining-figure">' + bkmSource.length + '</span>users'
+            + '    </div>'
+            + '  </div>'
+            + '</div>'
+            + '<div id="bkm-contents"></div>'
+          );
+          bkmSource.forEach(function(source){
+            var rand = Math.floor( Math.random() * 7 );
+            var cl
+            if (rand == 0) { cl = "#ffebee"
+            } else if (rand == 1) { cl = "#ede7f6";
+            } else if (rand == 2) { cl = "#fbe9e7";
+            } else if (rand == 3) { cl = "#e1f5fe";
+            } else if (rand == 4) { cl = "#e8f5e9";
+            } else if (rand == 5) { cl = "#fffde7";
+            } else if (rand == 6) { cl = "#eceff1";
+            }
+            $('#bkm-contents').append(''
+              + '<div class="bkm-box"  style="background-color:' + cl + '">'
+              + '  <div class="bkm-user">' + source['user'] + '</div>'
+              + '  <div class="bkm-icon"><img src="' + source['icon'] + '" width="48px" height="48px"></div>'
+              + '  <div class="bkm-comment">'+ source['comment'] +'</div>'
+              + '</div>'
+            );
+          });
+        });
+      },
+      error: function() {
+      $('#contents').text('error');
+      }
+      });
+  });
+});
 
 
+var beat = true;
 $(function() {
   $('#float-right').on('change', '#check', function(){
   	if ($(this).is(':checked')) {

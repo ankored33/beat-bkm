@@ -14,6 +14,7 @@ end
 
 
 get "/" do
+    @bkm = Hash.new
     rss = "http://b.hatena.ne.jp/hotentry.rss"
     opt = {}
     opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
@@ -47,7 +48,7 @@ end
 get "/:category" do
   category = params["category"]
   categories = ["social", "economics", "life", "knowledge", "it", "fun", "entertainment", "game"]
-  redirect to ""  if categories.include?(category) == false
+  redirect to "/"  if categories.include?(category) == false
     rss = "http://b.hatena.ne.jp/hotentry/#{category}.rss"
     opt = {}
     opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
@@ -77,11 +78,26 @@ end
 
 post "/post" do
   post_url = params[:post_url]
-  data = {
-    "postUrl" => post_url
-  }
+  
+  opt = {}
+  opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
+  
+  uri = "http://b.hatena.ne.jp/entry/json/?url=#{post_url}" 
+  uri_esc = URI.escape(uri)
+  io = open(uri_esc, opt)
+  hash = JSON.load(io)
+  title = hash["title"]
+  bkm = hash["bookmarks"]
+  bkm.each {|var|
+    user = var["user"]
+    var["icon"] = "http://www.hatena.com/users/#{user[0,2]}/#{user}/profile.gif"
+    var.delete("timestamp")
+    var.delete("tags")
+  }  
+
   content_type :json
-  @data = data.to_json  
+  @data = bkm.to_json
+
 end
 
 =begin
