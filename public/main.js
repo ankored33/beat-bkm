@@ -1,8 +1,5 @@
 var beat = false;
 
-    $('.entries').on('click' ,'.bkmcount',function() {
-        $('#form').submit();
-    });
 
 $(function() {
   $('#float-right').on('change', '#check', function(){
@@ -61,7 +58,7 @@ $(function(){
           ).done(function() {
             $(this).animate({ 'left':'0px' },50);
           });
-          $(this).find('.bkm-comment').text(txt.replace(/..?...$/,"●"));
+          $(this).find('.bkm-comment').text(txt.replace(/......$/,""));
         } else if (Number(i) > 1 && Number(i) <= 10 ) {
           $('.rival'+ rival + '-pinch0' + pinchRand).get(0).currentTime = 0;
           $('.rival'+ rival + '-pinch0' + pinchRand).get(0).play();

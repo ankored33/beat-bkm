@@ -39,10 +39,52 @@ get "/" do
     erb :index
 end
 
-get "/*" do
-  redirect to("/")
+get "/about" do
+  erb :about
 end
 
+
+get "/:category" do
+  category = params["category"]
+  categories = ["social", "economics", "life", "knowledge", "it", "fun", "entertainment", "game"]
+  redirect to ""  if categories.include?(category) == false
+    rss = "http://b.hatena.ne.jp/hotentry/#{category}.rss"
+    opt = {}
+    opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
+    charset = nil
+    xml = open(rss,opt) do |f|
+      charset = f.charset #文字種別を取得
+      f.read #htmlを読み込んで変数htmlに渡す
+    end
+    doc = Nokogiri::XML(xml)
+    doc.remove_namespaces!
+    @entries = Array.new
+    i = 0
+    doc.xpath('//item').each {|anchor|
+      i += 1
+      item = Hash.new
+      item["link"] = anchor.xpath("link").inner_text
+      item["title"] = anchor.xpath("title").inner_text
+      item["bkmcount"] = anchor.xpath("bookmarkcount").inner_text.to_i
+      item["description"] = anchor.xpath("description").inner_text[0,80]
+      item["entry_id"] = i
+      @entries << item
+    }
+    erb :index  
+
+end
+
+
+post "/post" do
+  post_url = params[:post_url]
+  data = {
+    "postUrl" => post_url
+  }
+  content_type :json
+  @data = data.to_json  
+end
+
+=begin
 post "/*" do
   @url = params[:url]
   opt = {}
@@ -60,7 +102,7 @@ post "/*" do
   }
   erb :bkm
 end
-
+=end
 =begin
           <% $top_three = Post.where("eid" => link.eid).where("run" => 1).select("user","comment","spower","icon").distinct.order("spower DESC").limit(3) %>
           <div class="top-three-bkm"><a href= "/<%= link.eid %>">

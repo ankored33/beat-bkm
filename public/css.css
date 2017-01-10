@@ -16,13 +16,16 @@ body {
     max-width:1050px;
 }
 
-#header {
+#header{
+    
+}
+
+#title-box {
     border-bottom: 6px solid #FFC8C8;
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
     align-items:flex-end;
-
 }
 
 #title {
@@ -37,6 +40,10 @@ body {
     color:#444F5A;
 }
 
+#menu {
+
+}
+    
 
 #entries-header {
     margin-top:5px;
@@ -84,7 +91,7 @@ body {
     text-decoration: underline;
 }    
 .bkmcount:hover{
-    cursor: pointer;
+    cursor: url("img/fist.png"), pointer;
     color: #FFC8C8;
 }    
     

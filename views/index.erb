@@ -1,4 +1,3 @@
-    <div>はてなのホットエントリーについたブクマを殴ってあそぶサイトです。普通のはてブ閲覧サイトとしても（一応）使えます。｜<a href="/about">About</a>｜<a href="http://b.hatena.ne.jp/entry/s/myapp-barbieri0303.c9users.io/" class="hatena-bookmark-button" data-hatena-bookmark-title="てすと" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></div>
     <div id="entries-header">ただいまのはてなホットエントリー</div>
     <div id="contents">
       <% @entries.each do |entry| %>
@@ -18,17 +17,43 @@
         <% else %>
           <% cl = "#90a4ae" %>
         <% end %>
-        <div class="entries" data-id="<%= entry["link"] %>" style="border-top : 3px solid <%= cl %>; border-left : 3px solid <%= cl %>">
-          <div class="entry-title"><a href="<%= entry["link"] %>" target="_blank"><%= entry["title"] %></a></div>
+        <div class="entries" style="border-top : 3px solid <%= cl %>; border-left : 3px solid <%= cl %>">
+          <div class="entry-title"><a class="link" href="<%= entry["link"] %>" target="_blank"><%= entry["title"] %></a></div>
           <div class="bkmcount"><%= entry["bkmcount"] %>users</div>
           <div class="description"><%= entry["description"] %></div>
-          <form id="form" action="/<%= entry["entry_id"] %>" method="POST">
-            <input type="hidden" value="<%= entry["link"] %>" name="url">
-            <input type="submit">
-          </form>
         </div>
       <% end %>
+    <div id="result">a</div>
     </div>
+    
+  <!--jQuery召喚-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+
+  <!--submitボタンをおすと以下のAjax通信-->
+  <script type="text/javascript">
+    $(function(){
+      $('.entries').on('click', '.bkmcount', function(){
+        var postUrl = $(this).parent().find('a').prop('href');
+        console.log(postUrl);
+        $.ajax({
+          type: "POST",
+          url: "/post",
+          dataType: "text",
+          data: {
+            post_url: postUrl,
+          },
+        //以下、コールバック関数で戻り値を受け取り、id="result"に表示
+        success: function(json) {
+        dataType: "json",  //dataTypeをちゃんと指定する
+        $('#result').text(json);
+        },
+        error: function() {
+        $('#result').text('error');
+        }
+        });
+      });
+    });
+  </script>    
     
 <!--
     <div id="right">
