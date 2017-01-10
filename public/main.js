@@ -1,4 +1,4 @@
-
+//ブックマーク一覧表示
 $(function(){
   $('.entries').on('click', '.bkmcount', function(){
     var postUrl = $(this).parent().find('a').prop('href');
@@ -63,10 +63,10 @@ $(function(){
   });
 });
 
-
-var beat = true;
+//チェックボックス
+var beat = false;
 $(function() {
-  $('#float-right').on('change', '#check', function(){
+  $('#main').on('change', '#check', function(){
   	if ($(this).is(':checked')) {
   	  beat = true;
   	  console.log('beat is false');
@@ -79,8 +79,9 @@ $(function() {
   });
 });
 
+//要素クリックでブコメを飛ばす
 $(function(){
-    $('#bkm-contents').on('click', '.bkm-box', function(){
+    $('#main').on('click', '.bkm-box', function(){
       if (beat == true) {
         var size = Number($('#bkm-remaining-figure').text());
         var txt = $(this).find('.bkm-comment').text();
