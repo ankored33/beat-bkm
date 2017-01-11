@@ -14,6 +14,7 @@ end
 
 
 get "/" do
+    @disp = "はてなブックマーク - 人気エントリー - 総合"
     @bkm = Hash.new
     rss = "http://b.hatena.ne.jp/hotentry.rss"
     opt = {}
@@ -62,6 +63,7 @@ get "/:category" do
     end
     doc = Nokogiri::XML(xml)
     doc.remove_namespaces!
+    @disp = doc.xpath('RDF/channel/title').inner_text
     @entries = Array.new
     i = 0
     doc.xpath('//item').each {|anchor|

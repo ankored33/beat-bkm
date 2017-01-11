@@ -1,4 +1,4 @@
-    <div id="entries-header">ただいまのはてなホットエントリー</div>
+    <div id="entries-header"><%= @disp %></div>
     <div id="contents">
       <% @entries.each do |entry| %>
         <% rd = rand(7) + 1 %>
