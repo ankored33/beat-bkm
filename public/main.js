@@ -71,7 +71,7 @@ $(function() {
   $('#main').on('change', '#check', function(){
   	if ($(this).is(':checked')) {
   	  beat = true;
-  	  $('.bkm-box').css('cursor', 'url("img/fist.png"), pointer');
+  	  $('.bkm-box').css('cursor', 'pointer');
   	} else {
       beat = false;
   	  $('.bkm-box').css('cursor', 'auto');

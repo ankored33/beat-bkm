@@ -100,7 +100,7 @@ body {
     text-decoration: underline;
 }    
 .bkmcount:hover{
-    cursor: url("img/fist.png"), pointer;
+    cursor: pointer;
     color: #FFC8C8;
 }    
 
@@ -150,7 +150,7 @@ body {
 
 #bkm-remaining-figure {
     font-size:24px;
-
+    bottom: 0;
 }    
 
 #bkm-contents {
