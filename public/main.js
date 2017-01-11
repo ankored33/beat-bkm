@@ -1,10 +1,12 @@
-//ブックマーク一覧表示
+/*global $*/
+
+
+/*bookmark呼び出し------------------------------------------------------------*/
 $(function(){
   $('.entries').on('click', '.bkmcount', function(){
     var postUrl = $(this).parent().find('a').prop('href');
     var title = $(this).parent().find('a').text();
     $(this).text('...');
-    console.log(postUrl);
     $.ajax({
       type: "POST",
       url: "/post",
@@ -19,7 +21,7 @@ $(function(){
           $('#main').html(''
             + '<div id="bkm-head">'
             + '  <div id="entry-preview">'
-            + '     <a href="http://b.hatena.ne.jp/entry/' + postUrl + '" target="_blank">「' + title +'」のブックマーク</a>'
+            + '     <a href="http://b.hatena.ne.jp/entry/' + postUrl + '" target="_blank">ブックマーク――' + title +'</a>'
             + '  </div>'
             + '  <div id="float-right">'
             + '    <div>'
@@ -29,7 +31,7 @@ $(function(){
             + '      ＊注意＊音が鳴ります｜'
             + '    </div>'
             + '    <div id="bkm-remaining">'
-            + '      公開ブクマ <span id="bkm-remaining-figure">' + bkmSource.length + '</span>users'
+            + '      <span id="bkm-remaining-figure">' + bkmSource.length + '</span>users'
             + '    </div>'
             + '  </div>'
             + '</div>'
@@ -37,8 +39,8 @@ $(function(){
           );
           bkmSource.forEach(function(source){
             var rand = Math.floor( Math.random() * 7 );
-            var cl
-            if (rand == 0) { cl = "#ffebee"
+            var cl;
+            if (rand == 0) { cl = "#ffebee";
             } else if (rand == 1) { cl = "#ede7f6";
             } else if (rand == 2) { cl = "#fbe9e7";
             } else if (rand == 3) { cl = "#e1f5fe";
@@ -63,34 +65,32 @@ $(function(){
   });
 });
 
-//チェックボックス
+/*checkbox------------------------------------------------------------*/
 var beat = false;
 $(function() {
   $('#main').on('change', '#check', function(){
   	if ($(this).is(':checked')) {
   	  beat = true;
-  	  console.log('beat is false');
   	  $('.bkm-box').css('cursor', 'url("img/fist.png"), pointer');
   	} else {
       beat = false;
-      console.log('beat is true');
   	  $('.bkm-box').css('cursor', 'auto');
   	}
   });
 });
 
-//要素クリックでブコメを飛ばす
+
+/*殴る------------------------------------------------------------*/
 $(function(){
     $('#main').on('click', '.bkm-box', function(){
       if (beat == true) {
         var size = Number($('#bkm-remaining-figure').text());
         var txt = $(this).find('.bkm-comment').text();
         var i = txt.length;
-        console.log(txt);
-        console.log(i);
-        var voiceRand = Math.floor( Math.random() * 10 );
         var leftRand = Math.floor( Math.random() * 1200 );
-        var rival
+        var beatRand = Math.floor( Math.random() * 4 );
+        var screamRand = Math.floor( Math.random() * 6 );        
+        var rival;
           if ($(this).find('.bkm-user').text().slice(0,1).match(/[a-g]/) != null ) {
             rival = '00';
           } else if ($(this).find('.bkm-user').text().slice(0,1).match(/[h-n]/) != null ) {
@@ -100,14 +100,10 @@ $(function(){
           } else {
             rival = '03';
           }
-        console.log(rival);
-        var safeRand = Math.floor( Math.random() * 4 );
-        var pinchRand = Math.floor( Math.random() * 3 );
-
-        if (i == "") {
+        if (Number(i) == 0) {
+          $('.beat0'+beatRand).get(0).currentTime = 0;
+          $('.beat0'+beatRand).get(0).play();
           $(this).css('z-index','100');
-          $('.sound0'+voiceRand).get(0).currentTime = 0;
-          $('.sound0'+voiceRand).get(0).play();
           $.when(
             $(this).animate({ 'bottom':'300px','right': leftRand },150)
           ).done(function() {
@@ -115,54 +111,76 @@ $(function(){
             $('#bkm-remaining-figure').text(size - 1);
             $(this).attr('class', "bkm-box-dead");
           });
-        } else if (Number(i) > 10) {
-          $('.rival'+ rival + '-safe0' + safeRand).get(0).currentTime = 0;
-          $('.rival'+ rival + '-safe0' + safeRand).get(0).play();
+        } else if (Number(i) <= 95) {
+          $('.scream0' + screamRand).get(0).currentTime = 0;
+          $('.scream0' + screamRand).get(0).play();
+          $(this).css('z-index','100');
           $.when(
-            $(this).animate({ 'left' : '15px' },50)
+            $(this).animate({ 'bottom':'300px','right': leftRand },150)
           ).done(function() {
-            $(this).animate({ 'left':'0px' },50);
+            $(this).hide();
+            $('#bkm-remaining-figure').text(size - 1);
+            $(this).attr('class', "bkm-box-dead");
           });
-          $(this).find('.bkm-comment').text(txt.replace(/......$/,""));
-        } else if (Number(i) > 1 && Number(i) <= 10 ) {
-          $('.rival'+ rival + '-pinch0' + pinchRand).get(0).currentTime = 0;
-          $('.rival'+ rival + '-pinch0' + pinchRand).get(0).play();
+        } else if (Number(i) > 95 ) {
+          $('.rival'+ rival + '-safe').get(0).currentTime = 0;
+          $('.rival'+ rival + '-safe').get(0).play();
           $.when(
             $(this).animate({ 'left' : '15px' },50)
           ).done(function() {
             $(this).animate({ 'left':'0px' },50);
           });
           i = i - 1;
-          $(this).find('.bkm-comment').text(txt.replace(/.$/,""));
-          $(this).find('.bkm-comment').css('color', 'red');
-          $(this).find('.bkm-user').css('color', 'red');
-        } else if (Number(i) === 1) {
-          $('.rival' + rival + '-die').get(0).currentTime = 0;
-          $('.rival' + rival + '-die').get(0).play();
-          $(this).fadeOut(1500);
-          $(this).attr('class', 'bkm-box-dead');
-          $('#bkm-remaining-figure').text(size - 1);
+          $(this).find('.bkm-comment').text(txt.replace(/..........$/,""));
+          $(this).attr('class', 'bkm-box-rival');
         }
       } else {
-        console.log('noevent');
+        console.log('checkbox false');
       }
     });
 });
 
 
-/*　クリアした時に音を鳴らしたいが要素書き換えはchangeイベントで拾えないっぽい？？
-  $(function(){
-     $('#bkm-remaining').on('change', '#bkm-remaining-figure', function(){
-       console.log('change')
-          if ($('#bkm-remaining-figure').text() == 0) {
-            $(function(){
-              setTimeout(function(){
-                $('.clear').get(0).currentTime = 0;
-                $('.clear').get(0).play();                
-              },3000);
-            });
+/*殴る(rival)------------------------------------------------------------*/
+$(function(){
+    $('#main').on('click', '.bkm-box-rival', function(){
+      if (beat == true) {
+        var size = Number($('#bkm-remaining-figure').text());
+        var txt = $(this).find('.bkm-comment').text();
+        var i = txt.length;
+        var damageRand = Math.floor( Math.random() * 4 );
+        var rival;
+          if ($(this).find('.bkm-user').text().slice(0,1).match(/[a-g]/) != null ) {
+            rival = '00';
+          } else if ($(this).find('.bkm-user').text().slice(0,1).match(/[h-n]/) != null ) {
+            rival = '01';
+          } else if ($(this).find('.bkm-user').text().slice(0,1).match(/[o-u]/) != null ) {
+            rival = '02';
           } else {
+            rival = '03';
           }
+        if (Number(i) >= 20 ) {
+          $('.rival'+ rival + '-damage0' + damageRand).get(0).currentTime = 0;
+          $('.rival'+ rival + '-damage0' + damageRand).get(0).play();
+          $.when(
+            $(this).animate({ 'left' : '15px' },50)
+          ).done(function() {
+            $(this).animate({ 'left':'0px' },50);
+          });
+          i = i - 1;
+          $(this).find('.bkm-comment').text(txt.replace(/....................$/,""));
+        }
+        else if (Number(i) < 20) {
+          $('.rival' + rival + '-die').get(0).currentTime = 0;
+          $('.rival' + rival + '-die').get(0).play();
+          $(this).find('.bkm-comment').css('color', 'red');
+          $(this).find('.bkm-user').css('color', 'red');
+          $(this).fadeOut(1500);
+          $(this).attr('class', 'bkm-box-dead');
+          $('#bkm-remaining-figure').text(size - 1);
+        }
+      } else {
+        console.log('checkbox false');
+      }
     });
-  });
-*/
+});

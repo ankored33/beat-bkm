@@ -16,6 +16,15 @@ body {
     max-width:1050px;
 }
 
+@media screen and ( max-width:479px )
+{
+#container {
+    height: 100%;
+    margin: auto;
+    max-width:479px;
+}    
+}
+
 #header{
     
 }
@@ -94,39 +103,10 @@ body {
     cursor: url("img/fist.png"), pointer;
     color: #FFC8C8;
 }    
-    
 
-
-.top-three-bkm {
-    clear: both;
-    margin-top: 5px;
-}
-
-.top-three-bkm :hover {
-    background-color: #FAFAFA;
-}
-
-.top-three-bkm a {
-    text-decoration: none;
-    color: #3E4149;
-}
-
-.bkm-preview {
-    font-size: 12px;
-    margin-left:3px;
-}
-
-.top-user-img {
-    vertical-align: middle;
-}
-.top-user-name {
-    color: #008FDE;
-}
-.top-user-star {
-    color: #FFD700;
-    font-size: 12px;
-    font-weight: bold;
-}
+.description {
+    clear:both;
+}    
 
 #bkm-head {
     border-bottom: 1px solid #FF9999;    
@@ -134,21 +114,11 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    
 }
 
 #entry-preview {
     font-size:12px;
     font-weight: bold;
-    color: #FF9999;
-    background-color: #FFFFFF;
-    padding: 6px;
-    max-width:680px;
-}
-
-
-#description {
-    font-size:12px;
     color: #FF9999;
     background-color: #FFFFFF;
     padding: 6px;
@@ -197,7 +167,7 @@ body {
     float:left;
 }
 
-.bkm-box {
+.bkm-box, .bkm-box-rival {
     padding: 5px 5px 5px 5px;
     position: relative;
     min-width: 52px;
@@ -205,13 +175,18 @@ body {
     flex-grow: 2;
 }
 
+.bkm-box-rival {
+    font-weight: bold;
+}
+
 .bkm-user {
+    margin:auto;
+    font-weight:bold;
     color: #008FDE;
     text-decoration: none;
     font-size: 12px;
-    margin:auto;
-    font-weight:bold;
 }
+
 
 .bkm-icon {
     margin-right:6px;
@@ -252,44 +227,6 @@ body {
     color: #FFFFFF;
 }
 
-.switch input {
-    display: none;
-}
-.switch label {
-    padding: 12px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
 
-.switch label:before {
-    padding: 6px 10px;
-    content: 'O N';
-    border-radius: 6px 0 0 6px;
-    background: linear-gradient(to bottom, #F0F0F0 0%, #DDD 100%);
-    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.1) inset;
-    color: #333;
-}
-.switch label:after {
-    padding: 6px 10px;
-    content: 'OFF';
-    border-radius: 0 6px 6px 0;
-    background: #C30;
-    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.1) inset;
-    color: #FFF;
-}
-.switch input + label:hover:before {
-    opacity: 0.5;
-}
-.switch input:checked + label:before {
-    background: #9C0;
-    color: #FFF;
-    opacity: 1;
-}
-.switch input:checked + label:after {
-    background: linear-gradient(to bottom, #F0F0F0 0%, #DDD 100%);
-    color: #333;
-}
-.switch input:checked + label:hover:after {
-    opacity: 0.5;
-}
+
+

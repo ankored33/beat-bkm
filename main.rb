@@ -5,7 +5,7 @@ require "nokogiri"
 require "active_record"
 require "sinatra/activerecord"
 require "sinatra/reloader" if development?
-
+require 'cgi'
 
 helpers do
     include Rack::Utils
@@ -31,9 +31,11 @@ get "/" do
       i += 1
       item = Hash.new
       item["link"] = anchor.xpath("link").inner_text
-      item["title"] = anchor.xpath("title").inner_text
+      title_esc = anchor.xpath("title").inner_text.gsub("'", "’")
+      item["title"] = CGI.escapeHTML(title_esc)
       item["bkmcount"] = anchor.xpath("bookmarkcount").inner_text.to_i
-      item["description"] = anchor.xpath("description").inner_text[0,80]
+      desc_esc = anchor.xpath("description").inner_text[0,80].gsub("'", "’")
+      item["description"] = CGI.escapeHTML(desc_esc)
       item["entry_id"] = i
       @entries << item
     }
@@ -66,9 +68,11 @@ get "/:category" do
       i += 1
       item = Hash.new
       item["link"] = anchor.xpath("link").inner_text
-      item["title"] = anchor.xpath("title").inner_text
+      title_esc = anchor.xpath("title").inner_text.gsub("'", "’")
+      item["title"] = CGI.escapeHTML(title_esc)
       item["bkmcount"] = anchor.xpath("bookmarkcount").inner_text.to_i
-      item["description"] = anchor.xpath("description").inner_text[0,80]
+      desc_esc = anchor.xpath("description").inner_text[0,80].gsub("'", "’")
+      item["description"] = CGI.escapeHTML(desc_esc)
       item["entry_id"] = i
       @entries << item
     }
@@ -89,6 +93,8 @@ post "/post" do
   bkm.each {|var|
     user = var["user"]
     var["icon"] = "http://www.hatena.com/users/#{user[0,2]}/#{user}/profile.gif"
+    comment_esc = var["comment"]
+    var["comment"] = CGI.escapeHTML(comment_esc)
     var.delete("timestamp")
     var.delete("tags")
   }  
