@@ -2,8 +2,6 @@ require "sinatra"
 require "json"
 require "open-uri"
 require "nokogiri"
-require "active_record"
-require "sinatra/activerecord"
 require "sinatra/reloader" if development?
 require 'cgi'
 
