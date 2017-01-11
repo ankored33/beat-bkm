@@ -1,11 +1,13 @@
 /*global $*/
 
 
-/*bookmark呼び出し------------------------------------------------------------*/
+
+/*ブックマーク呼び出し------------------------------------------------------------*/
 $(function(){
   $('.entries').on('click', '.bkmcount', function(){
     var postUrl = $(this).parent().find('a').prop('href');
     var title = $(this).parent().find('a').text();
+    registerSound();
     $(this).text('...');
     $.ajax({
       type: "POST",
@@ -21,7 +23,7 @@ $(function(){
           $('#main').html(''
             + '<div id="bkm-head">'
             + '  <div id="entry-preview">'
-            + '     <a href="http://b.hatena.ne.jp/entry/' + postUrl + '" target="_blank">ブックマーク――' + title +'</a>'
+            + '     <a href="http://b.hatena.ne.jp/entry/' + postUrl + '" target="_blank">はてなブックマーク――' + title +'</a>'
             + '  </div>'
             + '  <div id="float-right">'
             + '    <div>'
@@ -101,8 +103,7 @@ $(function(){
             rival = '03';
           }
         if (Number(i) == 0) {
-          $('.beat0'+beatRand).get(0).currentTime = 0;
-          $('.beat0'+beatRand).get(0).play();
+          createjs.Sound.play('beat0'+ beatRand);
           $(this).css('z-index','100');
           $.when(
             $(this).animate({ 'bottom':'300px','right': leftRand },150)
@@ -112,8 +113,7 @@ $(function(){
             $(this).attr('class', "bkm-box-dead");
           });
         } else if (Number(i) <= 95) {
-          $('.scream0' + screamRand).get(0).currentTime = 0;
-          $('.scream0' + screamRand).get(0).play();
+          createjs.Sound.play('scream0'+ screamRand);
           $(this).css('z-index','100');
           $.when(
             $(this).animate({ 'bottom':'300px','right': leftRand },150)
@@ -123,8 +123,7 @@ $(function(){
             $(this).attr('class', "bkm-box-dead");
           });
         } else if (Number(i) > 95 ) {
-          $('.rival'+ rival + '-safe').get(0).currentTime = 0;
-          $('.rival'+ rival + '-safe').get(0).play();
+          createjs.Sound.play('rival'+ rival + '-safe');
           $.when(
             $(this).animate({ 'left' : '15px' },50)
           ).done(function() {
@@ -160,8 +159,7 @@ $(function(){
             rival = '03';
           }
         if (Number(i) >= 20 ) {
-          $('.rival'+ rival + '-damage0' + damageRand).get(0).currentTime = 0;
-          $('.rival'+ rival + '-damage0' + damageRand).get(0).play();
+          createjs.Sound.play('rival'+ rival + '-damage0' + damageRand);
           $.when(
             $(this).animate({ 'left' : '15px' },50)
           ).done(function() {
@@ -171,8 +169,7 @@ $(function(){
           $(this).find('.bkm-comment').text(txt.replace(/....................$/,""));
         }
         else if (Number(i) < 20) {
-          $('.rival' + rival + '-die').get(0).currentTime = 0;
-          $('.rival' + rival + '-die').get(0).play();
+          createjs.Sound.play('rival' + rival + '-die');
           $(this).find('.bkm-comment').css('color', 'red');
           $(this).find('.bkm-user').css('color', 'red');
           $(this).fadeOut(1500);
@@ -183,4 +180,60 @@ $(function(){
         console.log('checkbox false');
       }
     });
+});
+
+
+
+
+
+function registerSound () {
+  var manifest = 
+      [{src:'/sound/beat00.mp3', id:'beat00'},
+      {src:'/sound/beat01.mp3', id:'beat01'},
+      {src:'/sound/beat02.mp3', id:'beat02'},
+      {src:'/sound/beat03.mp3', id:'beat03'},
+      {src:'/sound/scream00.mp3', id:'scream00'},
+      {src:'/sound/scream01.mp3', id:'scream01'},
+      {src:'/sound/scream02.mp3', id:'scream02'},
+      {src:'/sound/scream03.mp3', id:'scream03'},
+      {src:'/sound/scream04.mp3', id:'scream04'},
+      {src:'/sound/scream05.mp3', id:'scream05'},
+      {src:'/sound/rival/cool/damage00.mp3', id:'rival00-damage00'},
+      {src:'/sound/rival/cool/damage01.mp3', id:'rival00-damage01'},
+      {src:'/sound/rival/cool/damage02.mp3', id:'rival00-damage02'},
+      {src:'/sound/rival/cool/damage03.mp3', id:'rival00-damage03'},
+      {src:'/sound/rival/cool/safe.mp3', id:'rival00-safe'},
+      {src:'/sound/rival/cool/die.mp3', id:'rival00-die'},
+      {src:'/sound/rival/hero/damage00.mp3', id:'rival01-damage00'},
+      {src:'/sound/rival/hero/damage01.mp3', id:'rival01-damage01'},
+      {src:'/sound/rival/hero/damage02.mp3', id:'rival01-damage02'},
+      {src:'/sound/rival/hero/damage03.mp3', id:'rival01-damage03'},
+      {src:'/sound/rival/hero/safe.mp3', id:'rival01-safe'},
+      {src:'/sound/rival/hero/die.mp3', id:'rival01-die'},
+      {src:'/sound/rival/priest/damage00.mp3', id:'rival02-damage00'},
+      {src:'/sound/rival/priest/damage01.mp3', id:'rival02-damage01'},
+      {src:'/sound/rival/priest/damage02.mp3', id:'rival02-damage02'},
+      {src:'/sound/rival/priest/damage03.mp3', id:'rival02-damage03'},
+      {src:'/sound/rival/priest/safe.mp3', id:'rival02-safe'},
+      {src:'/sound/rival/priest/die.mp3', id:'rival02-die'},
+      {src:'/sound/rival/witch/damage00.mp3', id:'rival03-damage00'},
+      {src:'/sound/rival/witch/damage01.mp3', id:'rival03-damage01'},
+      {src:'/sound/rival/witch/damage02.mp3', id:'rival03-damage02'},
+      {src:'/sound/rival/witch/damage03.mp3', id:'rival03-damage03'},
+      {src:'/sound/rival/witch/safe.mp3', id:'rival03-safe'},
+      {src:'/sound/rival/witch/die.mp3', id:'rival03-die'},
+      {src:'/sound/sound99.mp3', id:'sound99'}];
+    createjs.Sound.registerSounds(manifest);
+}
+
+
+function playSound () {
+  createjs.Sound.play('sound99');
+}     
+
+
+$(function(){
+  $('#container').on('click','#footer', function(){
+    playSound();
+  });
 });
