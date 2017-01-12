@@ -205,6 +205,11 @@ input {
     font-weight: bold;
 }
 
+
+#cm-box{
+    margin:auto;
+}
+
 #footer {
     clear: both;
     height: 75px;
