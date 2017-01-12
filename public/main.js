@@ -8,7 +8,6 @@ $(function(){
     var postUrl = $(this).parent().find('a').prop('href');
     var title = $(this).parent().find('a').text();
     registerSound();
-    $(this).text('...');
     $.ajax({
       type: "POST",
       url: "/post",
@@ -185,7 +184,7 @@ $(function(){
 
 
 
-
+/*SoundJS ------------------------------------------------------------*/
 function registerSound () {
   var manifest = 
       [{src:'/sound/beat00.mp3', id:'beat00'},
@@ -225,7 +224,6 @@ function registerSound () {
       {src:'/sound/sound99.mp3', id:'sound99'},
       {src:'/sound/sound100.mp3', id:'sound100'},
       {src:'/sound/sound101.mp3', id:'sound101'}];
-      
     createjs.Sound.registerSounds(manifest);
 }
 
