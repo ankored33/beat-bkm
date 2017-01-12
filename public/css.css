@@ -26,7 +26,6 @@ body {
 }
 
 #header{
-    
 }
 
 #title-box {
@@ -52,7 +51,6 @@ body {
 #menu {
     margin-bottom:15px;
 }
-    
 
 #entries-header {
     margin-top:5px;
@@ -98,7 +96,8 @@ body {
     font-size: 18px;
     font-weight:bold;
     text-decoration: underline;
-}    
+}
+
 .bkmcount:hover{
     cursor: pointer;
     color: #FFC8C8;
@@ -160,13 +159,6 @@ body {
     float:left;
 }
 
-#bkm-contents-not-beaten {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
-    float:left;
-}
-
 .bkm-box, .bkm-box-rival {
     padding: 5px 5px 5px 5px;
     position: relative;
@@ -186,7 +178,6 @@ body {
     text-decoration: none;
     font-size: 12px;
 }
-
 
 .bkm-icon {
     margin-right:6px;
@@ -209,14 +200,6 @@ body {
     font-size: 14px;
     font-weight: bold;
 }
-
-#right {
-    color: #FAF0E6;
-    width: 125px;
-    line-height: 620px;
-    float: right;
-}
-
 
 #footer {
     clear: both;
