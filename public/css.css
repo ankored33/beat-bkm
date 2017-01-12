@@ -109,6 +109,7 @@ input {
 
 .description {
     clear:both;
+    word-break: break-all;
 }    
 
 #bkm-head {
@@ -151,6 +152,10 @@ input {
     padding: 5px 10px 5px 10px;
 }
 
+#bkm-remaining:active {
+    background-color:#DC143C;
+}
+
 #bkm-remaining-figure {
     font-size:24px;
     bottom: 0;
@@ -163,7 +168,7 @@ input {
     float:left;
 }
 
-.bkm-box, .bkm-box-rival {
+.bkm-box, .bkm-box-rival, .bkm-box-cm {
     padding: 5px 5px 5px 5px;
     position: relative;
     min-width: 52px;

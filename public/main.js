@@ -1,7 +1,3 @@
-/*global $*/
-
-
-
 /*ブックマーク呼び出し------------------------------------------------------------*/
 $(function(){
   $('.entries').on('click', '.bkmcount', function(){
@@ -57,6 +53,12 @@ $(function(){
               + '</div>'
             );
           });
+          $('#bkm-contents').append(''
+          + '<div class="bkm-box-cm"  style="background-color:#D3D3D3">'
+          + '<div style="font-weight:bold;">《広告》</div>'
+          + '<a href="https://px.a8.net/svt/ejp?a8mat=2NHZ7S+7OUMMA+0K+11B8HD" target="_blank"><img border="0" width="100" height="60" alt="" src="https://www25.a8.net/svt/bgt?aid=160402312465&wid=003&eno=01&mid=s00000000002006267000&mc=1"></a><img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=2NHZ7S+7OUMMA+0K+11B8HD" alt="">'
+          + '</div>'
+          );
         });
       },
       error: function() {
@@ -67,31 +69,53 @@ $(function(){
 });
 
 /*checkbox------------------------------------------------------------*/
-var beat = false;
+var canBeat = false;
 $(function() {
   $('#main').on('change', '#check', function(){
   	if ($(this).is(':checked')) {
-  	  beat = true;
+  	  canBeat = true;
   	  $('.bkm-box').css('cursor', 'pointer');
+  	  $('.bkm-box-cm').css('cursor', 'pointer');
   	} else {
-      beat = false;
+      canBeat = false;
   	  $('.bkm-box').css('cursor', 'auto');
+  	  $('.bkm-box-cm').css('cursor', 'auto');
   	}
   });
 });
 
 
 /*殴る------------------------------------------------------------*/
+
+var leftRand;
+var screamRand;
+var beatRand;
+var rival;
+var i;
+var txt;
+var size;
+var damageRand;
+
+function beatBkm (bkm) {
+  leftRand = Math.floor( Math.random() * 1200 );
+  $(bkm).css('z-index','100');
+  $.when(
+    $(bkm).animate({ 'bottom':'300px','right': leftRand },150)
+    ).done(function() {
+    $(bkm).hide();
+    $(bkm).attr('class', "bkm-box-dead");
+  });  
+}
+
+
 $(function(){
     $('#main').on('click', '.bkm-box', function(){
-      if (beat == true) {
-        var size = Number($('#bkm-remaining-figure').text());
-        var txt = $(this).find('.bkm-comment').text();
-        var i = txt.length;
-        var leftRand = Math.floor( Math.random() * 1200 );
-        var beatRand = Math.floor( Math.random() * 4 );
-        var screamRand = Math.floor( Math.random() * 6 );        
-        var rival;
+      if (canBeat == true) {
+        size = Number($('#bkm-remaining-figure').text());
+        txt = $(this).find('.bkm-comment').text();
+        i = txt.length;
+        beatRand = Math.floor( Math.random() * 4 );
+        screamRand = Math.floor( Math.random() * 6 );        
           if ($(this).find('.bkm-user').text().slice(0,1).match(/[a-g]/) != null ) {
             rival = '00';
           } else if ($(this).find('.bkm-user').text().slice(0,1).match(/[h-n]/) != null ) {
@@ -103,24 +127,12 @@ $(function(){
           }
         if (Number(i) == 0) {
           createjs.Sound.play('beat0'+ beatRand);
-          $(this).css('z-index','100');
-          $.when(
-            $(this).animate({ 'bottom':'300px','right': leftRand },150)
-          ).done(function() {
-            $(this).hide();
-            $('#bkm-remaining-figure').text(size - 1);
-            $(this).attr('class', "bkm-box-dead");
-          });
+          $('#bkm-remaining-figure').text(size - 1);
+          beatBkm(this);
         } else if (Number(i) <= 95) {
           createjs.Sound.play('scream0'+ screamRand);
-          $(this).css('z-index','100');
-          $.when(
-            $(this).animate({ 'bottom':'300px','right': leftRand },150)
-          ).done(function() {
-            $(this).hide();
-            $('#bkm-remaining-figure').text(size - 1);
-            $(this).attr('class', "bkm-box-dead");
-          });
+          $('#bkm-remaining-figure').text(size - 1);
+          beatBkm(this);
         } else if (Number(i) > 95 ) {
           createjs.Sound.play('rival'+ rival + '-safe');
           $.when(
@@ -139,15 +151,21 @@ $(function(){
 });
 
 
+$(function(){
+    $('#main').on('click', '.bkm-box-cm', function(){
+      beatBkm(this);
+      createjs.Sound.play('beat00');
+    });
+});
+
 /*殴る(rival)------------------------------------------------------------*/
 $(function(){
     $('#main').on('click', '.bkm-box-rival', function(){
-      if (beat == true) {
-        var size = Number($('#bkm-remaining-figure').text());
-        var txt = $(this).find('.bkm-comment').text();
-        var i = txt.length;
-        var damageRand = Math.floor( Math.random() * 4 );
-        var rival;
+      if (canBeat == true) {
+        size = Number($('#bkm-remaining-figure').text());
+        txt = $(this).find('.bkm-comment').text();
+        i = txt.length;
+        damageRand = Math.floor( Math.random() * 4 );
           if ($(this).find('.bkm-user').text().slice(0,1).match(/[a-g]/) != null ) {
             rival = '00';
           } else if ($(this).find('.bkm-user').text().slice(0,1).match(/[h-n]/) != null ) {
@@ -234,9 +252,11 @@ $(function(){
   });
 });
 
+var cloudRand
+
 $(function(){
   $('#container').on('click','#bkm-remaining', function(){
-    var cloudRand = Math.floor( Math.random() * 100 );
+    cloudRand = Math.floor( Math.random() * 100 );
     if (cloudRand > 50) {
       createjs.Sound.play('sound100');
     } else {

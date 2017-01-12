@@ -84,11 +84,10 @@ post "/post" do
   post_url = params[:post_url]
   opt = {}
   opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
-  uri = "http://b.hatena.ne.jp/entry/json/?url=#{post_url}" 
+  uri = "http://b.hatena.ne.jp/entry/jsonlite/?url=#{post_url}" 
   uri_esc = URI.escape(uri)
   io = open(uri_esc, opt)
   hash = JSON.load(io)
-  title = hash["title"]
   bkm = hash["bookmarks"]
   bkm.each {|var|
     user = var["user"]
