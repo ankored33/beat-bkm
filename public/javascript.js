@@ -9,12 +9,14 @@ console.log('\n' +
 var s = 0;
 var o = 0;
 var r;
+var p = Math.floor( Math.random() * 100 );
+
 $(function(){
   $('#container').on('click','#bkm-remaining', function(){
     r = Math.floor( Math.random() * 100 );
-    if (r > 50) {
+    if (r > p) {
       s += 1;
-      console.log(s + ' / ' + (s+o) + 'roop (' + 100/(s+o)*s +'%)\n'+
+      console.log(s + ' / ' + (s+o) + 'loops (' + 100/(s+o)*s +'%)\n'+
 '%c　　　　　　　　　　　　　￣￣\n'+
 '　　 　 　 　 .　´ 　 γ⌒　　　　　　　 ヽ\n'+
 '　 　 　 　 /　　　　｜　 　 　 　 　 　 　 ’,\n'+
@@ -36,7 +38,7 @@ $(function(){
 '', styles);
     } else {
       o += 1
-      console.log(o + ' / ' + (s+o) + 'roop (' + 100/(s+o)*o +'%)\n'+
+      console.log(o + ' / ' + (s+o) + 'loops (' + 100/(s+o)*o +'%)\n'+
 '%c　　　　　　　　　　　　　　 ＿＿＿\n'+
 '　　　　　　 　 　 　 ,,　" 　 ｒ‐､ 　　　` 　､\n'+
 '　　　　　　　　　／..:::::::::＼|ｌ､　　 　 　 　 ＼\n'+
