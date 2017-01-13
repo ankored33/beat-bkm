@@ -255,9 +255,7 @@ function registerSound () {
       {src:'/sound/rival/witch/safe.mp3', id:'rival03-safe'},
       {src:'/sound/rival/witch/die.mp3', id:'rival03-die'},
       {src:'/sound/sound98.mp3', id:'sound98'},
-      {src:'/sound/sound99.mp3', id:'sound99'},
-      {src:'/sound/sound100.mp3', id:'sound100'},
-      {src:'/sound/sound101.mp3', id:'sound101'}];
+      {src:'/sound/sound99.mp3', id:'sound99'}];
     createjs.Sound.registerSounds(manifest);
 }
 
@@ -274,18 +272,6 @@ $(function(){
   });
 });
 
-$(function(){
-  $('#container').on('click','#bkm-remaining', function(){
-    cloudRand = Math.floor( Math.random() * 100 );
-    if (cloudRand > 50) {
-      createjs.Sound.play('sound100');
-      console.log('あ');
-    } else {
-      createjs.Sound.play('sound101');
-      console.log('お');
-    }
-  });
-});
 
 
 
