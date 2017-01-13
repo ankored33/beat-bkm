@@ -22,11 +22,14 @@ input {
 
 @media screen and ( max-width:479px )
 {
-#container {
-    height: 100%;
-    margin: auto;
-    max-width:479px;
-}    
+    #container {
+        height: 100%;
+        margin: auto;
+        max-width:479px;
+    }    
+    #cm-container {
+        display: none;
+    }
 }
 
 #header{
@@ -165,7 +168,6 @@ input {
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
-    float:left;
 }
 
 .bkm-box, .bkm-box-rival, .bkm-box-cm {
@@ -211,24 +213,26 @@ input {
 }
 
 #cm-container {
+    margin-top:15px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+    clear: both; 
 }
 
 .cm-box{
-    width:100%;
-    margin:auto;
     text-align:center;
+    padding:8px 15px;
+    position: relative;
+}
+
+.cm-box:hover{
+    background-color:#D8D8D8;
 }
 
 #footer {
-    clear: both;
     height: 75px;
     border-top: 3px solid #FFC8C8;
     margin-top:10px;
     color: #FFFFFF;
 }
-
-
-
-

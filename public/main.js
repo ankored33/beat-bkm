@@ -55,8 +55,8 @@ $(function(){
           });
           $('#bkm-contents').append(''
           + '<div class="bkm-box-cm"  style="background-color:#D3D3D3">'
-          + '<div style="font-weight:bold;">《広告》</div>'
-          + '<script type="text/javascript" src="//rot4.a8.net/jsa/497cd700285ef78bde63814dae17ad9b/dc5c7986daef50c1e02ab09b442ee34f.js"></script>'
+          + ' <div style="font-weight:bold;">《広告》</div>'
+          + ' <a href="https://px.a8.net/svt/ejp?a8mat=2NHZ7S+7QMWNU+50+2HCB1D" target="_blank"><img border="0" width="100" height="60" alt="" src="https://www28.a8.net/svt/bgt?aid=160402312468&wid=002&eno=01&mid=s00000000018015006000&mc=1"></a><img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=2NHZ7S+7QMWNU+50+2HCB1D" alt="">'
           + '</div>'
           );
         });
@@ -76,10 +76,12 @@ $(function() {
   	  canBeat = true;
   	  $('.bkm-box').css('cursor', 'pointer');
   	  $('.bkm-box-cm').css('cursor', 'pointer');
+  	  $('.cm-box').css('cursor', 'pointer');
   	} else {
       canBeat = false;
   	  $('.bkm-box').css('cursor', 'auto');
   	  $('.bkm-box-cm').css('cursor', 'auto');
+  	  $('.cm-box').css('cursor', 'auto');
   	}
   });
 });
@@ -152,17 +154,21 @@ $(function(){
 
 
 $(function(){
-    $('#main').on('click', '.bkm-box-cm', function(){
+  $('#main').on('click', '.bkm-box-cm', function(){
+    if (canBeat == true) {
       beatBkm(this);
       createjs.Sound.play('beat00');
-    });
+    }
+  });
 });
 
 $(function(){
-    $('#cm-container').on('click', '.cm-box', function(){
+  $('#cm-container').on('click', '.cm-box', function(){
+    if (canBeat == true) {
       beatBkm(this);
       createjs.Sound.play('beat00');
-    });
+    }
+  });
 });
 
 
@@ -248,28 +254,35 @@ function registerSound () {
       {src:'/sound/rival/witch/damage03.mp3', id:'rival03-damage03'},
       {src:'/sound/rival/witch/safe.mp3', id:'rival03-safe'},
       {src:'/sound/rival/witch/die.mp3', id:'rival03-die'},
+      {src:'/sound/sound98.mp3', id:'sound98'},
       {src:'/sound/sound99.mp3', id:'sound99'},
       {src:'/sound/sound100.mp3', id:'sound100'},
       {src:'/sound/sound101.mp3', id:'sound101'}];
     createjs.Sound.registerSounds(manifest);
 }
 
+var cloudRand;
 
 $(function(){
   $('#container').on('click','#footer', function(){
-    createjs.Sound.play('sound99');
+    cloudRand = Math.floor( Math.random() * 100 );
+    if (cloudRand > 50) {
+      createjs.Sound.play('sound98');
+    } else {
+      createjs.Sound.play('sound99');
+    }
   });
 });
-
-var cloudRand
 
 $(function(){
   $('#container').on('click','#bkm-remaining', function(){
     cloudRand = Math.floor( Math.random() * 100 );
     if (cloudRand > 50) {
       createjs.Sound.play('sound100');
+      console.log('あ');
     } else {
       createjs.Sound.play('sound101');
+      console.log('お');
     }
   });
 });
