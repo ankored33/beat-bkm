@@ -234,7 +234,7 @@ $(function(){
         mami = 'failed'
       }
     } else if (mami == 'succeed') {
-      mamiSucceed();
+      mamiSucceeded();
       mami = 0;
     } else if (mami == 'failed') {
       mamiFailed();
@@ -339,9 +339,9 @@ function mamiFailed () {
 '', styles)
 }
 
-function mamiSucceed () {
+function mamiSucceeded () {
   console.log ('\n'+
-'MAMI-SAN Succeed!!\n' +  
+'MAMI-SAN Succeeded!!\n' +  
 '%c　　　　　　　　　　　　　　　　　　　　 ○\n'+
 '　　　　　　　　　　　　　　　　　 　 　 く|7\n'+
 '　　　　　　　　　　　　　　　　　　　┌\'弋\n'+
