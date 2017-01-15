@@ -133,7 +133,7 @@ function result () {
 '::::::::::::::::::::::ヽ、　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　／::::::::::::::::::::::::::::::\n'+
 '', styles);
   } else {
-    console.log('#### RESULT: ' + 'SAYAKA lived fine ' + say + ' times in 15 loops.(' + 100/(loop-1)*syk + '%) ####\n' +
+    console.log('#### RESULT: ' + 'SAYAKA lived fine ' + say + ' times in 15 loops.(' + 100/(loop-1)*say + '%) ####\n' +
 '%c　　　　　　　　　　　　　 _ .．-───\n'+
 '　　　　　　　　　　 .． ´:::::::::::::::::::::::::::::::::::: へ.\n'+
 '　　　　 　 　 　 , ´:::::::::::::::::::::::::::::::::::::::::::::::::＼＼\n'+
