@@ -135,11 +135,11 @@ $(function(){
           } else {
             rival = '03';
           }
-        if (Number(i) == 0) {
+        if (Number(i) <= 30) {
           playSound('beat0'+ beatRand);
           $('#bkm-remaining-figure').text(size - 1);
           beatBkm(this);
-        } else if (Number(i) <= 100) {
+        } else if (Number(i) > 30 && Number(i) <= 100) {
           playSound('scream0'+ screamRand);
           $('#bkm-remaining-figure').text(size - 1);
           beatBkm(this);
@@ -219,8 +219,6 @@ $(function(){
       }
     });
 });
-
-
 
 
 /*SoundJS ------------------------------------------------------------*/
