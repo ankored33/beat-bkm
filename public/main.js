@@ -147,7 +147,6 @@ $(function(){
           $(this).attr('class', 'bkm-box-rival');
         }
       } else {
-        console.log('checkbox false');
       }
     });
 });

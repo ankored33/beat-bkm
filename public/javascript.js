@@ -120,7 +120,7 @@ function result () {
 '::::::::::::::::::::::ヽ、　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　／::::::::::::::::::::::::::::::\n'+
 '', styles);
   } else {
-    console.log('#### RESULT: ' + 'SAYAKA falled ' + okt + ' times in 15 loops... (' + 100/(loop-1)*okt + '%) ####\n' +
+    console.log('#### RESULT: ' + 'SAYAKA lived fine ' + say + ' times in 15 loops.(' + 100/(loop-1)*okt + '%) ####\n' +
 '%c　　　　　　　　　　　　　 _ .．-───\n'+
 '　　　　　　　　　　 .． ´:::::::::::::::::::::::::::::::::::: へ.\n'+
 '　　　　 　 　 　 , ´:::::::::::::::::::::::::::::::::::::::::::::::::＼＼\n'+
@@ -190,12 +190,12 @@ $(function(){
         mamiSum += 1;
       }
         console.log ('\n'+
-      '%c(ﾟдﾟ)(ﾟдﾟ) << HURRY!! HURRY!! MAMI-SAN!!!!!\n'+
+      '%c(ﾟдﾟ)(ﾟдﾟ)\n'+
       lines2 + '▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼' + 
       lines +
       space + 'ζ(ﾟдﾟ)ξ' + 
       lines +
-      '▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲' +
+      '▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲\n' +
       lines2 +
       '', styles);
       lines = lines.substr(1);
@@ -206,20 +206,28 @@ $(function(){
       if (space.length >= 34 ) {
       console.log ('\n'+
         '%c(ﾟ∀ﾟ)(ﾟ∀ﾟ)\n' +
-        '\n\n\n\n\n\n\n\n\n' +
-        '▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼             ζ(ﾟ∀ﾟ)ξ' +
         '\n\n\n\n\n\n\n\n' +
+        '▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼             ζ(ﾟ∀ﾟ)ξ' +
+        '\n\n\n\n\n\n\n\n\n' +
         '', styles);
+      mami = 'succeed'
       } else {
        console.log ('\n'+
         '%c(ﾟдﾟ)(ﾟдﾟ) ……!\n' +
-        '\n\n\n\n\n\n\n\n\n' +
+        '\n\n\n\n\n\n\n\n' +
         '▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼' +
-        '\n\n\n\n\n\n\n' +
+        '\n\n\n\n\n\n\n\n\n' +
         '', styles);
+        mami = 'failed'
       }
+    } else if (mami == 'succeed') {
+      mamiSucceed();
       mami = 0;
+    } else if (mami == 'failed') {
+      mamiFailed();
+      mami = 0 ;
     }
+
   });
 });
 
@@ -297,9 +305,65 @@ function sayamado() {
 }
 
 
+function mamiFailed () {
+  console.log ('\n'+
+'MAMI-SAN Failed...\n'+
+'%c\n'+
+'\n'+
+'\n'+
+'　　　　　　　　　 ,.r \'　￣　ヽ､　　　　　　　　　　　　　　　　　　　　　　　　 ,r \'　￣　ヽ\n'+
+'　　　　　　　　 ,/　 ,. ;;;;;;;;i´｀i ﾞ､　　　　　　　　　　　　　　　　　　　　　　 /　 ,,;;;;;;;;;;;i´｀iﾞ､\n'+
+'　　　　　　　　 |　　l;;;;;;;;;;;;;;i\'´　|　　　　　　　　　　　　　　　　　　　　　　 |　　l;;;;;;;;;;;;;;i\'´　|\n'+
+'　　　　　　　 　 ､　 ヽ;;;;;;;ノ　 /　　　　　　　　　　　　　　　　　　 　　　　　､　 ヽ;;;;;;;ノ　 /　\n'+
+'　　　　　　　　　 ヽ､　　　　ノ　　　　　　　　　　　　　　　　　　　　　　　　　ヽ､　　　　ノ　\n'+
+'　　　　　　　　　　　 ￣￣　　　　　　　　　　　　　　　　　　　　　　　　　　　　　￣￣\n'+
+'\n'+
+'\n'+
+'\n'+
+'\n'+
+'　　　　　　　　　　　　　　　　　　　　　　　ヽ＿___,--､＿＿ノ\n'+
+'\n'+
+'', styles)
+}
+
+function mamiSucceed () {
+  console.log ('\n'+
+'MAMI-SAN Succeed!!\n' +  
+'%c　　　　　　　　　　　　　　　　　　　　 ○\n'+
+'　　　　　　　　　　　　　　　　　 　 　 く|7\n'+
+'　　　　　　　　　　　　　　　　　　　┌\'弋\n'+
+'　　　　　　　　 　 　 　 　 　 　 　 ,亅　 |\n'+
+'　　　　　　　　　　　　　　　　　／／ ＼|\n'+
+'　　　　　　　　　　　　　　　 ／／　　　 ＼　　　　へ\n'+
+'　　　　　　　　　　　 　 　／／. 　　　 　 　＼ ／／/\n'+
+'　　　　　　　　 　　　　 くｘ　　◎ 　　　　　 ／／　＼\n'+
+'　　　　　　　　　　　　　 　 ＼　　　　　　／／　／ 　.＼\n'+
+'　　　　　　　　　　　　　　　　 ＼　　　／／　／　　／　 ＼\n'+
+'　　　　　　　　　　　　　　　　　　ヽ／／　／　　／　　／ 　＼\n'+
+'　　　　　　　　　　　　　　　　　 ／／　　　　　　　　／　　／　＼\n'+
+'　　　　　　　　　　　　　　　　 く／＼　　　　　　　　　　／　　／　＼\n'+
+'　　　　　　　　　　　　　　　　　　　　 ＼　　　　　　　　　　／　　／　＼\n'+
+'　　　　　　　　　　　　　　　　　　　　　　＼　　　　　　　 　 　 ／　　／　＼\n'+
+'　　　　　　　　　　　　　　　　　　　　　　　 ＼　　　　　　　／　　／　　／　 ＼\n'+
+'　　　　　　　　　　　　　　　　　　　　　　　　　＼　　　　　　　　　　　／　　／　＼\n'+
+'　　　　　　　　　　　　　　　　　　　　　　　　　　 ＼　　　　　　　　　　　 ／　　　　＼\n'+
+'', styles);
+}
 
 
 
+
+
+$(function(){
+  $('#main').on('click', '.bkm-box', function(){
+    beatQB();
+    if (qb===1) {
+      qb = -1;
+    } else {
+      qb = 1;
+    }  
+  });
+});
 
 
 /*
@@ -332,22 +396,17 @@ function sayamado() {
 　　　　　　　　　　　　　　　∨　　 /　　　　　｝彡｝ﾞ　 /　　　　　| 
 
 
-　 　 　 　 |＼　　 　 　 　 　 ／|
-　 　 　 　 |＼＼　　 　 　 ／／|
-　　　　 　 : 　,>　｀´￣｀´　<　 ′
-.　　　　 　 Ｖ　 　 　 　 　 　 Ｖ
-.　　　　 　 i{　●　 　 　 ●　}i
-　　　　 　 八　 　 ､_,_, 　 　 八
-. 　 　 　 /　个 . ＿　 ＿ . 个 ',
-　　　＿/ 　 il 　 ,'　　　 '.　 li　 ',＿_
 
-　 　 　 　 |＼　　 　 　 　 　 ／|
-　 　 　 　 |＼＼　　 　 　 ／／|
-　　　　 　 : 　,>　｀´￣　ノ￣￣｀ヽ、―ニ 二
-.　　　　 　 Ｖ　 　｀ヽ ／　´｀ヽ _　 三,:三ー二
-.　　　　 　 i{　●　 ノヽ--/￣ ,　　　 ｀￣￣￣
-　　　　 　 八　 　ﾐ}　　...|　 /!
-. 　 　 　 /　个 . ノ}｀ー‐し'ゝL _
-　　　＿/ 　 il 　 ,',:ﾍｒ--‐‐'´}　　　 ;ー------
-　 （(　/　　　l｀V　ノ｀ヾ:::-‐'ーｒ‐'"＝＝-
+
+function beatQB () { 
+
+
+
+
+
+
+
+
+
+
 */
