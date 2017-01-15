@@ -3,7 +3,7 @@ var styles = "font-family:IPAMonaPGothic,'IPA モナー Pゴシック',Monapo,Mo
 console.log('\n'+
 '##################################\n'+
 '#                                #\n'+
-'#           WELLCOME!!           #\n'+
+'#        W E L C O M E !!        #\n'+
 '#                                #\n'+
 '##################################\n'+
 '%c.　 　 　 　 　 |::|　 　 -─- 　 　　 |::|\n'+
@@ -133,7 +133,7 @@ function result () {
 '::::::::::::::::::::::ヽ、　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　／::::::::::::::::::::::::::::::\n'+
 '', styles);
   } else {
-    console.log('#### RESULT: ' + 'SAYAKA lived fine ' + say + ' times in 15 loops.(' + 100/(loop-1)*say + '%) ####\n' +
+    console.log('#### RESULT: ' + 'SAYAKA lived fine ' + say + ' times in 15 loops!(' + 100/(loop-1)*say + '%) ####\n' +
 '%c　　　　　　　　　　　　　 _ .．-───\n'+
 '　　　　　　　　　　 .． ´:::::::::::::::::::::::::::::::::::: へ.\n'+
 '　　　　 　 　 　 , ´:::::::::::::::::::::::::::::::::::::::::::::::::＼＼\n'+
