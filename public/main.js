@@ -97,7 +97,6 @@ $(function() {
 
 
 /*殴る------------------------------------------------------------*/
-
 var leftRand;
 var screamRand;
 var beatRand;
@@ -137,15 +136,15 @@ $(function(){
             rival = '03';
           }
         if (Number(i) == 0) {
-          createjs.Sound.play('beat0'+ beatRand);
+          playSound('beat0'+ beatRand);
           $('#bkm-remaining-figure').text(size - 1);
           beatBkm(this);
-        } else if (Number(i) <= 99) {
-          createjs.Sound.play('scream0'+ screamRand);
+        } else if (Number(i) <= 100) {
+          playSound('scream0'+ screamRand);
           $('#bkm-remaining-figure').text(size - 1);
           beatBkm(this);
-        } else if (Number(i) > 99 ) {
-          createjs.Sound.play('rival'+ rival + '-safe');
+        } else if (Number(i) > 100 ) {
+          playSound('rival'+ rival + '-safe');
           $.when(
             $(this).animate({ 'left' : '15px' },50)
           ).done(function() {
@@ -164,7 +163,7 @@ $(function(){
   $('#main').on('click', '.bkm-box-cm', function(){
     if (canBeat == true) {
       beatBkm(this);
-      createjs.Sound.play('beat00');
+      playSound('beat00');
     }
   });
 });
@@ -173,7 +172,7 @@ $(function(){
   $('#cm-container').on('click', '.cm-box', function(){
     if (canBeat == true) {
       beatBkm(this);
-      createjs.Sound.play('beat00');
+      playSound('beat00');
     }
   });
 });
@@ -198,7 +197,7 @@ $(function(){
             rival = '03';
           }
         if (Number(i) >= 20 ) {
-          createjs.Sound.play('rival'+ rival + '-damage0' + damageRand);
+          playSound('rival'+ rival + '-damage0' + damageRand);
           $.when(
             $(this).animate({ 'left' : '15px' },50)
           ).done(function() {
@@ -208,7 +207,7 @@ $(function(){
           $(this).find('.bkm-comment').text(txt.replace(/....................$/,""));
         }
         else if (Number(i) < 20) {
-          createjs.Sound.play('rival' + rival + '-die');
+          playSound('rival' + rival + '-die');
           $(this).find('.bkm-comment').css('color', 'red');
           $(this).find('.bkm-user').css('color', 'red');
           $(this).fadeOut(1500);
@@ -264,9 +263,8 @@ function registerSound () {
     createjs.Sound.registerSounds(manifest);
 }
 
-
-
-
-
-
-
+var sound;
+function playSound(soundId){
+    sound = createjs.Sound.play(soundId);
+    sound.volume = 0.3;
+}
