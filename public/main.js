@@ -14,6 +14,7 @@ $(function(){
       success: function(json) {
       dataType: "json",
         $(function(){
+          window.scrollTo( 0, 0 ) ;
           var bkmSource = JSON.parse(json);
           $('#main').html(''
             + '<div id="bkm-head">'
@@ -57,6 +58,14 @@ $(function(){
           + '<div class="bkm-box-cm"  style="background-color:#D3D3D3">'
           + ' <div style="font-weight:bold;">《広告》</div>'
           + ' <a href="https://px.a8.net/svt/ejp?a8mat=2NHZ7S+7QMWNU+50+2HCB1D" target="_blank"><img border="0" width="100" height="60" alt="" src="https://www28.a8.net/svt/bgt?aid=160402312468&wid=002&eno=01&mid=s00000000018015006000&mc=1"></a><img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=2NHZ7S+7QMWNU+50+2HCB1D" alt="">'
+          + '</div>'
+          + '<div class="bkm-box-cm"  style="background-color:#D3D3D3">'
+          + ' <div style="font-weight:bold;">《広告》</div>'
+          + ' <a href="https://px.a8.net/svt/ejp?a8mat=2TA5W3+FA4KII+3L4M+6F9M9" target="_blank"><img border="0" width="468" height="60" alt="" src="https://www29.a8.net/svt/bgt?aid=170115411924&wid=002&eno=01&mid=s00000016735001079000&mc=1"></a><img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=2TA5W3+FA4KII+3L4M+6F9M9" alt="">'
+          + '</div>'
+          + '<div class="bkm-box-cm"  style="background-color:#D3D3D3">'
+          + ' <div style="font-weight:bold;">《広告》</div>'
+          + ' <<a href="https://px.a8.net/svt/ejp?a8mat=2TA3JG+448Z6I+3OIK+60WN5" target="_blank"><img border="0" width="468" height="60" alt="" src="https://www22.a8.net/svt/bgt?aid=170112364249&wid=002&eno=01&mid=s00000017174001012000&mc=1"></a><img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=2TA3JG+448Z6I+3OIK+60WN5" alt="">'
           + '</div>'
           );
         });
@@ -131,11 +140,11 @@ $(function(){
           createjs.Sound.play('beat0'+ beatRand);
           $('#bkm-remaining-figure').text(size - 1);
           beatBkm(this);
-        } else if (Number(i) <= 95) {
+        } else if (Number(i) <= 99) {
           createjs.Sound.play('scream0'+ screamRand);
           $('#bkm-remaining-figure').text(size - 1);
           beatBkm(this);
-        } else if (Number(i) > 95 ) {
+        } else if (Number(i) > 99 ) {
           createjs.Sound.play('rival'+ rival + '-safe');
           $.when(
             $(this).animate({ 'left' : '15px' },50)

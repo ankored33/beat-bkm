@@ -27,7 +27,7 @@ input {
         margin: auto;
         max-width:479px;
     }    
-    #cm-container {
+    .cm-box {
         display: none;
     }
 }
@@ -214,26 +214,17 @@ input {
     font-weight: bold;
 }
 
-#cm-container {
-    margin-top:15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    clear: both; 
-}
-
-.cm-box{
-    text-align:center;
-    padding:8px 15px;
-    position: relative;
-}
-
-.cm-box:hover{
-    background-color:#D8D8D8;
+.cm-box {
+    padding:8px 6px;
+    border-top:3px solid #DCDCDC;
+    border-left:3px solid #DCDCDC;
+    width: 500px;
+    margin:2px;
 }
 
 #footer {
-    height: 30px;
+    clear: both; 
+    height: 50px;
     border-top: 3px solid #FFC8C8;
     margin-top:10px;
     color: #FFFFFF;
