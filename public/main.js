@@ -152,7 +152,6 @@ $(function(){
             $(this).animate({ 'left':'0px' },50);
           });
           i = i - 1;
-          $(this).find('.bkm-comment').text(txt.replace(/..........$/,""));
           $(this).attr('class', 'bkm-box-rival');
         }
       } else {
