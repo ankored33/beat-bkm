@@ -1,0 +1,44 @@
+<div id="bkm-head">
+  <div id="entry-preview">
+      <a href="http://b.hatena.ne.jp/entry/<%= @url %>" target="_blank">記事のぶくまぺーじリンク</a>
+  </div>
+
+  <div id="float-right">
+    <div>
+      <label for="check">
+      ｜殴る<input type="checkbox" id="check" />
+      </label>
+      ＊注意＊音が鳴ります｜
+    </div>
+    <div id="bkm-remaining">
+      公開ブクマ <span id="bkm-remaining-figure"><%= @bkm.size %></span>users
+    </div>
+  </div>
+</div>
+
+
+<div id="bkm-contents">
+  <% @bkm.each do |bm| %>
+        <% rd = rand(7) + 1 %>
+        <% if rd == 1 %>
+          <% cl = "#ffebee" %>
+        <% elsif rd == 2 %>
+          <% cl = "#ede7f6" %>
+        <% elsif rd == 3 %>
+          <% cl = "#e1f5fe" %>
+        <% elsif rd == 4 %>
+          <% cl = "#e8f5e9" %>
+        <% elsif rd == 5 %>
+          <% cl = "#fffde7" %>
+        <% elsif rd == 6 %>
+          <% cl = "#fbe9e7" %>
+        <% else %>
+          <% cl = "#eceff1" %>
+        <% end %>
+  <div class="bkm-box"  style="background-color : <%= cl %>">
+    <div class="bkm-user"><%= bm["user"] %></div>
+    <div class="bkm-icon"><img src="<%= bm["icon"] %>" width="48px" height="48px"></div>
+    <div class="bkm-comment"><%= h bm["comment"] %></div>  
+  </div>
+  <% end %>
+</div>

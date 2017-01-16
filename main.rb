@@ -4,12 +4,16 @@ require "open-uri"
 require "nokogiri"
 require "sinatra/reloader" if development?
 require 'cgi'
+require 'erb'
+include ERB::Util
+
 
 helpers do
     include Rack::Utils
     alias_method :h, :escape_html
 end
 
+    
 
 get "/" do
     @disp = "はてなブックマーク - 人気エントリー - 総合"
@@ -25,17 +29,15 @@ get "/" do
     doc = Nokogiri::XML(xml)
     doc.remove_namespaces!
     @entries = Array.new
-    i = 0
     doc.xpath('//item').each {|anchor|
-      i += 1
       item = Hash.new
-      item["link"] = anchor.xpath("link").inner_text
+      link = anchor.xpath("link").inner_text
+      item["link"] = link
       title_esc = anchor.xpath("title").inner_text.gsub("'", "’")
       item["title"] = CGI.escapeHTML(title_esc)
       item["bkmcount"] = anchor.xpath("bookmarkcount").inner_text.to_i
       desc_esc = anchor.xpath("description").inner_text[0,80].gsub("'", "’")
       item["description"] = CGI.escapeHTML(desc_esc)
-      item["entry_id"] = i
       @entries << item
     }
     erb :index
@@ -50,7 +52,7 @@ end
 get "/:category" do
   category = params["category"]
   categories = ["social", "economics", "life", "knowledge", "it", "fun", "entertainment", "game"]
-  redirect to "/"  if categories.include?(category) == false
+  redirect to "/:entry_path"  if categories.include?(category) == false
     rss = "http://b.hatena.ne.jp/hotentry/#{category}.rss"
     opt = {}
     opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
@@ -63,17 +65,15 @@ get "/:category" do
     doc.remove_namespaces!
     @disp = doc.xpath('RDF/channel/title').inner_text
     @entries = Array.new
-    i = 0
     doc.xpath('//item').each {|anchor|
-      i += 1
       item = Hash.new
-      item["link"] = anchor.xpath("link").inner_text
+      link = anchor.xpath("link").inner_text
+      item["link"] = link
       title_esc = anchor.xpath("title").inner_text.gsub("'", "’")
       item["title"] = CGI.escapeHTML(title_esc)
       item["bkmcount"] = anchor.xpath("bookmarkcount").inner_text.to_i
       desc_esc = anchor.xpath("description").inner_text[0,80].gsub("'", "’")
       item["description"] = CGI.escapeHTML(desc_esc)
-      item["entry_id"] = i
       @entries << item
     }
     erb :index  
