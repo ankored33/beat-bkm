@@ -49,6 +49,27 @@ get "/about" do
 end
 
 
+get "/site" do
+  post_url = params[:url]
+  opt = {}
+  opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
+  uri = "http://b.hatena.ne.jp/entry/jsonlite/?url=#{post_url}" 
+  io = open(uri, opt)
+  hash = JSON.load(io)
+  bkm = hash["bookmarks"]
+  bkm.each {|var|
+    user = var["user"]
+    var["icon"] = "http://www.hatena.com/users/#{user[0,2]}/#{user}/profile.gif"
+    comment_esc = var["comment"]
+    var["comment"] = CGI.escapeHTML(comment_esc)
+    var.delete("timestamp")
+    var.delete("tags")
+  }  
+  erb :blank
+  content_type :json
+  @data = bkm.to_json
+end
+
 get "/:category" do
   category = params["category"]
   categories = ["social", "economics", "life", "knowledge", "it", "fun", "entertainment", "game"]

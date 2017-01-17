@@ -19,7 +19,6 @@
 
     ga('create', 'UA-60226222-3', 'auto');
     ga('send', 'pageview');
-  
   </script>
 </head>
 <body>
@@ -28,7 +27,7 @@
     
   <div id="header">
     <div id="title-box">
-    <h1 id="title"><a href="/">殴れるはてブ</a></h1>    <div>ごく普通の<a href="http://b.hatena.ne.jp/" target="_blank">はてなブックマーク</a>閲覧サイトです（スマホ未対応）。｜<a href="/about">About</a>｜<a href="http://b.hatena.ne.jp/entry/beat-htb.anko.red/" class="hatena-bookmark-button" data-hatena-bookmark-title="殴れるはてブ" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>｜<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://beat-htb.anko.red/" data-lang="ja">ツイート</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
+    <h1 id="title"><a href="/"><span style="color: #B22222;">殴</span>れるはてブ</a></h1>    <div>ごく普通の<a href="http://b.hatena.ne.jp/" target="_blank">はてなブックマーク</a>閲覧サイトです（スマホ未対応）。｜<a href="/about">About</a>｜<a href="http://b.hatena.ne.jp/entry/beat-htb.anko.red/" class="hatena-bookmark-button" data-hatena-bookmark-title="殴れるはてブ" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>｜<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://beat-htb.anko.red/" data-lang="ja">ツイート</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
     </div>
     <div id="menu">
       ｜<a href="/">総合</a>
@@ -40,10 +39,9 @@
       ｜<a href="/fun">おもしろ</a>
       ｜<a href="/entertainment">エンタメ</a>
       ｜<a href="/game">アニメとゲーム</a>
-      ｜
+      ｜URL直接指定できます <input type="text" id="input" value="http://"><input type="submit" id="submit" VALUE="殴る">
     </div>
   </div>
-
   <div id="main">
     <%= yield %>
   </div>
