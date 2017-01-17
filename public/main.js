@@ -1,7 +1,4 @@
-/*ブックマーク呼び出し------------------------------------------------------------*/
-
-
-
+/*ホットエントリーのブックマーク呼び出し------------------------------------------------------------*/
 $(function(){
   $('.entries').on('click', '.bkmcount', function(){
     var postUrl = $(this).parent().find('a').prop('href');
@@ -73,12 +70,18 @@ $(function(){
         });
       },
       error: function() {
-      $('#contents').text('error');
+      $('#main').text('error');
       }
       });
   });
 });
 
+
+/*URL直接指定でのブックマーク呼び出し------------------------------------------------------------*/
+
+$('#input').focus(function(){
+  $(this).select();
+});
 
 
 $(function(){
@@ -102,7 +105,7 @@ $(function(){
           $('#main').html(''
             + '<div id="bkm-head">'
             + '  <div id="entry-preview">'
-            + '     <a href="http://b.hatena.ne.jp/entry/' + val + '" target="_blank">はてなブックマーク――' + title +'</a>'
+            + '     <a href="http://b.hatena.ne.jp/entry/' + val + '" target="_blank">はてなブックマーク――' + val +'</a>'
             + '  </div>'
             + '  <div id="float-right">'
             + '    <div>'
@@ -154,17 +157,18 @@ $(function(){
         });
       },
       error: function() {
-        $('#contents').html(''
+        $('#main').html(''
           +'<div id ="error">'
           +'  <p>ERROR</p>'
-          +'  <p>ブックマークのついていないページと思われます。</p>'
-          +'  <p>ブックマークがあるページなのにエラーが出る場合はお手数ですが&it;sakuranoanko@gmail.com&gt;までご連絡ください。</p>'
+          +'  <p>無効なURLもしくはブックマークのついていないURLと思われます。</p>'
+          +'  <p>URLがあるページなのにエラーが出る場合はお手数ですが&it;sakuranoanko＠gmail.com&gt;までご連絡ください。</p>'
           +'</div>'
         );
       }
     });
   });
 });
+
 
 /*checkbox------------------------------------------------------------*/
 var canBeat = false;
@@ -225,11 +229,11 @@ $(function(){
           } else {
             rival = '03';
           }
-        if (Number(i) <= 30) {
+        if (Number(i) <= 40) {
           playSound('beat0'+ beatRand);
           $('#bkm-remaining-figure').text(size - 1);
           beatBkm(this);
-        } else if (Number(i) > 30 && Number(i) <= 100) {
+        } else if (Number(i) > 40 && Number(i) <= 100) {
           playSound('scream0'+ screamRand);
           $('#bkm-remaining-figure').text(size - 1);
           beatBkm(this);

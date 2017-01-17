@@ -52,7 +52,6 @@ get "/site" do
   io = open(uri, opt)
   hash = JSON.load(io)
   bkm = hash["bookmarks"]
-  p hash
   bkm.each {|var|
     user = var["user"]
     var["icon"] = "http://www.hatena.com/users/#{user[0,2]}/#{user}/profile.gif"
