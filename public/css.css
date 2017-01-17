@@ -157,6 +157,10 @@ input {
     padding: 5px 10px 5px 10px;
 }
 
+#bkm-remaining:hover {
+    cursor: pointer;
+}
+
 #bkm-remaining:active {
     background-color:#1E90FF;
 }
@@ -228,6 +232,10 @@ input {
     border-top: 3px solid #FFC8C8;
     margin-top:10px;
     color: #FFFFFF;
+}
+
+#footer:hover {
+    cursor: pointer;
 }
 
 #footer:active {

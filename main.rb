@@ -25,9 +25,7 @@ get "/" do
     doc = Nokogiri::XML(xml)
     doc.remove_namespaces!
     @entries = Array.new
-    i = 0
     doc.xpath('//item').each {|anchor|
-      i += 1
       item = Hash.new
       item["link"] = anchor.xpath("link").inner_text
       title_esc = anchor.xpath("title").inner_text.gsub("'", "’")
@@ -35,7 +33,6 @@ get "/" do
       item["bkmcount"] = anchor.xpath("bookmarkcount").inner_text.to_i
       desc_esc = anchor.xpath("description").inner_text[0,80].gsub("'", "’")
       item["description"] = CGI.escapeHTML(desc_esc)
-      item["entry_id"] = i
       @entries << item
     }
     erb :index
@@ -46,6 +43,28 @@ get "/about" do
   erb :about
 end
 
+
+get "/site" do
+  post_url = params[:url]
+  opt = {}
+  opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
+  uri = "http://b.hatena.ne.jp/entry/jsonlite/?url=#{post_url}" 
+  io = open(uri, opt)
+  hash = JSON.load(io)
+  bkm = hash["bookmarks"]
+  p hash
+  bkm.each {|var|
+    user = var["user"]
+    var["icon"] = "http://www.hatena.com/users/#{user[0,2]}/#{user}/profile.gif"
+    comment_esc = var["comment"]
+    var["comment"] = CGI.escapeHTML(comment_esc)
+    var.delete("timestamp")
+    var.delete("tags")
+  }  
+  erb :blank
+  content_type :json
+  @data = bkm.to_json
+end
 
 get "/:category" do
   category = params["category"]
@@ -63,9 +82,7 @@ get "/:category" do
     doc.remove_namespaces!
     @disp = doc.xpath('RDF/channel/title').inner_text
     @entries = Array.new
-    i = 0
     doc.xpath('//item').each {|anchor|
-      i += 1
       item = Hash.new
       item["link"] = anchor.xpath("link").inner_text
       title_esc = anchor.xpath("title").inner_text.gsub("'", "’")
@@ -73,7 +90,6 @@ get "/:category" do
       item["bkmcount"] = anchor.xpath("bookmarkcount").inner_text.to_i
       desc_esc = anchor.xpath("description").inner_text[0,80].gsub("'", "’")
       item["description"] = CGI.escapeHTML(desc_esc)
-      item["entry_id"] = i
       @entries << item
     }
     erb :index  

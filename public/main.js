@@ -1,9 +1,11 @@
 /*ブックマーク呼び出し------------------------------------------------------------*/
+
+
+
 $(function(){
   $('.entries').on('click', '.bkmcount', function(){
     var postUrl = $(this).parent().find('a').prop('href');
     var title = $(this).parent().find('a').text();
-    registerSound();
     $.ajax({
       type: "POST",
       url: "/post",
@@ -77,12 +79,100 @@ $(function(){
   });
 });
 
+
+
+$(function(){
+  $('#menu').on('click', '#submit', function(){
+    var val = $('#input').val();
+    var escapedVal = encodeURIComponent(val);
+    console.log(val);
+    $.ajax({
+      async: 'false',
+      type: 'get',
+      url: '/site',
+      dataType: 'text',
+      data: {
+        url: escapedVal,
+      },
+      success: function(json) {
+      dataType: "json",
+        $(function(){
+          window.scrollTo( 0, 0 ) ;
+          var bkmSource = JSON.parse(json);
+          $('#main').html(''
+            + '<div id="bkm-head">'
+            + '  <div id="entry-preview">'
+            + '     <a href="http://b.hatena.ne.jp/entry/' + val + '" target="_blank">はてなブックマーク――' + title +'</a>'
+            + '  </div>'
+            + '  <div id="float-right">'
+            + '    <div>'
+            + '      <label for="check">'
+            + '      ｜殴る<input type="checkbox" id="check" />'
+            + '      </label>'
+            + '      ＊注意＊音が鳴ります｜'
+            + '    </div>'
+            + '    <div id="bkm-remaining">'
+            + '      <span id="bkm-remaining-figure">' + bkmSource.length + '</span>users'
+            + '    </div>'
+            + '  </div>'
+            + '</div>'
+            + '<div id="bkm-contents"></div>'
+          );
+          bkmSource.forEach(function(source){
+            var rand = Math.floor( Math.random() * 7 );
+            var cl;
+            if (rand == 0) { cl = "#ffebee";
+            } else if (rand == 1) { cl = "#ede7f6";
+            } else if (rand == 2) { cl = "#fbe9e7";
+            } else if (rand == 3) { cl = "#e1f5fe";
+            } else if (rand == 4) { cl = "#e8f5e9";
+            } else if (rand == 5) { cl = "#fffde7";
+            } else if (rand == 6) { cl = "#eceff1";
+            }
+            $('#bkm-contents').append(''
+              + '<div class="bkm-box"  style="background-color:' + cl + '">'
+              + '  <div class="bkm-user">' + source['user'] + '</div>'
+              + '  <div class="bkm-icon"><img src="' + source['icon'] + '" width="48px" height="48px"></div>'
+              + '  <div class="bkm-comment">'+ source['comment'] +'</div>'
+              + '</div>'
+            );
+          });
+          $('#bkm-contents').append(''
+          + '<div class="bkm-box-cm"  style="background-color:#D3D3D3">'
+          + ' <div style="font-weight:bold;">《広告》</div>'
+          + ' <a href="https://px.a8.net/svt/ejp?a8mat=2NHZ7S+7QMWNU+50+2HCB1D" target="_blank"><img border="0" width="100" height="60" alt="" src="https://www28.a8.net/svt/bgt?aid=160402312468&wid=002&eno=01&mid=s00000000018015006000&mc=1"></a><img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=2NHZ7S+7QMWNU+50+2HCB1D" alt="">'
+          + '</div>'
+          + '<div class="bkm-box-cm"  style="background-color:#D3D3D3">'
+          + ' <div style="font-weight:bold;">《広告》</div>'
+          + ' <a href="https://px.a8.net/svt/ejp?a8mat=2TA3JG+448Z6I+3OIK+601S1" target="_blank"><img border="0" width="234" height="60" alt="" src="https://www20.a8.net/svt/bgt?aid=170112364249&wid=002&eno=01&mid=s00000017174001008000&mc=1"></a><img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=2TA3JG+448Z6I+3OIK+601S1" alt="">'
+          + '</div>'
+          + '<div class="bkm-box-cm"  style="background-color:#D3D3D3">'
+          + ' <div style="font-weight:bold;">《広告》</div>'
+          + ' <a href="https://px.a8.net/svt/ejp?a8mat=2TA5W3+FA4KII+3L4M+6F9M9" target="_blank"><img border="0" width="468" height="60" alt="" src="https://www29.a8.net/svt/bgt?aid=170115411924&wid=002&eno=01&mid=s00000016735001079000&mc=1"></a><img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=2TA5W3+FA4KII+3L4M+6F9M9" alt="">'
+          + '</div>'
+          );
+        });
+      },
+      error: function() {
+        $('#contents').html(''
+          +'<div id ="error">'
+          +'  <p>ERROR</p>'
+          +'  <p>ブックマークのついていないページと思われます。</p>'
+          +'  <p>ブックマークがあるページなのにエラーが出る場合はお手数ですが&it;sakuranoanko@gmail.com&gt;までご連絡ください。</p>'
+          +'</div>'
+        );
+      }
+    });
+  });
+});
+
 /*checkbox------------------------------------------------------------*/
 var canBeat = false;
 $(function() {
   $('#main').on('change', '#check', function(){
   	if ($(this).is(':checked')) {
   	  canBeat = true;
+      registerSound();
   	  $('.bkm-box').css('cursor', 'pointer');
   	  $('.bkm-box-cm').css('cursor', 'pointer');
   	  $('.cm-box').css('cursor', 'pointer');
