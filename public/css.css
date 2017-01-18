@@ -148,6 +148,12 @@ input {
     align-items:flex-end;
 }
 
+#tab-comments, #tab-all {
+    height: 20px;
+    width: 90px;
+    background-color:#ffc8c8;
+}
+
 #bkm-remaining {
     color: #FFFFFF;
     height:30px;
@@ -157,14 +163,6 @@ input {
     font-weight: bold;
     background-color: #FF9999;
     padding: 5px 10px 5px 10px;
-}
-
-#bkm-remaining:hover {
-    cursor: pointer;
-}
-
-#bkm-remaining:active {
-    background-color:#1E90FF;
 }
 
 #bkm-remaining-figure {
@@ -178,7 +176,7 @@ input {
     justify-content: left;
 }
 
-.bkm-box, .bkm-box-rival, .bkm-box-cm {
+.bkm-box, .bkm-box-dead, .bkm-box-cm {
     padding: 5px 5px 5px 5px;
     position: relative;
     min-width: 52px;
@@ -186,8 +184,8 @@ input {
     flex-grow: 2;
 }
 
-.bkm-box-rival {
-    font-weight: bold;
+.bkm-box-dead {
+    display:none;
 }
 
 .bkm-user {
@@ -236,10 +234,32 @@ input {
     color: #FFFFFF;
 }
 
-#footer:hover {
+#footer-right {
+    width:50%;
+    height:100%;
+    float:right;
+}
+
+
+#footer-left {
+    width:50%;
+    height:100%;
+    float:left;
+}
+
+#footer-left:hover {
     cursor: pointer;
 }
 
-#footer:active {
+#footer-left:active {
     background-color: #FFFF00;
 }
+
+#footer-right:hover {
+    cursor: pointer;
+}
+
+#footer-right:active {
+    background-color: #1E90FF;
+}
+

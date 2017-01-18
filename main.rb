@@ -15,7 +15,6 @@ helpers do
     alias_method :h, :escape_html
 end
 
-    
 
 get "/" do
     @disp = "はてなブックマーク - 人気エントリー - 総合"

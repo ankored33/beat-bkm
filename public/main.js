@@ -70,7 +70,7 @@ $(function(){
         });
       },
       error: function() {
-      $('#main').text('error');
+      location.href='/error' + escapedVal;
       }
       });
   });
@@ -85,7 +85,6 @@ $(function(){
     location.href='/site?url=' + escapedVal;
   });
 });
-
 
 
 /*checkbox------------------------------------------------------------*/
@@ -124,7 +123,6 @@ function beatBkm (bkm) {
   $.when(
     $(bkm).animate({ 'bottom':'300px','right': leftRand },150)
     ).done(function() {
-    $(bkm).hide();
     $(bkm).attr('class', "bkm-box-dead");
   });  
 }
@@ -158,8 +156,11 @@ $(function(){
           playSound('rival' + rival + '-die');
           $(this).find('.bkm-comment').css('color', 'red');
           $(this).find('.bkm-user').css('color', 'red');
-          $(this).fadeOut(1500);
-          $(this).attr('class', 'bkm-box-dead');
+          $.when(
+          $(this).fadeOut(1500)
+          ).done(
+          $(this).attr('class', 'bkm-box-dead')
+          );
           $('#bkm-remaining-figure').text(size - 1);
         }
       } else {

@@ -29,7 +29,7 @@ var r;
 var p;
 
 $(function(){
-  $('#container').on('click','#bkm-remaining', function(){
+  $('#footer').on('click','#footer-right', function(){
     r = Math.floor( Math.random() * 100 );
 
     if (loop===0) {
@@ -173,7 +173,7 @@ var mamiRand;
 var mamiSum = 0;
 
 $(function(){
-  $('#container').on('click','#footer', function(){
+  $('#footer').on('click','#footer-left', function(){
     if (mami===0) {
       lines = '\n\n\n\n\n\n\n\n';
       lines2 = '';
@@ -320,7 +320,7 @@ function sayamado() {
 
 function mamiFailed () {
   console.log ('\n'+
-'MAMI-SAN Failed...\n'+
+'MAMI-SAN failed...\n'+
 '%c\n'+
 '\n'+
 '\n'+
@@ -341,7 +341,7 @@ function mamiFailed () {
 
 function mamiSucceeded () {
   console.log ('\n'+
-'MAMI-SAN Succeeded!!\n' +  
+'MAMI-SAN succeeded!!\n' +  
 '%c　　　　　　　　　　　　　　　　　　　　 ○\n'+
 '　　　　　　　　　　　　　　　　　 　 　 く|7\n'+
 '　　　　　　　　　　　　　　　　　　　┌\'弋\n'+
