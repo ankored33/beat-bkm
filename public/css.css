@@ -128,7 +128,7 @@ input {
 #entry-preview {
     font-size:12px;
     font-weight: bold;
-    color: #FF9999;
+    color: #444F5A;
     background-color: #FFFFFF;
     padding: 6px;
     max-width:680px;
@@ -167,8 +167,14 @@ input {
 
 #bkm-remaining-figure {
     font-size:24px;
+    color: #FFFFFF;
     bottom: 0;
+    text-decoration: none;
 }    
+
+#bkm-remaining-figure:hover {
+    color:#FBEFF8;
+}
 
 #bkm-contents {
     display: flex;
@@ -232,19 +238,19 @@ input {
     border-top: 3px solid #FFC8C8;
     margin-top:10px;
     color: #FFFFFF;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #footer-right {
-    width:50%;
+    width:30px;
     height:100%;
-    float:right;
 }
 
 
 #footer-left {
-    width:50%;
+    width:30px;
     height:100%;
-    float:left;
 }
 
 #footer-left:hover {
