@@ -1,6 +1,6 @@
 <div id="bkm-head">
   <div id="entry-preview">
-      <a href="http://b.hatena.ne.jp/entry/<%= @url %>" target="_blank">記事のぶくまぺーじリンク</a>
+      <a href="http://b.hatena.ne.jp/entry/<%= @post_url %>" target="_blank">はてなブックマーク――<%= @title %></a>
   </div>
 
   <div id="float-right">
@@ -11,7 +11,7 @@
       ＊注意＊音が鳴ります｜
     </div>
     <div id="bkm-remaining">
-      公開ブクマ <span id="bkm-remaining-figure"><%= @bkm.size %></span>users
+      <span id="bkm-remaining-figure"><%= @bkm.size %></span>users
     </div>
   </div>
 </div>
@@ -42,3 +42,4 @@
   </div>
   <% end %>
 </div>
+

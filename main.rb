@@ -4,8 +4,10 @@ require "open-uri"
 require "nokogiri"
 require "sinatra/reloader" if development?
 require 'cgi'
-require 'erb'
-include ERB::Util
+
+
+#起動オプション
+#ruby main.rb -p $PORT -o $IP
 
 
 helpers do
@@ -48,26 +50,29 @@ get "/about" do
   erb :about
 end
 
+get "/error" do
+  erb :error
+end
 
 get "/site" do
-  post_url = params[:url]
+  @post_url = params[:url]
   opt = {}
   opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
-  uri = "http://b.hatena.ne.jp/entry/jsonlite/?url=#{post_url}" 
+  uri = "http://b.hatena.ne.jp/entry/jsonlite/?url=#{@post_url}" 
   io = open(uri, opt)
   hash = JSON.load(io)
-  bkm = hash["bookmarks"]
-  bkm.each {|var|
+  redirect to "/error" if hash == nil
+  @title = hash["title"]
+  @bkm = hash["bookmarks"]
+  @bkm.each {|var|
     user = var["user"]
     var["icon"] = "http://www.hatena.com/users/#{user[0,2]}/#{user}/profile.gif"
     comment_esc = var["comment"]
     var["comment"] = CGI.escapeHTML(comment_esc)
     var.delete("timestamp")
     var.delete("tags")
-  }  
-  erb :blank
-  content_type :json
-  @data = bkm.to_json
+  } 
+  erb :bkm
 end
 
 get "/:category" do
@@ -97,7 +102,7 @@ get "/:category" do
       item["description"] = CGI.escapeHTML(desc_esc)
       @entries << item
     }
-    erb :index  
+    erb :index
 end
 
 
