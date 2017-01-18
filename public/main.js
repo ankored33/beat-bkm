@@ -158,9 +158,9 @@ $(function(){
           $(this).find('.bkm-user').css('color', 'red');
           $.when(
           $(this).fadeOut(1500)
-          ).done(
-          $(this).attr('class', 'bkm-box-dead')
-          );
+          ).done(function(){
+            $(this).attr('class', 'bkm-box-dead')
+          });
           $('#bkm-remaining-figure').text(size - 1);
         }
       } else {
