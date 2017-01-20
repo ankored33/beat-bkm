@@ -32,8 +32,8 @@ require "nokogiri"
     tweet_url = "http://beat-htb.anko.red/site?url=" + select["link"]
     tweet_title = select["title"]
     tweet_count = select["count"]
-
-    tweet = "#{tweet_count}のはてなブックマーク→「#{tweet_title}」#{tweet_url}"
+    tweet_title = tweet_title[0, 128] if tweet_title.length > 129
+    tweet = "#{tweet_count}users　#{tweet_title}　 #{tweet_url}"
     p tweet.length
     p tweet
 
@@ -45,3 +45,17 @@ client = Twitter::REST::Client.new do |config|
 end
 
 client.update(tweet)
+
+
+=begin
+    source = "http://nikkei225jp.com/chart/"
+    opt = {}
+    opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
+    charset = nil
+    html = open(source,opt) do |f|
+      charset = f.charset #文字種別を取得
+      f.read #htmlを読み込んで変数htmlに渡す
+    end
+    doc = Nokogiri::HTML.parse(html)  
+    p doc.xpath('//*[@id="V111"]').inner_text
+=end

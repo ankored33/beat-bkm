@@ -18,7 +18,7 @@ $(function(){
           $('#main').html(''
             + '<div id="bkm-head">'
             + '  <div id="entry-preview">'
-            + '     <a href="' + postUrl + '" target="_blank">' + title +'</a>のはてブ一覧'
+            + '     <a href="' + postUrl + '" target="_blank">' + title +'</a> のはてブ一覧'
             + '  </div>'
             + '  <div id="float-right">'
             + '    <div>'
@@ -60,11 +60,11 @@ $(function(){
           + '</div>'
           + '<div class="bkm-box-cm"  style="background-color:#D3D3D3">'
           + ' <div style="font-weight:bold;">《広告》</div>'
-          + ' <a href="https://px.a8.net/svt/ejp?a8mat=2TA3JG+448Z6I+3OIK+601S1" target="_blank"><img border="0" width="234" height="60" alt="" src="https://www20.a8.net/svt/bgt?aid=170112364249&wid=002&eno=01&mid=s00000017174001008000&mc=1"></a><img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=2TA3JG+448Z6I+3OIK+601S1" alt="">'
+          + ' <a href="https://px.a8.net/svt/ejp?a8mat=2TA5W8+123S9M+3NMW+61JSH" target="_blank"><img border="0" width="234" height="60" alt="" src="https://www28.a8.net/svt/bgt?aid=170115416064&wid=002&eno=01&mid=s00000017060001015000&mc=1"></a><img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=2TA5W8+123S9M+3NMW+61JSH" alt="">'
           + '</div>'
           + '<div class="bkm-box-cm"  style="background-color:#D3D3D3">'
           + ' <div style="font-weight:bold;">《広告》</div>'
-          + ' <a href="https://px.a8.net/svt/ejp?a8mat=2TA5W3+FA4KII+3L4M+6F9M9" target="_blank"><img border="0" width="468" height="60" alt="" src="https://www29.a8.net/svt/bgt?aid=170115411924&wid=002&eno=01&mid=s00000016735001079000&mc=1"></a><img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=2TA5W3+FA4KII+3L4M+6F9M9" alt="">'
+          + ' <a href="https://px.a8.net/svt/ejp?a8mat=2TA5W8+UD5EI+3N2C+5ZMCH" target="_blank"><img border="0" width="234" height="60" alt="" src="https://www29.a8.net/svt/bgt?aid=170115416051&wid=002&eno=01&mid=s00000016986001006000&mc=1"></a><img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=2TA5W8+UD5EI+3N2C+5ZMCH" alt="">'
           + '</div>'
           );
         });
