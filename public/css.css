@@ -182,7 +182,7 @@ input {
     justify-content: left;
 }
 
-.bkm-box, .bkm-box-dead, .bkm-box-cm {
+.bkm-box, .bkm-box-dead, .bkm-box-cm ,.bkm-box-death {
     padding: 5px 5px 5px 5px;
     position: relative;
     min-width: 52px;

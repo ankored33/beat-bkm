@@ -156,6 +156,7 @@ $(function(){
           playSound('rival' + rival + '-die');
           $(this).find('.bkm-comment').css('color', 'red');
           $(this).find('.bkm-user').css('color', 'red');
+          $(this).attr('class', 'bkm-box-death');
           $.when(
           $(this).fadeOut(1500)
           ).done(function(){
