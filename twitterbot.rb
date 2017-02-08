@@ -33,7 +33,7 @@ require "nokogiri"
     tweet_title = select["title"]
     tweet_count = select["count"]
     tweet_title = tweet_title[0, 128] if tweet_title.length > 129
-    tweet = "#{tweet_count}users　#{tweet_title}　 #{tweet_url}"
+    tweet = "#{tweet_count}userを殴れます #{tweet_title}　 #{tweet_url}"
     p tweet.length
     p tweet
 
