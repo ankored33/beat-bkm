@@ -16,10 +16,11 @@ helpers do
 end
 
 
+
 get "/" do
+    rss="http://b.hatena.ne.jp/hotentry.rss"
     @disp = "はてなブックマーク - 人気エントリー - 総合"
     @bkm = Hash.new
-    rss = "http://b.hatena.ne.jp/hotentry.rss"
     opt = {}
     opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
     charset = nil
