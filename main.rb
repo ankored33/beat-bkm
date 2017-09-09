@@ -16,7 +16,6 @@ helpers do
 end
 
 
-
 get "/" do
     rss="http://b.hatena.ne.jp/hotentry.rss"
     @disp = "はてなブックマーク - 人気エントリー - 総合"
@@ -44,7 +43,6 @@ get "/" do
     }
     erb :index
 end
-
 
 get "/about" do
   erb :about
