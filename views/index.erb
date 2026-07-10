@@ -17,11 +17,10 @@
         <% else %>
           <% cl = "#90a4ae" %>
         <% end %>
-        <% bkm_link = "/site?url=#{CGI.escape(entry["link"])}" %>
-        <div class="entries" data-entry-url="<%= h entry["link"] %>" style="border-top : 3px solid <%= cl %>; border-left : 3px solid <%= cl %>">
-          <div class="entry-title"><a class="link" href="<%= bkm_link %>"><%= entry["title"] %></a></div>
-          <div class="bkmcount"><a href="<%= bkm_link %>"><%= entry["bkmcount"] %>users</a></div>
-          <div class="description"><a href="<%= bkm_link %>"><%= entry["description"] %>…</a></div>
+        <div class="entries" style="border-top : 3px solid <%= cl %>; border-left : 3px solid <%= cl %>">
+          <div class="entry-title"><a class="link" href="<%= entry["link"] %>" target="_blank"><%= entry["title"] %></a></div>
+          <div class="bkmcount"><%= entry["bkmcount"] %>users</div>
+          <div class="description"><%= entry["description"] %>…</div>
         </div>
       <% end %>
       <div class="cm-box">
