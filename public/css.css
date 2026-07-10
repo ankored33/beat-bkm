@@ -245,12 +245,14 @@ input {
 #footer-right {
     width:30px;
     height:100%;
+    background-color: #1E90FF;
 }
 
 
 #footer-left {
     width:30px;
     height:100%;
+    background-color: #FFFF00;
 }
 
 #footer-left:hover {
@@ -258,7 +260,7 @@ input {
 }
 
 #footer-left:active {
-    background-color: #FFFF00;
+    background-color: #FFD700;
 }
 
 #footer-right:hover {
@@ -266,5 +268,5 @@ input {
 }
 
 #footer-right:active {
-    background-color: #1E90FF;
+    background-color: #104E8B;
 }
