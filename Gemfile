@@ -1,10 +1,11 @@
 source "https://rubygems.org"
-ruby "2.2.4"
+ruby ">= 3.3"
 
-gem "sinatra"
+gem "sinatra", "~> 4.1"
+gem "rackup"
+gem "puma"
 gem "nokogiri"
-gem 'twitter'
 
 group :development, :test do
-  gem "sinatra-reloader"
+  gem "sinatra-contrib"
 end

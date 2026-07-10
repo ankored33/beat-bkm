@@ -37,11 +37,12 @@ require "nokogiri"
     p tweet.length
     p tweet
 
+# 2026-07-10: 平文直書きされていたAPIキーを除去（このbotはX API有料化により復活不能。ファイルは化石として保存）
 client = Twitter::REST::Client.new do |config|
-  config.consumer_key = "4nntKhspRiur4NXa56VN2kAH8"
-  config.consumer_secret = "DiTo9qGqjq9yHyFb7KEHnXGS1hdncCL7Evh4cZYpaAuQLQjE6l"
-  config.access_token        = "821251878893690882-uk7HwKCtUXU7IAcBMgEULyOUeZP9bA0"
-  config.access_token_secret = "1eDki1K3wWzTbcJNbEuVTjJ8Q9IgjpuIZg11G7IFzNdOy"
+  config.consumer_key = ENV["TWITTER_CONSUMER_KEY"]
+  config.consumer_secret = ENV["TWITTER_CONSUMER_SECRET"]
+  config.access_token        = ENV["TWITTER_ACCESS_TOKEN"]
+  config.access_token_secret = ENV["TWITTER_ACCESS_TOKEN_SECRET"]
 end
 
 client.update(tweet)
