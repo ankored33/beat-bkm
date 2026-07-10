@@ -9,3 +9,5 @@ services:
     envVars:
       - key: RACK_ENV
         value: production
+      - key: GTM_CONTAINER_ID
+        value: GTM-WV2DLTNM

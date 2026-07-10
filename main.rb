@@ -13,6 +13,11 @@ require 'cgi'
 helpers do
     include Rack::Utils
     alias_method :h, :escape_html
+
+    def gtm_container_id
+      id = ENV.fetch("GTM_CONTAINER_ID", "").strip.upcase
+      id.match?(/\AGTM-[A-Z0-9]+\z/) ? id : ""
+    end
 end
 
 
