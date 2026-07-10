@@ -1,6 +1,6 @@
 # 復旧作業ログ
 
-2026-07-10 / Ruby 3.3.11
+2026-07-10 / Ruby 3.3.11 / 所要17分（修正作業前プッシュ 16:39 → 復旧コミット 16:56。Ruby環境構築込み）
 
 - Gemfile.lock が Bundler 1.13.7 製 → bundle install が 1.13.7 を入れ直して `untaint` 削除（Ruby 3.2〜）でエラー → Gemfile.lock 削除して再生成
 - Gemfile が ruby 2.2.4 固定・sinatra-reloader gem 指定 → ruby 3.3以上、Sinatra 4.1 + rackup + puma、reloader は sinatra-contrib に変更。twitter gem 削除
