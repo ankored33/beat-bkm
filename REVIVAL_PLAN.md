@@ -84,7 +84,7 @@
    - はてなURL群を http → https
    - アイコンURL変更: `www.hatena.com/users/{u[0,2]}/{u}/profile.gif` → `https://cdn.profile-image.st-hatena.com/users/{user}/profile.gif`
 4. **ローカルで動作確認**（はてブのRSS `b.hatena.ne.jp/hotentry.rss` と jsonlite API は健在のはず）
-5. **デプロイ**: Render / Fly.io / Koyeb あたり。まず無料サブドメインで公開
+5. **デプロイ**: Render 無料枠（render.yaml 設定済み・プッシュ済み）。スリープ対策は UptimeRobot の5分間隔pingで起こしっぱなしにする（2026-07-10決定）
 6. twitterbot.rb は削除 or そのまま化石として残す（記事的には残す方が味がある。ただしAPIキーは必ず除去）
 
 ## 作業時の注意

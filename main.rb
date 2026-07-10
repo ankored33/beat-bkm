@@ -57,8 +57,12 @@ get "/site" do
   opt = {}
   opt["User-Agent"] = "Opera/9.80 (Windows NT 5.1; U; ja) Presto/2.7.62 Version/11.01 " #User-Agent偽装
   uri = "https://b.hatena.ne.jp/entry/jsonlite/?url=#{CGI.escape(@post_url)}"
-  io = URI.open(uri, opt)
-  hash = JSON.load(io)
+  begin
+    io = URI.open(uri, opt)
+    hash = JSON.load(io)
+  rescue OpenURI::HTTPError, JSON::ParserError
+    hash = nil
+  end
   redirect to "/error" if hash == nil
   @title = hash["title"]
   @bkm = hash["bookmarks"]

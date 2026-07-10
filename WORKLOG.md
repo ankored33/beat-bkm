@@ -14,5 +14,7 @@
 - jQuery 読み込みがプロトコル相対 `//` → https 固定
 - 楽天広告のサムネ画像が http（https配信だと混在コンテンツでブロックされる）→ https
 
+- ブクマ数千件の記事を殴ろうとすると jsonlite API が20〜30秒かかり、はてな側が時々504を返して /site が500でクラッシュ（当時から未処理）→ 取得失敗時は /error ページへリダイレクト
+
 動作確認: `/` `/it` `/about` `/error` 200、不正カテゴリ 302→/error、POST /post・/site 200。
 はてブRSS・jsonlite API・アイコンCDN・soundjs CDN・楽天のまどマギサムネ、外部依存は全部生きていた。
