@@ -1,8 +1,9 @@
 /*ホットエントリーのブックマーク呼び出し------------------------------------------------------------*/
 $(function(){
-  $('.entries').on('click', '.bkmcount', function(){
-    var postUrl = $(this).parent().find('a').prop('href');
-    var title = $(this).parent().find('a').text();
+  $('.entries').on('click', '.bkmcount', function(event){
+    if ($(event.target).is('a')) { return; }
+    var postUrl = $(this).parent().data('entry-url') || $(this).parent().find('a').prop('href');
+    var title = $(this).parent().find('.entry-title a').text();
     $.ajax({
       type: "POST",
       url: "/post",

@@ -90,6 +90,7 @@ input {
 .entry-title a {
     font-weight: bold;
     font-size:13px;
+    color:#000000;
 }
 
 .bkmcount {
@@ -105,6 +106,10 @@ input {
     text-decoration: underline;
 }
 
+.bkmcount a {
+    color: inherit;
+}
+
 
 
 .bkmcount:hover{
@@ -116,6 +121,11 @@ input {
     clear:both;
     word-break: break-all;
 }    
+
+.description a {
+    color: inherit;
+    text-decoration: none;
+}
 
 #bkm-head {
     border-bottom: 1px solid #FF9999;    
@@ -268,4 +278,3 @@ input {
 #footer-right:active {
     background-color: #1E90FF;
 }
-
