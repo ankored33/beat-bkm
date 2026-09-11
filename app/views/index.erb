@@ -1,0 +1,10 @@
+<h2><%= h @disp %></h2>
+<ul>
+  <% @entries.each do |entry| %>
+    <li>
+      <a href="<%= h entry.link %>" target="_blank" rel="noopener"><%= h entry.title %></a>
+      (<a href="<%= request.script_name %>/entry?url=<%= CGI.escape(entry.link) %>"><%= entry.bookmark_count %>users</a>)
+      <p><%= h entry.description %>…</p>
+    </li>
+  <% end %>
+</ul>

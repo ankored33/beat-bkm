@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="ブクマカを殴れる夢のサイト（近代化中）">
+  <title>殴れるはてブ（新版・作業中）</title>
+</head>
+<body>
+<!--
+  見た目は Phase 3 で作る（白基調＋ピンクアクセント、本家はてブ寄り。
+  MODERNIZATION_PLAN.md 2-4）。ここではルーティングと取得ロジックの
+  動作確認だけを目的にした素のHTML。
+-->
+<header>
+  <h1><a href="<%= request.script_name %>/">殴れるはてブ</a>（新版・作業中）</h1>
+  <nav>
+    <a href="<%= request.script_name %>/">総合</a>
+    <% Hatena::Hotentry::CATEGORIES.each do |c| %>
+      | <a href="<%= request.script_name %>/<%= c %>"><%= c %></a>
+    <% end %>
+    | <a href="<%= request.script_name %>/about">About</a>
+    | <a href="<%= settings.classic_base_path %>">クラシック版</a>
+  </nav>
+  <form action="<%= request.script_name %>/entry" method="get">
+    <input type="url" name="url" placeholder="https://..." required>
+    <button type="submit">見る</button>
+  </form>
+</header>
+<main>
+  <%= yield %>
+</main>
+</body>
+</html>

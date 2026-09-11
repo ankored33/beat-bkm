@@ -1,0 +1,16 @@
+<p><a href="<%= h @post_url %>" target="_blank" rel="noopener"><%= h(@title || @post_url) %></a> のはてブ一覧</p>
+<p><%= @bkm.size %>users</p>
+
+<% if @bkm.empty? %>
+  <p>ブックマークが見つかりませんでした。</p>
+<% else %>
+  <ul>
+    <% @bkm.each do |bm| %>
+      <li>
+        <img src="<%= h bm.icon %>" width="32" height="32" alt="">
+        <strong><%= h bm.user %></strong>
+        <span><%= h bm.comment %></span>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

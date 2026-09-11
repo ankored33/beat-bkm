@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns="http://purl.org/rss/1.0/"
+ xmlns:admin="http://webns.net/mvcb/"
+ xmlns:content="http://purl.org/rss/1.0/modules/content/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:hatena="http://www.hatena.ne.jp/info/xmlns#"
+ xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"
+ xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/"
+>
+
+<channel rdf:about="https://b.hatena.ne.jp/hotentry/all">
+<title>&#x306F;&#x3066;&#x306A;&#x30D6;&#x30C3;&#x30AF;&#x30DE;&#x30FC;&#x30AF; - &#x4EBA;&#x6C17;&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30FC; - &#x7DCF;&#x5408;</title>
+<link>https://b.hatena.ne.jp/hotentry/all</link>
+<description>&#x6700;&#x8FD1;&#x306E;&#x4EBA;&#x6C17;&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30FC;</description>
+<items></items>
+<item rdf:about="https://www.toyoeiwa.ac.jp/chu-ko/news/2026/09/025010.html">
+<title>&#x751F;&#x5F92;&#x793C;&#x62DD;&#xFF5C;&#x304A;&#x77E5;&#x3089;&#x305B;&#xFF5C;&#x6771;&#x6D0B;&#x82F1;&#x548C;&#x5973;&#x5B66;&#x9662; &#x4E2D;&#x5B66;&#x90E8;&#x30FB;&#x9AD8;&#x7B49;&#x90E8;</title>
+<link>https://www.toyoeiwa.ac.jp/chu-ko/news/2026/09/025010.html</link>
+<description>&#x751F;&#x5F92;&#x793C;&#x62DD;&#x306F;&#x3001;&#x4E3B;&#x306B;&#x9AD8;3&#x304C;&#x4E0B;&#x7D1A;&#x751F;&#x306B;&#x5411;&#x3051;&#x3066;&#x3001;&#x6771;&#x6D0B;&#x82F1;&#x548C;&#x3067;&#x5B66;&#x3093;&#x3060;&#x3053;&#x3068;&#x3092;&#x3075;&#x307E;&#x3048;&#x3066;&#x3001;&#x81EA;&#x5206;&#x306E;&#x601D;&#x3044;&#x3084;&#x4F1D;&#x3048;&#x305F;&#x3044;&#x3053;&#x3068;&#x3092;&#x304A;&#x8A71;&#x3057;&#x3057;&#x307E;&#x3059;&#x3002; &#x2015;&#x2015;&#x2015;&#x2015;&#x2015;&#x2015;&#x2015; &#x8056;&#x66F8;&#x6717;&#x8AAD;&#xFF1A;&#x30B3;&#x30EA;&#x30F3;&#x30C8;&#x306E;&#x4FE1;&#x5F92;&#x3078;&#x306E;&#x624B;&#x7D19;&#x4E00;&#x3000;12&#x7AE0;14&#xFF5E;18&#x7BC0; &#x300C;&#x8EAB;&#x4F53;&#x306F;&#x3001;&#x4E00;&#x3064;&#x306E;&#x90E8;&#x5206;&#x3067;&#x306F;&#x306A;&#x304F;&#x3001;&#x591A;&#x304F;&#x306E;&#x90E8;&#x5206;&#x304B;&#x3089;&#x6210;&#x3063;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;&#x8DB3;&#x304C;&#x3001;&#x300C;&#x308F;&#x305F;&#x3057;&#x306F;&#x624B;&#x3067;&#x306F;&#x306A;&#x3044;&#x304B;&#x3089;&#x3001;&#x4F53;&#x306E;&#x4E00;&#x90E8;&#x3067;&#x306F;&#x306A;&#x3044;&#x300D;&#x3068;&#x8A00;&#x3063;&#x305F;&#x3068;&#x3053;&#x308D;&#x3067;&#x3001;&#x4F53;&#x306E;...</description>
+<dc:date>2026-09-10T08:47:27Z</dc:date>
+<dc:subject>&#x5B66;&#x3073;</dc:subject>
+<dc:subject>&#x5B97;&#x6559;</dc:subject>
+<dc:subject>&#x3042;&#x3068;&#x3067;&#x8AAD;&#x3080;</dc:subject>
+<dc:subject>&#x6559;&#x80B2;</dc:subject>
+<dc:subject>&#x4EBA;&#x751F;</dc:subject>
+<dc:subject>&#x8003;&#x3048;&#x65B9;</dc:subject>
+<dc:subject>&#x30AD;&#x30EA;&#x30B9;&#x30C8;&#x6559;</dc:subject>
+<dc:subject>&#x5B66;&#x6821;</dc:subject>
+<dc:subject>&#x6587;&#x7AE0;</dc:subject>
+<dc:subject>&#x8AAD;&#x307F;&#x7269;</dc:subject>
+<dc:subject>education</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E5%AE%97%E6%95%99" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E3%81%82%E3%81%A8%E3%81%A7%E8%AA%AD%E3%82%80" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E6%95%99%E8%82%B2" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E4%BA%BA%E7%94%9F" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E8%80%83%E3%81%88%E6%96%B9" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E3%82%AD%E3%83%AA%E3%82%B9%E3%83%88%E6%95%99" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E5%AD%A6%E6%A0%A1" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E6%96%87%E7%AB%A0" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E8%AA%AD%E3%81%BF%E7%89%A9" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/education" />
+  </rdf:Bag>
+</taxo:topics>
+<content:encoded>&#x3C;blockquote cite=&#x22;https://www.toyoeiwa.ac.jp/chu-ko/news/2026/09/025010.html&#x22; title=&#x22;&#x751F;&#x5F92;&#x793C;&#x62DD;&#xFF5C;&#x304A;&#x77E5;&#x3089;&#x305B;&#xFF5C;&#x6771;&#x6D0B;&#x82F1;&#x548C;&#x5973;&#x5B66;&#x9662; &#x4E2D;&#x5B66;&#x90E8;&#x30FB;&#x9AD8;&#x7B49;&#x90E8;&#x22;&#x3E;&#x3C;cite&#x3E;&#x3C;img src=&#x22;https://cdn-ak2.favicon.st-hatena.com/64?url=https%3A%2F%2Fwww.toyoeiwa.ac.jp%2Fchu-ko%2Fnews%2F2026%2F09%2F025010.html&#x22; alt=&#x22;&#x22; /&#x3E; &#x3C;a href=&#x22;https://www.toyoeiwa.ac.jp/chu-ko/news/2026/09/025010.html&#x22;&#x3E;&#x751F;&#x5F92;&#x793C;&#x62DD;&#xFF5C;&#x304A;&#x77E5;&#x3089;&#x305B;&#xFF5C;&#x6771;&#x6D0B;&#x82F1;&#x548C;&#x5973;&#x5B66;&#x9662; &#x4E2D;&#x5B66;&#x90E8;&#x30FB;&#x9AD8;&#x7B49;&#x90E8;&#x3C;/a&#x3E;&#x3C;/cite&#x3E;&#x3C;p&#x3E;&#x3C;a href=&#x22;https://www.toyoeiwa.ac.jp/chu-ko/news/2026/09/025010.html&#x22;&#x3E;&#x3C;img src=&#x22;https://cdn-ak-scissors.b.st-hatena.com/image/square/b3b958f0d283dc5f48da6a363d97115c98242532/backend=imagemagick;height=90;version=1;width=120/https%3A%2F%2Fwww.toyoeiwa.ac.jp%2Fchu-ko%2Fcommon%2Fimages%2Fog-image.jpg&#x22; alt=&#x22;&#x751F;&#x5F92;&#x793C;&#x62DD;&#xFF5C;&#x304A;&#x77E5;&#x3089;&#x305B;&#xFF5C;&#x6771;&#x6D0B;&#x82F1;&#x548C;&#x5973;&#x5B66;&#x9662; &#x4E2D;&#x5B66;&#x90E8;&#x30FB;&#x9AD8;&#x7B49;&#x90E8;&#x22; title=&#x22;&#x751F;&#x5F92;&#x793C;&#x62DD;&#xFF5C;&#x304A;&#x77E5;&#x3089;&#x305B;&#xFF5C;&#x6771;&#x6D0B;&#x82F1;&#x548C;&#x5973;&#x5B66;&#x9662; &#x4E2D;&#x5B66;&#x90E8;&#x30FB;&#x9AD8;&#x7B49;&#x90E8;&#x22; class=&#x22;entry-image&#x22; /&#x3E;&#x3C;/a&#x3E;&#x3C;/p&#x3E;&#x3C;p&#x3E;&#x751F;&#x5F92;&#x793C;&#x62DD;&#x306F;&#x3001;&#x4E3B;&#x306B;&#x9AD8;3&#x304C;&#x4E0B;&#x7D1A;&#x751F;&#x306B;&#x5411;&#x3051;&#x3066;&#x3001;&#x6771;&#x6D0B;&#x82F1;&#x548C;&#x3067;&#x5B66;&#x3093;&#x3060;&#x3053;&#x3068;&#x3092;&#x3075;&#x307E;&#x3048;&#x3066;&#x3001;&#x81EA;&#x5206;&#x306E;&#x601D;&#x3044;&#x3084;&#x4F1D;&#x3048;&#x305F;&#x3044;&#x3053;&#x3068;&#x3092;&#x304A;&#x8A71;&#x3057;&#x3057;&#x307E;&#x3059;&#x3002; &#x2015;&#x2015;&#x2015;&#x2015;&#x2015;&#x2015;&#x2015; &#x8056;&#x66F8;&#x6717;&#x8AAD;&#xFF1A;&#x30B3;&#x30EA;&#x30F3;&#x30C8;&#x306E;&#x4FE1;&#x5F92;&#x3078;&#x306E;&#x624B;&#x7D19;&#x4E00;&#x3000;12&#x7AE0;14&#xFF5E;18&#x7BC0; &#x300C;&#x8EAB;&#x4F53;&#x306F;&#x3001;&#x4E00;&#x3064;&#x306E;&#x90E8;&#x5206;&#x3067;&#x306F;&#x306A;&#x304F;&#x3001;&#x591A;&#x304F;&#x306E;&#x90E8;&#x5206;&#x304B;&#x3089;&#x6210;&#x3063;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;&#x8DB3;&#x304C;&#x3001;&#x300C;&#x308F;&#x305F;&#x3057;&#x306F;&#x624B;&#x3067;&#x306F;&#x306A;&#x3044;&#x304B;&#x3089;&#x3001;&#x4F53;&#x306E;&#x4E00;&#x90E8;&#x3067;&#x306F;&#x306A;&#x3044;&#x300D;&#x3068;&#x8A00;&#x3063;&#x305F;&#x3068;&#x3053;&#x308D;&#x3067;&#x3001;&#x4F53;&#x306E;...&#x3C;/p&#x3E;&#x3C;p&#x3E;&#x3C;a href=&#x22;https://b.hatena.ne.jp/entry/s/www.toyoeiwa.ac.jp/chu-ko/news/2026/09/025010.html&#x22;&#x3E;&#x3C;img src=&#x22;https://b.hatena.ne.jp/entry/image/https://www.toyoeiwa.ac.jp/chu-ko/news/2026/09/025010.html&#x22; alt=&#x22;&#x306F;&#x3066;&#x306A;&#x30D6;&#x30C3;&#x30AF;&#x30DE;&#x30FC;&#x30AF; - &#x751F;&#x5F92;&#x793C;&#x62DD;&#xFF5C;&#x304A;&#x77E5;&#x3089;&#x305B;&#xFF5C;&#x6771;&#x6D0B;&#x82F1;&#x548C;&#x5973;&#x5B66;&#x9662; &#x4E2D;&#x5B66;&#x90E8;&#x30FB;&#x9AD8;&#x7B49;&#x90E8;&#x22; title=&#x22;&#x306F;&#x3066;&#x306A;&#x30D6;&#x30C3;&#x30AF;&#x30DE;&#x30FC;&#x30AF; - &#x751F;&#x5F92;&#x793C;&#x62DD;&#xFF5C;&#x304A;&#x77E5;&#x3089;&#x305B;&#xFF5C;&#x6771;&#x6D0B;&#x82F1;&#x548C;&#x5973;&#x5B66;&#x9662; &#x4E2D;&#x5B66;&#x90E8;&#x30FB;&#x9AD8;&#x7B49;&#x90E8;&#x22; border=&#x22;0&#x22; style=&#x22;border: none&#x22; /&#x3E;&#x3C;/a&#x3E; &#x3C;a href=&#x22;https://b.hatena.ne.jp/entry/s/www.toyoeiwa.ac.jp/chu-ko/news/2026/09/025010.html&#x22;&#x3E;&#x3C;img src=&#x22;https://b.st-hatena.com/images/append.gif&#x22; border=&#x22;0&#x22; alt=&#x22;&#x306F;&#x3066;&#x306A;&#x30D6;&#x30C3;&#x30AF;&#x30DE;&#x30FC;&#x30AF;&#x306B;&#x8FFD;&#x52A0;&#x22; title=&#x22;&#x306F;&#x3066;&#x306A;&#x30D6;&#x30C3;&#x30AF;&#x30DE;&#x30FC;&#x30AF;&#x306B;&#x8FFD;&#x52A0;&#x22; /&#x3E;&#x3C;/a&#x3E;&#x3C;/p&#x3E;&#x3C;/blockquote&#x3E;</content:encoded>
+<hatena:bookmarkCommentListPageUrl>https://b.hatena.ne.jp/entry/s/www.toyoeiwa.ac.jp/chu-ko/news/2026/09/025010.html</hatena:bookmarkCommentListPageUrl>
+<hatena:imageurl>https://www.toyoeiwa.ac.jp/chu-ko/common/images/og-image.jpg</hatena:imageurl>
+<hatena:bookmarkcount>1270</hatena:bookmarkcount>
+<hatena:bookmarkSiteEntriesListUrl>https://b.hatena.ne.jp/site/www.toyoeiwa.ac.jp/</hatena:bookmarkSiteEntriesListUrl>
+</item>
+<item rdf:about="https://orangestar2.hatenadiary.com/entry/2026/09/11/152905">
+<title>&#x6700;&#x8FD1;&#x306E;&#x6620;&#x753B;&#x304C;&#x898B;&#x308C;&#x3066;&#x306A;&#x3044;&#x30C9;&#x30D1;&#x5E74;&#x5BC4;&#x308A;&#x3067;&#x3059;&#x3002;&#x8A31;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002; - orangestar2</title>
+<link>https://orangestar2.hatenadiary.com/entry/2026/09/11/152905</link>
+<description>&#x3053;&#x3093;&#x3070;&#x3093;&#x308F;&#x3001;&#x30C9;&#x30D1;&#x5E74;&#x5BC4;&#x308A;&#x3067;&#x3059;&#x3002; &#x3059;&#x3044;&#x307E;&#x305B;&#x3093;&#x3001;&#x3082;&#x3046;&#x3001;&#x300C;&#x898B;&#x3068;&#x304F;&#x3079;&#x304D;&#x6620;&#x753B;100&#x9078;&#x300D;&#x3068;&#x304B;&#x3057;&#x307E;&#x305B;&#x3093;&#x3002; &#x5E74;&#x306E;&#x305B;&#x3044;&#x304B;&#x3001;&#x4ED6;&#x306E;&#x7406;&#x7531;&#x304C;&#x3042;&#x308B;&#x306E;&#x304B;&#x3001;&#x6700;&#x8FD1;&#x3001;&#x6620;&#x753B;&#x3092;&#x96C6;&#x4E2D;&#x3057;&#x3066;&#x307F;&#x308C;&#x306A;&#x304F;&#x306A;&#x308A;&#x307E;&#x3057;&#x305F;&#x3002;&#x672C;&#x3082;&#x3042;&#x307E;&#x308A;&#x8AAD;&#x3081;&#x3066;&#x307E;&#x305B;&#x3093;&#x3002; &#x6614;&#x306F;&#x5E74;&#x9593;100&#x518A;&#x672C;&#x3092;&#x8AAD;&#x3093;&#x3060;&#x308A;&#x3001;&#x6620;&#x753B;&#x3092;&#x5E74;&#x9593;100&#x672C;&#x898B;&#x305F;&#x308A;&#x3057;&#x3066;&#x3044;&#x305F;&#x306E;&#x306B;&#x2026;&#x2026;&#x3002; &#x3042;&#x306E;&#x3053;&#x308D;(2000&#x5E74;&#x4EE3;)&#x306B;&#x4E00;&#x756A;&#x6620;&#x753B;&#x3092;&#x898B;&#x305F;&#x308A;&#x3057;&#x3066;&#x3044;&#x305F;&#x306E;&#x3067;&#x3001;...</description>
+<dc:date>2026-09-11T06:30:29Z</dc:date>
+<dc:subject>&#x30A8;&#x30F3;&#x30BF;&#x30E1;</dc:subject>
+<dc:subject>&#x30AA;&#x30BF;&#x30AF;</dc:subject>
+<dc:subject>&#x6620;&#x753B;</dc:subject>
+<dc:subject>&#x3042;&#x3068;&#x3067;&#x8AAD;&#x3080;</dc:subject>
+<dc:subject>&#x8003;&#x3048;&#x65B9;</dc:subject>
+<dc:subject>movie</dc:subject>
+<dc:subject>&#x74B0;&#x5883;</dc:subject>
+<dc:subject>&#x4E16;&#x4EE3;</dc:subject>
+<dc:subject>&#x672C;</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E3%82%AA%E3%82%BF%E3%82%AF" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E6%98%A0%E7%94%BB" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E3%81%82%E3%81%A8%E3%81%A7%E8%AA%AD%E3%82%80" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E8%80%83%E3%81%88%E6%96%B9" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/movie" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E7%92%B0%E5%A2%83" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E4%B8%96%E4%BB%A3" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E6%9C%AC" />
+  </rdf:Bag>
+</taxo:topics>
+<content:encoded>&#x3C;blockquote cite=&#x22;https://orangestar2.hatenadiary.com/entry/2026/09/11/152905&#x22; title=&#x22;&#x6700;&#x8FD1;&#x306E;&#x6620;&#x753B;&#x304C;&#x898B;&#x308C;&#x3066;&#x306A;&#x3044;&#x30C9;&#x30D1;&#x5E74;&#x5BC4;&#x308A;&#x3067;&#x3059;&#x3002;&#x8A31;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002; - orangestar2&#x22;&#x3E;&#x3C;cite&#x3E;&#x3C;img src=&#x22;https://cdn-ak2.favicon.st-hatena.com/64?url=https%3A%2F%2Forangestar2.hatenadiary.com%2Fentry%2F2026%2F09%2F11%2F152905&#x22; alt=&#x22;&#x22; /&#x3E; &#x3C;a href=&#x22;https://orangestar2.hatenadiary.com/entry/2026/09/11/152905&#x22;&#x3E;&#x6700;&#x8FD1;&#x306E;&#x6620;&#x753B;&#x304C;&#x898B;&#x308C;&#x3066;&#x306A;&#x3044;&#x30C9;&#x30D1;&#x5E74;&#x5BC4;&#x308A;&#x3067;&#x3059;&#x3002;&#x8A31;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002; - orangestar2&#x3C;/a&#x3E;&#x3C;/cite&#x3E;&#x3C;p&#x3E;&#x3C;a href=&#x22;https://orangestar2.hatenadiary.com/entry/2026/09/11/152905&#x22;&#x3E;&#x3C;img src=&#x22;https://cdn-ak-scissors.b.st-hatena.com/image/square/a5dc4c1169682c66d29a9631fb1c55a0c9772550/backend=imagemagick;height=90;version=1;width=120/https%3A%2F%2Fcdn.image.st-hatena.com%2Fimage%2Fscale%2F96b2bb003ac29bdc5edffea360f9f3c9cda5fa76%2Fbackend%3Dimagemagick%3Bversion%3D1%3Bwidth%3D1300%2Fhttps%253A%252F%252Fcdn-ak.f.st-hatena.com%252Fimages%252Ffotolife%252Fo%252Forangestar%252F20260911%252F20260911152338.jpg&#x22; alt=&#x22;&#x6700;&#x8FD1;&#x306E;&#x6620;&#x753B;&#x304C;&#x898B;&#x308C;&#x3066;&#x306A;&#x3044;&#x30C9;&#x30D1;&#x5E74;&#x5BC4;&#x308A;&#x3067;&#x3059;&#x3002;&#x8A31;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002; - orangestar2&#x22; title=&#x22;&#x6700;&#x8FD1;&#x306E;&#x6620;&#x753B;&#x304C;&#x898B;&#x308C;&#x3066;&#x306A;&#x3044;&#x30C9;&#x30D1;&#x5E74;&#x5BC4;&#x308A;&#x3067;&#x3059;&#x3002;&#x8A31;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002; - orangestar2&#x22; class=&#x22;entry-image&#x22; /&#x3E;&#x3C;/a&#x3E;&#x3C;/p&#x3E;&#x3C;p&#x3E;&#x3053;&#x3093;&#x3070;&#x3093;&#x308F;&#x3001;&#x30C9;&#x30D1;&#x5E74;&#x5BC4;&#x308A;&#x3067;&#x3059;&#x3002; &#x3059;&#x3044;&#x307E;&#x305B;&#x3093;&#x3001;&#x3082;&#x3046;&#x3001;&#x300C;&#x898B;&#x3068;&#x304F;&#x3079;&#x304D;&#x6620;&#x753B;100&#x9078;&#x300D;&#x3068;&#x304B;&#x3057;&#x307E;&#x305B;&#x3093;&#x3002; &#x5E74;&#x306E;&#x305B;&#x3044;&#x304B;&#x3001;&#x4ED6;&#x306E;&#x7406;&#x7531;&#x304C;&#x3042;&#x308B;&#x306E;&#x304B;&#x3001;&#x6700;&#x8FD1;&#x3001;&#x6620;&#x753B;&#x3092;&#x96C6;&#x4E2D;&#x3057;&#x3066;&#x307F;&#x308C;&#x306A;&#x304F;&#x306A;&#x308A;&#x307E;&#x3057;&#x305F;&#x3002;&#x672C;&#x3082;&#x3042;&#x307E;&#x308A;&#x8AAD;&#x3081;&#x3066;&#x307E;&#x305B;&#x3093;&#x3002; &#x6614;&#x306F;&#x5E74;&#x9593;100&#x518A;&#x672C;&#x3092;&#x8AAD;&#x3093;&#x3060;&#x308A;&#x3001;&#x6620;&#x753B;&#x3092;&#x5E74;&#x9593;100&#x672C;&#x898B;&#x305F;&#x308A;&#x3057;&#x3066;&#x3044;&#x305F;&#x306E;&#x306B;&#x2026;&#x2026;&#x3002; &#x3042;&#x306E;&#x3053;&#x308D;(2000&#x5E74;&#x4EE3;)&#x306B;&#x4E00;&#x756A;&#x6620;&#x753B;&#x3092;&#x898B;&#x305F;&#x308A;&#x3057;&#x3066;&#x3044;&#x305F;&#x306E;&#x3067;&#x3001;...&#x3C;/p&#x3E;&#x3C;p&#x3E;&#x3C;a href=&#x22;https://b.hatena.ne.jp/entry/s/orangestar2.hatenadiary.com/entry/2026/09/11/152905&#x22;&#x3E;&#x3C;img src=&#x22;https://b.hatena.ne.jp/entry/image/https://orangestar2.hatenadiary.com/entry/2026/09/11/152905&#x22; alt=&#x22;&#x306F;&#x3066;&#x306A;&#x30D6;&#x30C3;&#x30AF;&#x30DE;&#x30FC;&#x30AF; - &#x6700;&#x8FD1;&#x306E;&#x6620;&#x753B;&#x304C;&#x898B;&#x308C;&#x3066;&#x306A;&#x3044;&#x30C9;&#x30D1;&#x5E74;&#x5BC4;&#x308A;&#x3067;&#x3059;&#x3002;&#x8A31;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002; - orangestar2&#x22; title=&#x22;&#x306F;&#x3066;&#x306A;&#x30D6;&#x30C3;&#x30AF;&#x30DE;&#x30FC;&#x30AF; - &#x6700;&#x8FD1;&#x306E;&#x6620;&#x753B;&#x304C;&#x898B;&#x308C;&#x3066;&#x306A;&#x3044;&#x30C9;&#x30D1;&#x5E74;&#x5BC4;&#x308A;&#x3067;&#x3059;&#x3002;&#x8A31;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002; - orangestar2&#x22; border=&#x22;0&#x22; style=&#x22;border: none&#x22; /&#x3E;&#x3C;/a&#x3E; &#x3C;a href=&#x22;https://b.hatena.ne.jp/entry/s/orangestar2.hatenadiary.com/entry/2026/09/11/152905&#x22;&#x3E;&#x3C;img src=&#x22;https://b.st-hatena.com/images/append.gif&#x22; border=&#x22;0&#x22; alt=&#x22;&#x306F;&#x3066;&#x306A;&#x30D6;&#x30C3;&#x30AF;&#x30DE;&#x30FC;&#x30AF;&#x306B;&#x8FFD;&#x52A0;&#x22; title=&#x22;&#x306F;&#x3066;&#x306A;&#x30D6;&#x30C3;&#x30AF;&#x30DE;&#x30FC;&#x30AF;&#x306B;&#x8FFD;&#x52A0;&#x22; /&#x3E;&#x3C;/a&#x3E;&#x3C;/p&#x3E;&#x3C;/blockquote&#x3E;</content:encoded>
+<hatena:bookmarkCommentListPageUrl>https://b.hatena.ne.jp/entry/s/orangestar2.hatenadiary.com/entry/2026/09/11/152905</hatena:bookmarkCommentListPageUrl>
+<hatena:imageurl>https://cdn.image.st-hatena.com/image/scale/96b2bb003ac29bdc5edffea360f9f3c9cda5fa76/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fo%2Forangestar%2F20260911%2F20260911152338.jpg</hatena:imageurl>
+<hatena:bookmarkSiteEntriesListUrl>https://b.hatena.ne.jp/site/orangestar2.hatenadiary.com/</hatena:bookmarkSiteEntriesListUrl>
+<hatena:bookmarkcount>182</hatena:bookmarkcount>
+</item>
+<item rdf:about="https://note.com/eichan_sh/n/n5730ca0e90bf">
+<title>&#x4E2D;&#x56FD;&#x3067;&#x8A55;&#x4FA1;&#x3055;&#x308C;&#x308B;&#x300E;&#x9244;&#x934B;&#x306E;&#x30B8;&#x30E3;&#x30F3;&#xFF01;&#x300F;&#xFF5C;&#x4E0A;&#x6D77;&#x5728;&#x4F4F;&#x306E;&#x3048;&#x3044;&#x3061;&#x3083;&#x3093;</title>
+<link>https://note.com/eichan_sh/n/n5730ca0e90bf</link>
+<description>&#x4ECA;&#x5E74;7&#x6708;&#x306B;&#x653E;&#x9001;&#x3055;&#x308C;&#x305F;&#x300E;&#x9244;&#x934B;&#x306E;&#x30B8;&#x30E3;&#x30F3;&#xFF01;&#x300F;&#x3002;&#x4E2D;&#x56FD;&#x3067;&#x306F;&#x6B63;&#x5F0F;&#x653E;&#x9001;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x306B;&#x3082;&#x304B;&#x304B;&#x308F;&#x3089;&#x305A;&#x3001;Bilibili&#x3067;&#x306F;&#x95A2;&#x9023;&#x52D5;&#x753B;&#x304C;&#x6B21;&#x3005;&#x3068;&#x6295;&#x7A3F;&#x3055;&#x308C;&#x3001;&#x3059;&#x3067;&#x306B;&#x30DE;&#x30A4;&#x30CA;&#x30FC;&#x4F5C;&#x54C1;&#x3068;&#x306F;&#x8A00;&#x3044;&#x5207;&#x308C;&#x306A;&#x3044;&#x307B;&#x3069;&#x6CE8;&#x76EE;&#x3092;&#x96C6;&#x3081;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002; 30&#x5E74;&#x524D;&#x306E;&#x300C;&#x72C2;&#x6C17;&#x306E;&#x6599;&#x7406;&#x6F2B;&#x753B;&#x300D;&#x306F;&#x3001;&#x3044;&#x307E;&#x4E2D;&#x56FD;&#x3067;&#x3069;&#x306E;&#x3088;&#x3046;&#x306B;&#x53D7;&#x3051;&#x6B62;&#x3081;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x306E;&#x304B;&#x3002;&#x73FE;&#x5730;&#x306E;&#x8A18;&#x4E8B;&#x3092;&#x7D39;&#x4ECB;&#x3057;&#x307E;&#x3059;&#x3002; &#x30E4;&#x30D0;&#x3059;&#x304E;&#x30B0;&#x30EB;&#x30E1;&#x4F5C;&#x54C1;...</description>
+<dc:date>2026-09-11T10:06:33Z</dc:date>
+<dc:subject>&#x66AE;&#x3089;&#x3057;</dc:subject>
+<dc:subject>&#x4E2D;&#x56FD;</dc:subject>
+<dc:subject>&#x30A2;&#x30CB;&#x30E1;</dc:subject>
+<dc:subject>&#x6599;&#x7406;</dc:subject>
+<dc:subject>&#x30AA;&#x30BF;&#x8AD6;</dc:subject>
+<dc:subject>&#x3042;&#x3068;&#x3067;&#x8AAD;&#x3080;</dc:subject>
+<dc:subject>anime</dc:subject>
+<dc:subject>&#x65E5;&#x672C;</dc:subject>
+<dc:subject>history</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E4%B8%AD%E5%9B%BD" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E3%82%A2%E3%83%8B%E3%83%A1" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E6%96%99%E7%90%86" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E3%82%AA%E3%82%BF%E8%AB%96" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E3%81%82%E3%81%A8%E3%81%A7%E8%AA%AD%E3%82%80" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/anime" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/%E6%97%A5%E6%9C%AC" />
+    <rdf:li resource="https://b.hatena.ne.jp/q/history" />
+  </rdf:Bag>
+</taxo:topics>
+<content:encoded>&#x3C;blockquote cite=&#x22;https://note.com/eichan_sh/n/n5730ca0e90bf&#x22; title=&#x22;&#x4E2D;&#x56FD;&#x3067;&#x8A55;&#x4FA1;&#x3055;&#x308C;&#x308B;&#x300E;&#x9244;&#x934B;&#x306E;&#x30B8;&#x30E3;&#x30F3;&#xFF01;&#x300F;&#xFF5C;&#x4E0A;&#x6D77;&#x5728;&#x4F4F;&#x306E;&#x3048;&#x3044;&#x3061;&#x3083;&#x3093;&#x22;&#x3E;&#x3C;cite&#x3E;&#x3C;img src=&#x22;https://cdn-ak2.favicon.st-hatena.com/64?url=https%3A%2F%2Fnote.com%2Feichan_sh%2Fn%2Fn5730ca0e90bf&#x22; alt=&#x22;&#x22; /&#x3E; &#x3C;a href=&#x22;https://note.com/eichan_sh/n/n5730ca0e90bf&#x22;&#x3E;&#x4E2D;&#x56FD;&#x3067;&#x8A55;&#x4FA1;&#x3055;&#x308C;&#x308B;&#x300E;&#x9244;&#x934B;&#x306E;&#x30B8;&#x30E3;&#x30F3;&#xFF01;&#x300F;&#xFF5C;&#x4E0A;&#x6D77;&#x5728;&#x4F4F;&#x306E;&#x3048;&#x3044;&#x3061;&#x3083;&#x3093;&#x3C;/a&#x3E;&#x3C;/cite&#x3E;&#x3C;p&#x3E;&#x3C;a href=&#x22;https://note.com/eichan_sh/n/n5730ca0e90bf&#x22;&#x3E;&#x3C;img src=&#x22;https://cdn-ak-scissors.b.st-hatena.com/image/square/4d7e319b6f49d31da36412ddc861903987ab8838/backend=imagemagick;height=90;version=1;width=120/https%3A%2F%2Fassets.st-note.com%2Fproduction%2Fuploads%2Fimages%2F312592503%2Frectangle_large_type_2_61c4ba89bd6140f6805bb9fedcf052c2.png%3Ffit%3Dbounds%26quality%3D85%26width%3D1280&#x22; alt=&#x22;&#x4E2D;&#x56FD;&#x3067;&#x8A55;&#x4FA1;&#x3055;&#x308C;&#x308B;&#x300E;&#x9244;&#x934B;&#x306E;&#x30B8;&#x30E3;&#x30F3;&#xFF01;&#x300F;&#xFF5C;&#x4E0A;&#x6D77;&#x5728;&#x4F4F;&#x306E;&#x3048;&#x3044;&#x3061;&#x3083;&#x3093;&#x22; title=&#x22;&#x4E2D;&#x56FD;&#x3067;&#x8A55;&#x4FA1;&#x3055;&#x308C;&#x308B;&#x300E;&#x9244;&#x934B;&#x306E;&#x30B8;&#x30E3;&#x30F3;&#xFF01;&#x300F;&#xFF5C;&#x4E0A;&#x6D77;&#x5728;&#x4F4F;&#x306E;&#x3048;&#x3044;&#x3061;&#x3083;&#x3093;&#x22; class=&#x22;entry-image&#x22; /&#x3E;&#x3C;/a&#x3E;&#x3C;/p&#x3E;&#x3C;p&#x3E;&#x4ECA;&#x5E74;7&#x6708;&#x306B;&#x653E;&#x9001;&#x3055;&#x308C;&#x305F;&#x300E;&#x9244;&#x934B;&#x306E;&#x30B8;&#x30E3;&#x30F3;&#xFF01;&#x300F;&#x3002;&#x4E2D;&#x56FD;&#x3067;&#x306F;&#x6B63;&#x5F0F;&#x653E;&#x9001;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x306B;&#x3082;&#x304B;&#x304B;&#x308F;&#x3089;&#x305A;&#x3001;Bilibili&#x3067;&#x306F;&#x95A2;&#x9023;&#x52D5;&#x753B;&#x304C;&#x6B21;&#x3005;&#x3068;&#x6295;&#x7A3F;&#x3055;&#x308C;&#x3001;&#x3059;&#x3067;&#x306B;&#x30DE;&#x30A4;&#x30CA;&#x30FC;&#x4F5C;&#x54C1;&#x3068;&#x306F;&#x8A00;&#x3044;&#x5207;&#x308C;&#x306A;&#x3044;&#x307B;&#x3069;&#x6CE8;&#x76EE;&#x3092;&#x96C6;&#x3081;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002; 30&#x5E74;&#x524D;&#x306E;&#x300C;&#x72C2;&#x6C17;&#x306E;&#x6599;&#x7406;&#x6F2B;&#x753B;&#x300D;&#x306F;&#x3001;&#x3044;&#x307E;&#x4E2D;&#x56FD;&#x3067;&#x3069;&#x306E;&#x3088;&#x3046;&#x306B;&#x53D7;&#x3051;&#x6B62;&#x3081;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x306E;&#x304B;&#x3002;&#x73FE;&#x5730;&#x306E;&#x8A18;&#x4E8B;&#x3092;&#x7D39;&#x4ECB;&#x3057;&#x307E;&#x3059;&#x3002; &#x30E4;&#x30D0;&#x3059;&#x304E;&#x30B0;&#x30EB;&#x30E1;&#x4F5C;&#x54C1;...&#x3C;/p&#x3E;&#x3C;p&#x3E;&#x3C;a href=&#x22;https://b.hatena.ne.jp/entry/s/note.com/eichan_sh/n/n5730ca0e90bf&#x22;&#x3E;&#x3C;img src=&#x22;https://b.hatena.ne.jp/entry/image/https://note.com/eichan_sh/n/n5730ca0e90bf&#x22; alt=&#x22;&#x306F;&#x3066;&#x306A;&#x30D6;&#x30C3;&#x30AF;&#x30DE;&#x30FC;&#x30AF; - &#x4E2D;&#x56FD;&#x3067;&#x8A55;&#x4FA1;&#x3055;&#x308C;&#x308B;&#x300E;&#x9244;&#x934B;&#x306E;&#x30B8;&#x30E3;&#x30F3;&#xFF01;&#x300F;&#xFF5C;&#x4E0A;&#x6D77;&#x5728;&#x4F4F;&#x306E;&#x3048;&#x3044;&#x3061;&#x3083;&#x3093;&#x22; title=&#x22;&#x306F;&#x3066;&#x306A;&#x30D6;&#x30C3;&#x30AF;&#x30DE;&#x30FC;&#x30AF; - &#x4E2D;&#x56FD;&#x3067;&#x8A55;&#x4FA1;&#x3055;&#x308C;&#x308B;&#x300E;&#x9244;&#x934B;&#x306E;&#x30B8;&#x30E3;&#x30F3;&#xFF01;&#x300F;&#xFF5C;&#x4E0A;&#x6D77;&#x5728;&#x4F4F;&#x306E;&#x3048;&#x3044;&#x3061;&#x3083;&#x3093;&#x22; border=&#x22;0&#x22; style=&#x22;border: none&#x22; /&#x3E;&#x3C;/a&#x3E; &#x3C;a href=&#x22;https://b.hatena.ne.jp/entry/s/note.com/eichan_sh/n/n5730ca0e90bf&#x22;&#x3E;&#x3C;img src=&#x22;https://b.st-hatena.com/images/append.gif&#x22; border=&#x22;0&#x22; alt=&#x22;&#x306F;&#x3066;&#x306A;&#x30D6;&#x30C3;&#x30AF;&#x30DE;&#x30FC;&#x30AF;&#x306B;&#x8FFD;&#x52A0;&#x22; title=&#x22;&#x306F;&#x3066;&#x306A;&#x30D6;&#x30C3;&#x30AF;&#x30DE;&#x30FC;&#x30AF;&#x306B;&#x8FFD;&#x52A0;&#x22; /&#x3E;&#x3C;/a&#x3E;&#x3C;/p&#x3E;&#x3C;/blockquote&#x3E;</content:encoded>
+<hatena:bookmarkCommentListPageUrl>https://b.hatena.ne.jp/entry/s/note.com/eichan_sh/n/n5730ca0e90bf</hatena:bookmarkCommentListPageUrl>
+<hatena:imageurl>https://assets.st-note.com/production/uploads/images/312592503/rectangle_large_type_2_61c4ba89bd6140f6805bb9fedcf052c2.png?fit=bounds&#x26;quality=85&#x26;width=1280</hatena:imageurl>
+<hatena:bookmarkcount>87</hatena:bookmarkcount>
+<hatena:bookmarkSiteEntriesListUrl>https://b.hatena.ne.jp/site/note.com/eichan_sh</hatena:bookmarkSiteEntriesListUrl>
+</item>
+<item rdf:about="https://example.com/test">
+<title>A &amp; B &lt;test&gt; &#x27;quote&#x27;</title>
+<link>https://example.com/test</link>
+<hatena:bookmarkcount>5</hatena:bookmarkcount>
+<description>desc with &amp; and &lt;tag&gt;</description>
+</item>
+</channel>
+</rdf:RDF>

@@ -165,12 +165,18 @@ Render 無料枠にはプレビュー環境がないので、新版は本番の 
 5. `app/` の空の Modern::App を `/next` にマウント（`/next/healthz` だけ 200）
 6. デプロイ。本番 `/` は無変化、`/next/healthz` が 200
 
-### Phase 2：新版バックエンド（1 日）— `/next/` で動く
-1. `app/hatena/*` を実装、フィクスチャ付きテスト
-2. ルート実装（2-2）。`/site` 互換リダイレクト、404、エラー表示
-3. キャッシュとタイムアウト
-4. ビューは素の HTML で機能パリティを確認（見た目は次フェーズ）
-5. デプロイ。`/next/`, `/next/it`, `/next/entry?url=` を確認
+### Phase 2：新版バックエンド（完了・2026-09-11）— `/next/` で動く
+1. `app/hatena/client.rb`（タイムアウト付き HTTP）・`hotentry.rb`（RSS解析）・`bookmarks.rb`（jsonlite解析）を実装。
+   fetcher は `#call` を持つオブジェクトを DI（既定は `Client.method(:get)`）してテストではネットワーク不要に
+2. ルート実装（2-2）。`/site` は 301 で `/entry` へ、`/entry` 未指定は 400、無効カテゴリは 404、取得失敗はページ内にメッセージ表示（クラシックのように `/error` へ強制遷移しない）
+3. `Modern::Cache`（Mutex 付き TTL メモリキャッシュ、RSS 5分 / jsonlite 10分）と `Hatena::Client` のタイムアウト（open 5s / read 20s）
+4. ビューは素の HTML（見た目は Phase 3）
+5. 実データで動作確認：キャッシュ有効時 2ms 台、`/it` `/about` `/entry` `/site` `/api/bookmarks` 200、無効カテゴリ 404
+
+**実装中に見つかったこと**
+- ルート定義順のバグ：`/:category`（catch-all）を `/entry` `/site` `/about` より先に書くと、これらのパスを `category` として奪ってしまう（`category="entry"` など）。固定パスは catch-all より前に置く
+- クラシック版の隠れたバグを発見：ブックマーク0件のURLに対して jsonlite API は本文 `null`・HTTP 200 を返す。クラシックはこれを `HTTPError` と誤認して `/error` に飛ばしていたが、実際はエラーではなく「0件」。新版では正しく0件として扱う（記事素材候補）
+- fetcher に渡すテストダブルは `#call` 前提に統一（最初 `#get` と混在させて `NoMethodError` を出した）
 
 ### Phase 3：新版フロントエンド（1〜2 日）— `/next/` で完成形に
 1. `app.css`（トークン・グリッド・ダーク）
