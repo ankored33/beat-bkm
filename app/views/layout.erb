@@ -3,32 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="ブクマカを殴れる夢のサイト（近代化中）">
-  <title>殴れるはてブ（新版・作業中）</title>
+  <meta name="description" content="ブクマカを殴れる夢のサイト">
+  <meta name="theme-color" content="#ff9999">
+  <link rel="icon" type="image/svg+xml" href="<%= request.script_name %>/favicon.svg">
+  <meta property="og:title" content="殴れるはてブ">
+  <meta property="og:description" content="ブクマカを殴れる夢のサイト">
+  <meta property="og:type" content="website">
+  <title><%= @page_title || "殴れるはてブ" %></title>
+  <link rel="stylesheet" href="<%= request.script_name %>/app.css">
 </head>
-<body>
-<!--
-  見た目は Phase 3 で作る（白基調＋ピンクアクセント、本家はてブ寄り。
-  MODERNIZATION_PLAN.md 2-4）。ここではルーティングと取得ロジックの
-  動作確認だけを目的にした素のHTML。
--->
-<header>
-  <h1><a href="<%= request.script_name %>/">殴れるはてブ</a>（新版・作業中）</h1>
-  <nav>
-    <a href="<%= request.script_name %>/">総合</a>
-    <% Hatena::Hotentry::CATEGORIES.each do |c| %>
-      | <a href="<%= request.script_name %>/<%= c %>"><%= c %></a>
-    <% end %>
-    | <a href="<%= request.script_name %>/about">About</a>
-    | <a href="<%= settings.classic_base_path %>">クラシック版</a>
-  </nav>
-  <form action="<%= request.script_name %>/entry" method="get">
-    <input type="url" name="url" placeholder="https://..." required>
-    <button type="submit">見る</button>
-  </form>
-</header>
-<main>
-  <%= yield %>
-</main>
+<body data-base="<%= request.script_name %>">
+<div class="wrap">
+  <header class="site-header">
+    <h1 class="site-title"><a href="<%= request.script_name %>/"><span class="mark">殴</span>れるはてブ</a></h1>
+    <p class="tagline">ブクマカを殴れる夢のサイト｜<a href="<%= settings.classic_base_path %>">クラシック版</a>はこちら</p>
+    <nav class="site-nav" aria-label="カテゴリ">
+      <a href="<%= request.script_name %>/"<%= ' aria-current="page"' if @disp && !@category %>>総合</a>
+      <% Hatena::Hotentry::CATEGORY_LABELS.each do |slug, label| %>
+        <a href="<%= request.script_name %>/<%= slug %>"<%= ' aria-current="page"' if @category == slug %>><%= label %></a>
+      <% end %>
+      <a href="<%= request.script_name %>/about">About</a>
+    </nav>
+    <form class="url-form" action="<%= request.script_name %>/entry" method="get">
+      <input type="url" name="url" placeholder="https://..." aria-label="URLを指定してブクマ一覧を見る" required>
+      <button type="submit">見る</button>
+    </form>
+  </header>
+  <main>
+    <%= yield %>
+  </main>
+  <footer class="site-footer">
+    <p>
+      <a href="<%= request.script_name %>/about">About</a>
+      ｜10年前のオリジナルは<a href="<%= settings.classic_base_path %>">クラシック版</a>でそのまま動いています
+    </p>
+  </footer>
+</div>
+<script>
+  console.log("%cクラシック版（コンソール芸つき）→ %s", "color:#ff9999;font-weight:bold", "<%= settings.classic_base_path %>");
+</script>
+<script src="<%= request.script_name %>/beat.js" defer></script>
 </body>
 </html>

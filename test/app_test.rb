@@ -41,7 +41,7 @@ class ModernAppTest < Minitest::Test
       assert last_response.ok?
       assert_includes last_response.body, "テスト総合"
       assert_includes last_response.body, "見出し"
-      assert_includes last_response.body, "3users"
+      assert_includes last_response.body, "3 users"
     end
   end
 

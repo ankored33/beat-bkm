@@ -178,12 +178,23 @@ Render 無料枠にはプレビュー環境がないので、新版は本番の 
 - クラシック版の隠れたバグを発見：ブックマーク0件のURLに対して jsonlite API は本文 `null`・HTTP 200 を返す。クラシックはこれを `HTTPError` と誤認して `/error` に飛ばしていたが、実際はエラーではなく「0件」。新版では正しく0件として扱う（記事素材候補）
 - fetcher に渡すテストダブルは `#call` 前提に統一（最初 `#get` と混在させて `NoMethodError` を出した）
 
-### Phase 3：新版フロントエンド（1〜2 日）— `/next/` で完成形に
-1. `app.css`（トークン・グリッド・ダーク）
-2. `beat.js`（Web Audio・アニメ・判定移植）。判定は純関数で単体テスト
-3. 一覧・エントリページの調整、スマホ実機確認（iOS Safari で音が鳴るか）
-4. About、OGP（URL は仮）、favicon
-5. デプロイ。しばらく `/next/` を自分で使って様子を見る
+### Phase 3：新版フロントエンド（完了・2026-09-11）— `/next/` で完成形に
+1. `public/app.css`：トークン・グリッド。白基調＋ピンクアクセント、ダーク無し
+2. `public/beat.js`：Web Audio（AudioContext + decodeAudioData）で殴る機能を移植。
+   判定ロジック（コメント長・ライバル種別）はクラシックのものを踏襲
+3. `app/views/*` を新デザインに合わせて全面書き直し（layout / index / entry / about / error / not_found）
+4. About、OGP、`theme-color`、`favicon.svg`
+5. Playwright（ヘッドレスChromium、ライブラリをユーザー権限でapt-get download→展開してLD_LIBRARY_PATHで解決）で
+   実際にスクリーンショットして確認。PC幅・スマホ幅（390px）両方、および「殴る」操作の実動作
+   （チェックON→クリック→カウント減少→要素が消える、コンソールエラー無し）をヘッドレスブラウザで検証済み
+
+**デザインの根拠**：本家 b.hatena.ne.jp/hotentry の HTML と実際の `bookmark.css` を取得して確認した上で数値を決めた
+（背景 `#fff`/`#f6f7f8`、文字色 `#25282b`/`#55606a`/`#999`、フォントは `Helvetica Neue, Helvetica, Arial,
+Hiragino Kaku Gothic Pro, Meiryo` 系、角丸 3〜4px、エントリーカードは `border-top:4px` 固定1色）。
+本家はエントリーカードの罫線をカテゴリ別に色分けしておらず、全カテゴリ共通のグレー1色だった
+（クラシック版の「7色ランダム罫線」は本家に無い、こちら独自の演出と判明）。ちなみに本家も
+ブクマ数リンクに `#ff7790` というピンクを使っており、青一色ではなかった（発見）。
+新版はこの「1色固定」という本家の流儀に寄せつつ、その1色をピンクにしている。
 
 ### Phase 4：差し替え（1 コミット + 半日）
 1. `config.ru`：`/` → Modern、`/classic` → Classic、`/next` → `/` へリダイレクト

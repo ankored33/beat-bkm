@@ -13,7 +13,19 @@ module Hatena
   module Hotentry
     TOP_RSS = "https://b.hatena.ne.jp/hotentry.rss"
     CATEGORY_RSS = "https://b.hatena.ne.jp/hotentry/%s.rss"
-    CATEGORIES = %w[social economics life knowledge it fun entertainment game].freeze
+
+    # スラッグ => ナビゲーション表示名。クラシック版のメニュー文言を踏襲。
+    CATEGORY_LABELS = {
+      "social" => "世の中",
+      "economics" => "政治と経済",
+      "life" => "暮らし",
+      "knowledge" => "学び",
+      "it" => "テクノロジー",
+      "fun" => "おもしろ",
+      "entertainment" => "エンタメ",
+      "game" => "アニメとゲーム"
+    }.freeze
+    CATEGORIES = CATEGORY_LABELS.keys.freeze
 
     module_function
 

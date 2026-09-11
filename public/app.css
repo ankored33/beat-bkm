@@ -1,0 +1,342 @@
+/*
+  デザイン方針（MODERNIZATION_PLAN.md 2-4）：
+  はてなブックマークのパロディサイトなので、本家と同じ白基調にし、
+  本家の青系アクセントに対してこちらはピンク（クラシック版の
+  #FFC8C8 / #FF9999 に近い方向）を使う。ダークモードは採用しない。
+  ダークパターン（同意誘導・偽の緊急性・隠しコストなど）も使わない。
+
+  フォント・配色・角丸のサイズ感は、2026-09-11 時点で実際に
+  b.hatena.ne.jp/hotentry と本家の bookmark.css を取得して確認した値
+  （white #fff / subtle #f6f7f8 / text #25282b,#55606a,#999 /
+  border-radius 3〜4px / エントリーカードは border-top 4px 固定色）
+  に合わせている。本家はカードの罫線を全カテゴリ共通のグレー1色に
+  していて、クラシック版の「7色ランダム罫線」は本家には無い、こちら
+  独自の演出だったと判明した。なので新版では本家の流儀（1色固定）に
+  寄せつつ、その1色をピンクにする。ちなみに本家自身もブクマ数リンクに
+  #ff7790 というピンクを使っている（発見。青一色ではなかった）。
+*/
+
+:root {
+  --bg: #ffffff;
+  --bg-subtle: #f6f7f8;
+  --text: #25282b;
+  --text-muted: #55606a;
+  --text-faint: #999999;
+  --border: #ececec;
+  --link: #d6336c;       /* 本文中のリンク色。白背景でAAを満たす濃いピンク */
+  --link-visited: #a52a5a;
+  --accent: #ff9999;     /* クラシック版のピンク */
+  --accent-light: #ffc8c8; /* クラシック版の薄ピンク */
+  --accent-strong: #e0527a;
+  --danger: #d6336c;
+  --radius: 4px;
+  --max-width: 1050px;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0 16px;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.7 "Helvetica Neue", Helvetica, Arial, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", Meiryo, sans-serif;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:visited {
+  color: var(--link-visited);
+}
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ---------- header ---------- */
+
+.site-header {
+  border-bottom: 3px solid var(--accent);
+  padding: 20px 0 12px;
+}
+
+.site-title {
+  margin: 0 0 4px;
+  font-size: 26px;
+  font-weight: 700;
+}
+.site-title a {
+  color: var(--text);
+}
+.site-title .mark {
+  color: var(--accent-strong);
+}
+
+.tagline {
+  margin: 0 0 14px;
+  color: var(--text-faint);
+  font-size: 13px;
+}
+.tagline a {
+  color: var(--text-faint);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 2px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.site-nav a {
+  padding: 4px 8px;
+  border-radius: 999px;
+  color: var(--text);
+}
+.site-nav a:hover {
+  background: var(--accent-light);
+  text-decoration: none;
+}
+.site-nav a[aria-current="page"] {
+  background: var(--accent);
+  color: #fff;
+}
+
+.url-form {
+  display: flex;
+  gap: 6px;
+  max-width: 480px;
+}
+.url-form input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  font-size: 14px;
+}
+.url-form input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.url-form button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.url-form button:hover {
+  background: var(--accent-strong);
+}
+
+/* ---------- main ---------- */
+
+main {
+  padding: 20px 0 60px;
+}
+
+.page-title {
+  font-size: 17px;
+  margin: 0 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---------- entry cards (hotentry list) ---------- */
+/* 本家 .entrylist-contents は border-top:4px solid #999 の固定1色。
+   ここでは同じ構造でアクセントをピンクにする。 */
+
+.entries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.entry-card {
+  border-top: 4px solid var(--accent);
+  border-bottom: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-subtle);
+  padding: 15px;
+}
+
+.entry-card .entry-title {
+  display: block;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.entry-card .entry-meta {
+  margin-bottom: 6px;
+}
+.entry-card .entry-meta a {
+  color: #ff7790; /* 本家のブクマ数リンクと同じ色 */
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.entry-card .entry-desc {
+  margin: 0;
+  color: var(--text-faint);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ---------- entry(bkm) page ---------- */
+
+.entry-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 20px;
+  margin-bottom: 16px;
+}
+.entry-head .entry-source {
+  font-size: 15px;
+  font-weight: 700;
+}
+.entry-head .bkm-count {
+  color: var(--text-faint);
+  font-size: 14px;
+}
+
+.beat-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px;
+}
+.beat-toggle input {
+  width: 18px;
+  height: 18px;
+}
+.beat-toggle .warn {
+  color: var(--text-faint);
+}
+
+.bkm-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.bkm-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 10px 12px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: transform .25s ease, opacity .25s ease;
+}
+.bkm-item img {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background: var(--bg);
+}
+.bkm-item .bkm-user {
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+.bkm-item .bkm-comment {
+  font-size: 14px;
+  word-break: break-word;
+}
+
+.bkm-item.beatable {
+  cursor: pointer;
+}
+.bkm-item.beatable:hover {
+  border-color: var(--accent);
+}
+.bkm-item.hit {
+  transform: translate(var(--dx, 40px), var(--dy, -20px)) rotate(8deg);
+  opacity: 0;
+}
+.bkm-item.defeated .bkm-comment,
+.bkm-item.defeated .bkm-user {
+  color: var(--danger);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bkm-item {
+    transition: opacity .2s linear;
+  }
+  .bkm-item.hit {
+    transform: none;
+  }
+}
+
+.empty-state {
+  color: var(--text-faint);
+  padding: 24px;
+  text-align: center;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
+
+/* ---------- misc pages ---------- */
+
+.error-box {
+  padding: 24px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--bg-subtle);
+}
+
+.about-box {
+  max-width: 640px;
+}
+.about-box h2 {
+  font-size: 16px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+
+footer.site-footer {
+  padding: 20px 0 40px;
+  color: var(--text-faint);
+  font-size: 12px;
+  border-top: 1px solid var(--border);
+}
+footer.site-footer a {
+  color: var(--text-faint);
+}
+
+@media (max-width: 480px) {
+  .site-title {
+    font-size: 20px;
+  }
+  .entries {
+    grid-template-columns: 1fr;
+  }
+}

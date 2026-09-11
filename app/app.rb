@@ -86,8 +86,10 @@ module Modern
     private
 
     def show_hotentry(category)
+      @category = category
       cache_key = category || :top
       @disp, @entries = CACHE.fetch(cache_key, HOTENTRY_TTL) { Hatena::Hotentry.fetch(category) }
+      @page_title = "#{@disp} - 殴れるはてブ"
       erb :index
     rescue Hatena::FetchError
       @message = "はてなブックマークからの取得に失敗しました。しばらくしてからお試しください。"
@@ -102,6 +104,7 @@ module Modern
 
       @post_url = url
       @title, @bkm = CACHE.fetch(url, BOOKMARKS_TTL) { Hatena::Bookmarks.fetch(url) }
+      @page_title = "#{@title || @post_url} のはてブ一覧 - 殴れるはてブ"
       erb :entry
     rescue Hatena::FetchError
       @message = "ブックマーク情報の取得に失敗しました（はてな側が混雑しているか、巨大なエントリの可能性があります）。しばらくしてからお試しください。"

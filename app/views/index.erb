@@ -1,10 +1,17 @@
-<h2><%= h @disp %></h2>
-<ul>
-  <% @entries.each do |entry| %>
-    <li>
-      <a href="<%= h entry.link %>" target="_blank" rel="noopener"><%= h entry.title %></a>
-      (<a href="<%= request.script_name %>/entry?url=<%= CGI.escape(entry.link) %>"><%= entry.bookmark_count %>users</a>)
-      <p><%= h entry.description %>…</p>
-    </li>
-  <% end %>
-</ul>
+<h2 class="page-title"><%= h @disp %></h2>
+
+<% if @entries.empty? %>
+  <p class="empty-state">エントリーがありません。</p>
+<% else %>
+  <ul class="entries">
+    <% @entries.each do |entry| %>
+      <li class="entry-card">
+        <a class="entry-title" href="<%= h entry.link %>" target="_blank" rel="noopener"><%= h entry.title %></a>
+        <p class="entry-meta">
+          <a href="<%= request.script_name %>/entry?url=<%= CGI.escape(entry.link) %>"><%= entry.bookmark_count %> users</a>
+        </p>
+        <p class="entry-desc"><%= h entry.description %>…</p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,4 +1,23 @@
-<h2>About（新版・作業中）</h2>
-<p>はてなブックマークのホットエントリーと、そのブックマークコメントを閲覧できるサイトです。</p>
-<p>この新版は近代化作業の途中で、見た目はまだ整っていません。10年前のオリジナルは
-<a href="<%= settings.classic_base_path %>">クラシック版</a>でそのまま動いています。</p>
+<div class="about-box">
+  <h2>About</h2>
+  <p>はてなブックマークのホットエントリーと、そのブックマークコメントを閲覧できるサイトです。</p>
+  <p>ついでにブコメを殴れます。殴る際は各エントリーページの「殴る」チェックをオンにしてください。音が出ますので注意してください。</p>
+
+  <h2>サイト制作素材</h2>
+  <p><a href="https://b.hatena.ne.jp/" target="_blank" rel="noopener">はてなブックマーク</a></p>
+  <p>音声素材</p>
+  <ul>
+    <li>打撃音、悲鳴、ライバル声（女）：<a href="http://soundeffect-lab.info/" target="_blank" rel="noopener">「効果音ラボ」</a></li>
+    <li>ライバル声（男）：<a href="http://wingless-seraph.net/" target="_blank" rel="noopener">「Wingless Seraph」</a></li>
+  </ul>
+
+  <h2>この新版について</h2>
+  <p>2016〜2017年に作った<a href="<%= settings.classic_base_path %>">クラシック版</a>を、2026年に近代化したものです。
+  jQuery / SoundJS をやめて素の JavaScript と Web Audio API に、見た目は本家はてなブックマークに寄せた
+  白基調＋ピンクにしています。クラシック版はコンソールにいたずらが仕込んであるので、そちらもぜひ。</p>
+
+  <h2>履歴</h2>
+  <p>2017.1.15 クラシック版 公開</p>
+  <p>2026.7.10 クラシック版 復旧（Ruby/Sinatraのアップデート、依存先URLの修正など）</p>
+  <p>2026.9.11 新版 公開</p>
+</div>
