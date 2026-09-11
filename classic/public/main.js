@@ -1,3 +1,5 @@
+var BASE = window.BASE || "";
+
 /*ホットエントリーのブックマーク呼び出し------------------------------------------------------------*/
 $(function(){
   $('.entries').on('click', '.bkmcount', function(){
@@ -5,7 +7,7 @@ $(function(){
     var title = $(this).parent().find('a').text();
     $.ajax({
       type: "POST",
-      url: "/post",
+      url: BASE + "/post",
       dataType: "text",
       data: {
         post_url: postUrl,
@@ -70,7 +72,7 @@ $(function(){
         });
       },
       error: function() {
-      location.href='/error' + escapedVal;
+      location.href=BASE + '/error' + escapedVal;
       }
       });
   });
@@ -82,7 +84,7 @@ $(function(){
   $('#menu').on('click', '#submit', function(){
     var val = $('#input').val();
     var escapedVal = encodeURIComponent(val);
-    location.href='/site?url=' + escapedVal;
+    location.href=BASE + '/site?url=' + escapedVal;
   });
 });
 
@@ -191,20 +193,20 @@ $(function(){
 /*SoundJS ------------------------------------------------------------*/
 function registerSound () {
   var manifest = 
-      [{src:'/sound/beat00.mp3', id:'beat00'},
-      {src:'/sound/beat01.mp3', id:'beat01'},
-      {src:'/sound/beat02.mp3', id:'beat02'},
-      {src:'/sound/beat03.mp3', id:'beat03'},
-      {src:'/sound/scream00.mp3', id:'scream00'},
-      {src:'/sound/scream01.mp3', id:'scream01'},
-      {src:'/sound/scream02.mp3', id:'scream02'},
-      {src:'/sound/scream03.mp3', id:'scream03'},
-      {src:'/sound/scream04.mp3', id:'scream04'},
-      {src:'/sound/scream05.mp3', id:'scream05'},
-      {src:'/sound/rival/cool/die.mp3', id:'rival00-die'},
-      {src:'/sound/rival/hero/die.mp3', id:'rival01-die'},
-      {src:'/sound/rival/priest/die.mp3', id:'rival02-die'},
-      {src:'/sound/rival/witch/die.mp3', id:'rival03-die'}];
+      [{src:BASE + '/sound/beat00.mp3', id:'beat00'},
+      {src:BASE + '/sound/beat01.mp3', id:'beat01'},
+      {src:BASE + '/sound/beat02.mp3', id:'beat02'},
+      {src:BASE + '/sound/beat03.mp3', id:'beat03'},
+      {src:BASE + '/sound/scream00.mp3', id:'scream00'},
+      {src:BASE + '/sound/scream01.mp3', id:'scream01'},
+      {src:BASE + '/sound/scream02.mp3', id:'scream02'},
+      {src:BASE + '/sound/scream03.mp3', id:'scream03'},
+      {src:BASE + '/sound/scream04.mp3', id:'scream04'},
+      {src:BASE + '/sound/scream05.mp3', id:'scream05'},
+      {src:BASE + '/sound/rival/cool/die.mp3', id:'rival00-die'},
+      {src:BASE + '/sound/rival/hero/die.mp3', id:'rival01-die'},
+      {src:BASE + '/sound/rival/priest/die.mp3', id:'rival02-die'},
+      {src:BASE + '/sound/rival/witch/die.mp3', id:'rival03-die'}];
     createjs.Sound.registerSounds(manifest);
 }
 
