@@ -12,8 +12,11 @@
   に合わせている。本家はカードの罫線を全カテゴリ共通のグレー1色に
   していて、クラシック版の「7色ランダム罫線」は本家には無い、こちら
   独自の演出だったと判明した。なので新版では本家の流儀（1色固定）に
-  寄せつつ、その1色をピンクにする。ちなみに本家自身もブクマ数リンクに
-  #ff7790 というピンクを使っている（発見。青一色ではなかった）。
+  寄せつつ、その1色をピンクにする。
+
+  ただし本家自身もブクマ数リンクに #ff7790 というピンクを使っている
+  ため、そこだけ同じ色にすると「本家と対比」にならない。ブックマーク数
+  まわりだけは本家（青）と反転させて水色系（--count）にしている。
 */
 
 :root {
@@ -29,6 +32,7 @@
   --accent-light: #ffc8c8; /* クラシック版の薄ピンク */
   --accent-strong: #e0527a;
   --danger: #d6336c;
+  --count: #0277bd;       /* ブクマ数の色。本家がここだけピンクなので反転して水色系に */
   --radius: 4px;
   --max-width: 1050px;
   color-scheme: light;
@@ -209,7 +213,7 @@ main {
   margin-bottom: 6px;
 }
 .entry-card .entry-meta a {
-  color: #ff7790; /* 本家のブクマ数リンクと同じ色 */
+  color: var(--count);
   font-size: 13px;
   font-weight: 700;
 }
@@ -236,8 +240,11 @@ main {
   font-weight: 700;
 }
 .entry-head .bkm-count {
-  color: var(--text-faint);
   font-size: 14px;
+}
+.entry-head .bkm-count a {
+  color: var(--count);
+  font-weight: 700;
 }
 
 .beat-toggle {
