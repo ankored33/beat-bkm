@@ -21,9 +21,9 @@
   <ul class="bkm-list" id="bkm-list">
     <% @bkm.each do |bm| %>
       <li class="bkm-item">
-        <img src="<%= h bm.icon %>" width="40" height="40" alt="" loading="lazy">
-        <div>
-          <div class="bkm-user"><%= h bm.user %></div>
+        <div class="bkm-user"><%= h bm.user %></div>
+        <div class="bkm-row">
+          <img src="<%= h bm.icon %>" width="40" height="40" alt="" loading="lazy">
           <div class="bkm-comment"><%= h bm.comment %></div>
         </div>
       </li>
