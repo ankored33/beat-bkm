@@ -165,49 +165,18 @@ Render 無料枠にはプレビュー環境がないので、新版は本番の 
 5. `app/` の空の Modern::App を `/next` にマウント（`/next/healthz` だけ 200）
 6. デプロイ。本番 `/` は無変化、`/next/healthz` が 200
 
-### Phase 2：新版バックエンド（完了・2026-09-11）— `/next/` で動く
-1. `app/hatena/client.rb`（タイムアウト付き HTTP）・`hotentry.rb`（RSS解析）・`bookmarks.rb`（jsonlite解析）を実装。
-   fetcher は `#call` を持つオブジェクトを DI（既定は `Client.method(:get)`）してテストではネットワーク不要に
-2. ルート実装（2-2）。`/site` は 301 で `/entry` へ、`/entry` 未指定は 400、無効カテゴリは 404、取得失敗はページ内にメッセージ表示（クラシックのように `/error` へ強制遷移しない）
-3. `Modern::Cache`（Mutex 付き TTL メモリキャッシュ、RSS 5分 / jsonlite 10分）と `Hatena::Client` のタイムアウト（open 5s / read 20s）
-4. ビューは素の HTML（見た目は Phase 3）
-5. 実データで動作確認：キャッシュ有効時 2ms 台、`/it` `/about` `/entry` `/site` `/api/bookmarks` 200、無効カテゴリ 404
+### Phase 2：新版バックエンド（完了）— `/next/` で動く
+`app/hatena/*`（RSS/jsonlite解析・タイムアウト）、ルーティング（2-2）、`Modern::Cache`。詳細は git log 参照。
 
-**実装中に見つかったこと**
-- ルート定義順のバグ：`/:category`（catch-all）を `/entry` `/site` `/about` より先に書くと、これらのパスを `category` として奪ってしまう（`category="entry"` など）。固定パスは catch-all より前に置く
-- クラシック版の隠れたバグを発見：ブックマーク0件のURLに対して jsonlite API は本文 `null`・HTTP 200 を返す。クラシックはこれを `HTTPError` と誤認して `/error` に飛ばしていたが、実際はエラーではなく「0件」。新版では正しく0件として扱う（記事素材候補）
-- fetcher に渡すテストダブルは `#call` 前提に統一（最初 `#get` と混在させて `NoMethodError` を出した）
+### Phase 3：新版フロントエンド（完了）— `/next/` で完成形に
+`public/app.css`・`beat.js`（Web Audio）、全ビュー書き直し。デザイン根拠は 2-4 の通り。詳細は git log 参照。
 
-### Phase 3：新版フロントエンド（完了・2026-09-11）— `/next/` で完成形に
-1. `public/app.css`：トークン・グリッド。白基調＋ピンクアクセント、ダーク無し
-2. `public/beat.js`：Web Audio（AudioContext + decodeAudioData）で殴る機能を移植。
-   判定ロジック（コメント長・ライバル種別）はクラシックのものを踏襲
-3. `app/views/*` を新デザインに合わせて全面書き直し（layout / index / entry / about / error / not_found）
-4. About、OGP、`theme-color`、`favicon.svg`
-5. Playwright（ヘッドレスChromium、ライブラリをユーザー権限でapt-get download→展開してLD_LIBRARY_PATHで解決）で
-   実際にスクリーンショットして確認。PC幅・スマホ幅（390px）両方、および「殴る」操作の実動作
-   （チェックON→クリック→カウント減少→要素が消える、コンソールエラー無し）をヘッドレスブラウザで検証済み
-
-**デザインの根拠**：本家 b.hatena.ne.jp/hotentry の HTML と実際の `bookmark.css` を取得して確認した上で数値を決めた
-（背景 `#fff`/`#f6f7f8`、文字色 `#25282b`/`#55606a`/`#999`、フォントは `Helvetica Neue, Helvetica, Arial,
-Hiragino Kaku Gothic Pro, Meiryo` 系、角丸 3〜4px、エントリーカードは `border-top:4px` 固定1色）。
-本家はエントリーカードの罫線をカテゴリ別に色分けしておらず、全カテゴリ共通のグレー1色だった
-（クラシック版の「7色ランダム罫線」は本家に無い、こちら独自の演出と判明）。ちなみに本家も
-ブクマ数リンクに `#ff7790` というピンクを使っており、青一色ではなかった（発見）。
-新版はこの「1色固定」という本家の流儀に寄せつつ、その1色をピンクにしている。
-
-### Phase 3.5：拡張・ブラッシュアップ（2026-09-11 追加、進行中）
+### Phase 3.5：拡張・ブラッシュアップ（進行中）
 
 Phase 4（差し替え）の前に挟む。
 
-**実施済み**
-- トップのエントリーカードにOGP画像（サムネイル）を表示。`hotentry.rss` に
-  `<hatena:imageurl>` タグが既にあり、追加のHTTPリクエスト無しで取得できることが判明。
-  `Hatena::Entry#image_url` を追加、`index.erb` で表示、無ければ画像なしでカードだけ表示
-  （`onerror` で壊れた画像を静かに消す）。サイズ感は本家の `.entrylist-contents-thumb`
-  （227×127px・角丸4px・`background-size:cover`）を参考に `aspect-ratio:16/9` + `object-fit:cover` で実装
-
-**未定（着手時に決める）**
+- [x] トップのエントリーカードにOGP画像（サムネイル）表示
+- [ ] 未定（着手時に決める）
 
 ### Phase 4：差し替え（1 コミット + 半日）
 1. `config.ru`：`/` → Modern、`/classic` → Classic、`/next` → `/` へリダイレクト
