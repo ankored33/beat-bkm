@@ -6,7 +6,13 @@
   <ul class="entries">
     <% @entries.each do |entry| %>
       <li class="entry-card">
-        <a class="entry-title" href="<%= h entry.link %>" target="_blank" rel="noopener"><%= h entry.title %></a>
+        <a href="<%= h entry.link %>" target="_blank" rel="noopener">
+          <% if entry.image_url %>
+            <img class="entry-thumb" src="<%= h entry.image_url %>" alt="" loading="lazy" decoding="async"
+                 onerror="this.remove()">
+          <% end %>
+          <span class="entry-title"><%= h entry.title %></span>
+        </a>
         <p class="entry-meta">
           <a href="<%= request.script_name %>/entry?url=<%= CGI.escape(entry.link) %>"><%= entry.bookmark_count %> users</a>
         </p>

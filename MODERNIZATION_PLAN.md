@@ -196,9 +196,18 @@ Hiragino Kaku Gothic Pro, Meiryo` 系、角丸 3〜4px、エントリーカー�
 ブクマ数リンクに `#ff7790` というピンクを使っており、青一色ではなかった（発見）。
 新版はこの「1色固定」という本家の流儀に寄せつつ、その1色をピンクにしている。
 
-### Phase 3.5：拡張・ブラッシュアップ（2026-09-11 追加、内容未定）
+### Phase 3.5：拡張・ブラッシュアップ（2026-09-11 追加、進行中）
 
-Phase 4（差し替え）の前に挟む。詳細は着手時に詰める。
+Phase 4（差し替え）の前に挟む。
+
+**実施済み**
+- トップのエントリーカードにOGP画像（サムネイル）を表示。`hotentry.rss` に
+  `<hatena:imageurl>` タグが既にあり、追加のHTTPリクエスト無しで取得できることが判明。
+  `Hatena::Entry#image_url` を追加、`index.erb` で表示、無ければ画像なしでカードだけ表示
+  （`onerror` で壊れた画像を静かに消す）。サイズ感は本家の `.entrylist-contents-thumb`
+  （227×127px・角丸4px・`background-size:cover`）を参考に `aspect-ratio:16/9` + `object-fit:cover` で実装
+
+**未定（着手時に決める）**
 
 ### Phase 4：差し替え（1 コミット + 半日）
 1. `config.ru`：`/` → Modern、`/classic` → Classic、`/next` → `/` へリダイレクト

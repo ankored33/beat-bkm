@@ -8,7 +8,7 @@ module Hatena
   # 描画側の責務。クラシックの main.rb は取得時に CGI.escapeHTML してから
   # ビューでさらに h をかけていて、URL 直指定のページだけ二重エスケープに
   # なっていた。MODERNIZATION_PLAN.md 参照）。
-  Entry = Struct.new(:link, :title, :bookmark_count, :description, keyword_init: true)
+  Entry = Struct.new(:link, :title, :bookmark_count, :description, :image_url, keyword_init: true)
 
   module Hotentry
     TOP_RSS = "https://b.hatena.ne.jp/hotentry.rss"
@@ -42,11 +42,13 @@ module Hatena
       title = doc.at_xpath("//channel/title")&.text.to_s
 
       entries = doc.xpath("//item").map do |item|
+        image_url = item.at_xpath("imageurl")&.text.to_s
         Entry.new(
           link: item.at_xpath("link")&.text.to_s,
           title: item.at_xpath("title")&.text.to_s,
           bookmark_count: item.at_xpath("bookmarkcount")&.text.to_i || 0,
-          description: item.at_xpath("description")&.text.to_s
+          description: item.at_xpath("description")&.text.to_s,
+          image_url: image_url.empty? ? nil : image_url
         )
       end
 

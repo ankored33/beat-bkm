@@ -175,12 +175,34 @@ main {
   padding: 15px;
 }
 
+.entry-card > a {
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* サムネイル。本家のOGP画像プレビュー(.entrylist-contents-thumb、
+   227x127px・角丸4px・cover)に合わせたサイズ感。取得元サイトの
+   画像が壊れている場合は onerror で要素ごと消す（カード自体は残す）。 */
+.entry-thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  background: var(--bg);
+}
+
 .entry-card .entry-title {
   display: block;
   font-weight: 700;
   font-size: 15px;
   line-height: 1.5;
   margin-bottom: 8px;
+}
+.entry-card > a:hover .entry-title {
+  text-decoration: underline;
 }
 
 .entry-card .entry-meta {

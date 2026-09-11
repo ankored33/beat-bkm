@@ -36,4 +36,17 @@ class HotentryTest < Minitest::Test
     stub = ->(_url) { raise Hatena::FetchError, "boom" }
     assert_raises(Hatena::FetchError) { Hatena::Hotentry.fetch(nil, fetcher: stub) }
   end
+
+  def test_parse_extracts_image_url_when_present
+    _title, entries = Hatena::Hotentry.parse(FIXTURE)
+    entry = entries.find { |e| e.link == "https://www.toyoeiwa.ac.jp/chu-ko/news/2026/09/025010.html" }
+    assert_equal "https://www.toyoeiwa.ac.jp/chu-ko/common/images/og-image.jpg", entry.image_url
+  end
+
+  def test_parse_image_url_is_nil_when_absent
+    _title, entries = Hatena::Hotentry.parse(FIXTURE)
+    entry = entries.find { |e| e.link == "https://example.com/test" }
+    refute_nil entry
+    assert_nil entry.image_url
+  end
 end
