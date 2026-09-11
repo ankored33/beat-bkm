@@ -1,24 +1,3 @@
-/*
-  デザイン方針（MODERNIZATION_PLAN.md 2-4）：
-  はてなブックマークのパロディサイトなので、本家と同じ白基調にし、
-  本家の青系アクセントに対してこちらはピンク（クラシック版の
-  #FFC8C8 / #FF9999 に近い方向）を使う。ダークモードは採用しない。
-  ダークパターン（同意誘導・偽の緊急性・隠しコストなど）も使わない。
-
-  フォント・配色・角丸のサイズ感は、2026-09-11 時点で実際に
-  b.hatena.ne.jp/hotentry と本家の bookmark.css を取得して確認した値
-  （white #fff / subtle #f6f7f8 / text #25282b,#55606a,#999 /
-  border-radius 3〜4px / エントリーカードは border-top 4px 固定色）
-  に合わせている。本家はカードの罫線を全カテゴリ共通のグレー1色に
-  していて、クラシック版の「7色ランダム罫線」は本家には無い、こちら
-  独自の演出だったと判明した。なので新版では本家の流儀（1色固定）に
-  寄せつつ、その1色をピンクにする。
-
-  ただし本家自身もブクマ数リンクに #ff7790 というピンクを使っている
-  ため、そこだけ同じ色にすると「本家と対比」にならない。ブックマーク数
-  まわりだけは本家（青）と反転させて水色系（--count）にしている。
-*/
-
 :root {
   --bg: #ffffff;
   --bg-subtle: #f6f7f8;
@@ -26,13 +5,13 @@
   --text-muted: #55606a;
   --text-faint: #999999;
   --border: #ececec;
-  --link: #d6336c;       /* 本文中のリンク色。白背景でAAを満たす濃いピンク */
+  --link: #d6336c;
   --link-visited: #a52a5a;
-  --accent: #ff9999;     /* クラシック版のピンク */
-  --accent-light: #ffc8c8; /* クラシック版の薄ピンク */
+  --accent: #ff9999;
+  --accent-light: #ffc8c8;
   --accent-strong: #e0527a;
   --danger: #d6336c;
-  --count: #0277bd;       /* ブクマ数の色。本家がここだけピンクなので反転して水色系に */
+  --count: #0277bd;
   --radius: 4px;
   --max-width: 1050px;
   color-scheme: light;
@@ -159,8 +138,6 @@ main {
 }
 
 /* ---------- entry cards (hotentry list) ---------- */
-/* 本家 .entrylist-contents は border-top:4px solid #999 の固定1色。
-   ここでは同じ構造でアクセントをピンクにする。 */
 
 .entries {
   list-style: none;
@@ -185,9 +162,6 @@ main {
   text-decoration: none;
 }
 
-/* サムネイル。本家のOGP画像プレビュー(.entrylist-contents-thumb、
-   227x127px・角丸4px・cover)に合わせたサイズ感。取得元サイトの
-   画像が壊れている場合は onerror で要素ごと消す（カード自体は残す）。 */
 .entry-thumb {
   display: block;
   width: 100%;
@@ -270,7 +244,8 @@ main {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
@@ -279,6 +254,8 @@ main {
   grid-template-columns: 40px 1fr;
   gap: 10px;
   align-items: start;
+  flex: 1 1 260px;
+  max-width: 400px;
   padding: 10px 12px;
   background: var(--bg-subtle);
   border: 1px solid var(--border);
